@@ -45,7 +45,6 @@
 
     mounted () {
       eventHub.$on('deselectOption', this.updateFilterOptions)
-      console.log(this.children)
     },
 
     computed: {

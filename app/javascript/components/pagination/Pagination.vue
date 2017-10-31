@@ -32,7 +32,6 @@
 
     data () {
       return {
-        // totalPages: Number,
         totalItems: this.$store.state.totalItems,
         test: Number,
         previousIsActive: false,
@@ -56,7 +55,6 @@
       },
 
       totalPages () {
-        console.log('computed pages', this.totalItems)
         return Math.ceil(this.totalItems / this.itemsPerPage)
       },
 
@@ -67,10 +65,7 @@
 
     methods: {
       updateButtons () {
-        console.log('update buttons')
-        // this.totalPages = Math.ceil(this.$store.state.activeItems.length/this.itemsPerPage);
         this.totalItems = this.$store.state.totalItems
-        
         this.nextIsActive = this.currentPage < this.totalPages
         this.previousIsActive = this.currentPage > 1
 

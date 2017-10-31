@@ -47,7 +47,6 @@
           itemsPerPage: 2
         },
         items: [],
-        // totalItems: this.projects.length,
         itemsOnCurrentPage: [],
         selectedFilterOptions: this.$store.state.selectedFilterOptions,
       }
@@ -56,11 +55,6 @@
     created () {
       this.items = this.projects
       this.$store.commit('updateTotalItems', this.items.length)
-
-      this.filters.forEach(filter => {
-        // console.log(filter)
-      })
-
       this.$store.commit('updateFilters', this.filters)
     },
 
@@ -91,9 +85,6 @@
 
           // if the active filter does not match then increment fails
           this.$store.state.selectedFilterOptions.forEach(filter => {
-            // console.log('filter', filter.name)
-            // console.log('filter', filter.option)
-            // console.log('item', item[filter.name])
             if(item[filter.name] != filter.option) fails ++
           })
 

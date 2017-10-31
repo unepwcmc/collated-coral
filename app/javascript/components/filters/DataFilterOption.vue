@@ -27,12 +27,7 @@
 
     methods: {
       selectOption (option) {
-        // console.log('click', option)
         this.$store.commit('addFilterOption', option)
-
-        // console.log('selected Filter options', this.$store.state.selectedFilterOptions)
-        // const index = this.remainingOptions.indexOf(option)
-        // this.remainingOptions.splice(index, 1)
 
         this.isSelected = true
 
