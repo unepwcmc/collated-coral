@@ -7,7 +7,8 @@
     <td>{{ item.startDate }}</td>
     <td>{{ item.endDate }}</td>
     <td>{{ item.country }}</td>
-    <td>{{ item.oceanRegion }}</td>
+    <td>{{ item.oceanBasedRegion }}</td>
+    <td>{{ item.totalProjectCost }}</td>
   </tr>
 </template>
 

@@ -6,15 +6,18 @@ Vue.use(Vuex)
 // create store
 export default new Vuex.Store({
   state: {
-    items: [], //contains project objects
+    totalItems: [], // contains project objects
     activeItems: [], // contains indices of articles which match the filters
     itemsPerPage: 0,
-    currentPage: 1
+    totalPages: 0,
+    currentPage: 1,
+    selectedFilterOptions: [], // contains strings for the name of each filter option selected
+    filters: []
   },
 
   mutations: {
-    updateItems (state, items) {
-      this.state.items = items 
+    updateTotalItems (state, total) {
+      this.state.totalItems = total 
     },
 
     updateActiveItems (state, item) {
@@ -31,6 +34,18 @@ export default new Vuex.Store({
 
     updateCurrentPage (state, currentPage) {
       this.state.currentPage = currentPage
+    },
+
+    addFilterOption (state, option) {
+      this.state.selectedFilterOptions.push(option)
+    },
+
+    updateFilters (state, filters) {
+      this.state.filters = filters
+    },
+
+    updateTotalPages (state, total) {
+      this.state.totalPages = total
     }
   }
 })

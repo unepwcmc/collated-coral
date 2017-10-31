@@ -1,8 +1,22 @@
 <template>
   <div>
-    <button @click="changePage(previousIsActive, 'previous')">Previous</button>
-    Page {{ currentPage }} of {{ totalPages }}
-    <button @click="changePage(nextIsActive, 'next')">Next</button>
+    <div v-if="haveResults">
+      <button 
+        v-bind="{ 'disabled' : !previousIsActive }"
+        @click="changePage(previousIsActive, 'previous')" 
+      >Previous</button>
+
+      Page {{ currentPage }} of {{ totalPages }}
+
+      <button 
+        v-bind="{ 'disabled' : !nextIsActive }"
+        @click="changePage(nextIsActive, 'next')"
+      >Next</button>
+    </div>
+
+    <div v-else>
+      <p>There are no projects matching the selected filters options.</p>
+    </div>
   </div>
 </template>
 
@@ -13,14 +27,14 @@
     name: "pagination",
 
     props: {
-      itemsPerPage: Number,
-      totalItems: Number,
-      activeItems: []
+      itemsPerPage: Number
     },
 
     data () {
       return {
-        totalPages: Math.ceil(this.totalItems / this.itemsPerPage),
+        // totalPages: Number,
+        totalItems: this.$store.state.totalItems,
+        test: Number,
         previousIsActive: false,
         nextIsActive: false
       }
@@ -32,16 +46,31 @@
 
     mounted () {
       this.updateButtons()
+
+      eventHub.$on('activeItemsChanged', this.updateButtons)
     },
 
     computed: {
       currentPage () {
         return this.$store.state.currentPage
+      },
+
+      totalPages () {
+        console.log('computed pages', this.totalItems)
+        return Math.ceil(this.totalItems / this.itemsPerPage)
+      },
+
+      haveResults () {
+        return this.totalItems > 0
       }
     },
 
     methods: {
       updateButtons () {
+        console.log('update buttons')
+        // this.totalPages = Math.ceil(this.$store.state.activeItems.length/this.itemsPerPage);
+        this.totalItems = this.$store.state.totalItems
+        
         this.nextIsActive = this.currentPage < this.totalPages
         this.previousIsActive = this.currentPage > 1
 

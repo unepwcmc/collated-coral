@@ -1,27 +1,41 @@
 <template>
   <div>
+    <div>
+      selected filters
+      <div>
+        <!-- <selected-filter v-for="activeFilter in activeFilters"
+          :title="activeFilter.title"
+        ></selected-filter>   -->
+      </div>
+    </div>
+
     <table>
+      <filters :filters="filters"></filters>
+
       <row v-for="item, key in items" 
         :key="key"
         :item="item">
       </row>
     </table>
 
-    <pagination :items-per-page="config.itemsPerPage" :total-items="totalItems"></pagination>
+    <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>  
 </template>
 
 <script>
   import { eventHub } from '../home.js'
+  import Filters from './filters/Filters.vue'
+  import SelectedFilter from './filters/SelectedFilter.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { Row, Pagination },
+    components: { SelectedFilter, Filters, Row, Pagination },
 
     props: {
+      filters: { type: Array },
       projects: { type: Array }
     },
 
@@ -31,40 +45,73 @@
           itemsPerPage: 2
         },
         items: [],
-        totalItems: this.projects.length,
-        itemsOnCurrentPage: []
+        // totalItems: this.projects.length,
+        itemsOnCurrentPage: [],
+        activeFilters: this.$store.state.activeFilters,
       }
     },
 
     created () {
       this.items = this.projects
+      this.$store.commit('updateTotalItems', this.items.length)
+
+      this.filters.forEach(filter => {
+        // console.log(filter)
+      })
+
+      // this.$store.commit('updateFilters', this.filters)
+    },
+
+    computed: {
+      totalItems () {
+        return this.$store.state.activeItems.length
+      }
     },
 
     mounted () {
       // refilter the items when the filters are changed
+      eventHub.$on('filtersChanged', this.filterItems)
 
       // repaginate the items when the previous/next buttons are clicked
       eventHub.$on('pageChanged', this.paginateItems)
 
       // only display the items that match the page number
       this.filterItems()
-    },
+    },  
 
     methods: {
       filterItems () {
+        console.log('filter items')
         this.$store.commit('clearActiveItems')
 
-        //create array of ids of items that match the selected filters
+        //create array of ids of items that match ALL selected filters
         this.items.forEach(item => {
-          this.$store.commit('updateActiveItems', item.id)
+          let fails = 0
+
+          // if the active filter does not match then increment fails
+          this.$store.state.selectedFilterOptions.forEach(filter => {
+            // console.log('filter', filter.name)
+            // console.log('filter', filter.option)
+            // console.log('item', item[filter.name])
+            if(item[filter.name] != filter.option) fails ++
+          })
+
+          // only push the item id into the active items array if there are no fails
+          if(fails == 0){
+            this.$store.commit('updateActiveItems', item.id)
+          }
         })
 
+        // console.log('active items in main', this.$store.state.activeItems)
         this.paginateItems()
         this.$store.commit('updateCurrentPage', 1)
+        this.$store.commit('updateTotalItems', this.$store.state.activeItems.length)
+        eventHub.$emit('activeItemsChanged');
       },
 
       // only display the items that match the page number
       paginateItems () {
+        console.log('paginate items')
         const pageStart = (this.$store.state.currentPage - 1) * this.config.itemsPerPage
         const pageEnd =  pageStart + this.config.itemsPerPage;
 
