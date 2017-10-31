@@ -13,10 +13,6 @@
         required: true,
         type: String
       },
-      filter: {
-        required: true,
-        type: String
-      },
       option: {
         required: true,
         type: String

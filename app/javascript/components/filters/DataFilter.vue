@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  import { eventHub } from '../../home.js'
   import DataFilterOption from './DataFilterOption.vue'
 
   export default {
@@ -37,15 +38,31 @@
     data () {
       return {
         remainingOptions: this.options,
-        isActive: false
-
+        isActive: false,
+        children: this.$children
       }
+    },
+
+    mounted () {
+      eventHub.$on('deselectOption', this.updateFilterOptions)
+      console.log(this.children)
     },
 
     computed: {
       // only show the select if the filter is a real filter and not just a table title
       hasOptions () {
         return this.options != undefined || this.name != undefined
+      }
+    },
+
+    methods: {
+      updateFilterOptions (filterOption) {
+        if(this.name == filterOption.name){
+          this.children.forEach(child => {
+            if(child.option == filterOption.option)
+              child.isSelected = false
+          })
+        }
       }
     }
   }

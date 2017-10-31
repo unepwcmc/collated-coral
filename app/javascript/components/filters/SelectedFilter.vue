@@ -1,5 +1,8 @@
 <template>
-  <span @click="deselectOption()">{{ option }}</span>
+  <p>
+    {{ option }}
+    <button @click="deselectOption()">x</button>
+  </p>
 </template>
 
 <script>
@@ -9,7 +12,8 @@
     name: 'selected-filter',
 
     props: {
-      filter: {
+      index: Number,
+      name: {
         required: true,
         type: String
       },
@@ -22,8 +26,9 @@
     methods: {
       deselectOption () {
         // remove this from the active filter list
-        eventHub.$emit('deselectOption', { filter: filter, option: option })
-
+        this.$store.commit('removeFilterOption', this.index)
+        eventHub.$emit('deselectOption', { name: this.name, option: this.option })
+        eventHub.$emit('filtersChanged')
       }
     }
   }

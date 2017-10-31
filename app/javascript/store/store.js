@@ -40,6 +40,10 @@ export default new Vuex.Store({
       this.state.selectedFilterOptions.push(option)
     },
 
+    removeFilterOption (state, index) {
+      this.state.selectedFilterOptions.splice(index, 1)
+    },
+
     updateFilters (state, filters) {
       this.state.filters = filters
     },

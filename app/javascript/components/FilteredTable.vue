@@ -3,9 +3,11 @@
     <div>
       selected filters
       <div>
-        <!-- <selected-filter v-for="activeFilter in activeFilters"
-          :title="activeFilter.title"
-        ></selected-filter>   -->
+        <selected-filter v-for="selectedFilterOption, index in selectedFilterOptions"
+          :index="index"
+          :name="selectedFilterOption.name"
+          :option="selectedFilterOption.option"
+        ></selected-filter>
       </div>
     </div>
 
@@ -47,7 +49,7 @@
         items: [],
         // totalItems: this.projects.length,
         itemsOnCurrentPage: [],
-        activeFilters: this.$store.state.activeFilters,
+        selectedFilterOptions: this.$store.state.selectedFilterOptions,
       }
     },
 
@@ -59,7 +61,7 @@
         // console.log(filter)
       })
 
-      // this.$store.commit('updateFilters', this.filters)
+      this.$store.commit('updateFilters', this.filters)
     },
 
     computed: {
@@ -81,7 +83,6 @@
 
     methods: {
       filterItems () {
-        console.log('filter items')
         this.$store.commit('clearActiveItems')
 
         //create array of ids of items that match ALL selected filters
@@ -111,7 +112,6 @@
 
       // only display the items that match the page number
       paginateItems () {
-        console.log('paginate items')
         const pageStart = (this.$store.state.currentPage - 1) * this.config.itemsPerPage
         const pageEnd =  pageStart + this.config.itemsPerPage;
 
