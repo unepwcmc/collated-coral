@@ -1,7 +1,7 @@
 <template>
   <td>
     <span>
-      {{ title }}
+      <p>{{ title }}</p>
       <select v-if="hasOptions" multiple>
         <data-filter-option v-for="option in options" 
           :name="name"

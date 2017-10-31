@@ -81,20 +81,19 @@
 
         //create array of ids of items that match ALL selected filters
         this.items.forEach(item => {
-          let fails = 0
+          let match = 0
 
           // if the active filter does not match then increment fails
           this.$store.state.selectedFilterOptions.forEach(filter => {
-            if(item[filter.name] != filter.option) fails ++
+            if(item[filter.name] == filter.option) match ++
           })
 
           // only push the item id into the active items array if there are no fails
-          if(fails == 0){
+          if(match > 0){
             this.$store.commit('updateActiveItems', item.id)
           }
         })
 
-        // console.log('active items in main', this.$store.state.activeItems)
         this.paginateItems()
         this.$store.commit('updateCurrentPage', 1)
         this.$store.commit('updateTotalItems', this.$store.state.activeItems.length)
