@@ -1,6 +1,48 @@
 class HomeController < ApplicationController
   def index
     # dummy data to build out the front end
+    filters = [
+      {
+        title:"ID"
+      },
+      {
+        title: "Project Title"
+      },
+      {
+        name: "donor",
+        title: "Donor(s)",
+        options: [ "Donor name", "Donor name 2", "Donor name 3" ]
+      },
+      {
+        name: "status",
+        title: "Status",
+        options: [ "Active", "Closed" ]
+      },
+      {
+        name: "startDate",
+        title: "Start Date",
+        options: [ '2000', '2003' ]
+      },
+      {
+        name: "endDate",
+        title: "End Date",
+        options: [ '2002', '2005' ]
+      },
+      {
+        name: "country",
+        title: "Country",
+        options: [ "UK", "Australia"]
+      },
+      {
+        name: "oceanBasedRegion",
+        title: "Ocean Based Region",
+        options: [ "Ocean 2"]
+      },
+      {
+        title: "Total Project Cost"
+      }
+    ]
+
     projects = [
       {
         id: 0,
@@ -43,8 +85,8 @@ class HomeController < ApplicationController
         status: "Closed",
         startDate: 2003,
         endDate: 2005,
-        country: "America",
-        oceanBasedRegion: "Ocean",
+        country: "UK",
+        oceanBasedRegion: "Ocean 2",
         beneficiaries: "Beneficiary name 3",
         implementingAgency: "Agency name 3",
         totalProjectCost: "£111",
@@ -55,6 +97,7 @@ class HomeController < ApplicationController
       }
     ]
 
+    @filters = filters.to_json
     @projects = projects.to_json
   end
 end
