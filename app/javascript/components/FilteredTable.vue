@@ -53,6 +53,7 @@
     },
 
     created () {
+      this.createSelectedFilterOptions()
       this.items = this.projects
       this.$store.commit('updateTotalItems', this.items.length)
       this.$store.commit('updateFilters', this.filters)
@@ -81,15 +82,24 @@
 
         //create array of ids of items that match ALL selected filters
         this.items.forEach(item => {
-          let match = 0
-
-          // if the active filter does not match then increment fails
+          let pass
+          
+          // an item must match one option from each filter (if any have been selected)
           this.$store.state.selectedFilterOptions.forEach(filter => {
-            if(item[filter.name] == filter.option) match ++
-          })
 
+            // if there are some selected options check to see if one matches
+            if(filter.options.length !== 0){
+
+              filter.options.forEach(option => {
+                if(item[filter.name] == option) match++
+              })
+
+              if(match == 0) { pass = false }
+            }
+          })
+          console.log(pass)
           // only push the item id into the active items array if there are no fails
-          if(match > 0){
+          if(pass){
             this.$store.commit('updateActiveItems', item.id)
           }
         })
@@ -114,6 +124,24 @@
           
           this.$set(item, 'isActive', isActive)
         })
+      },
+
+      createSelectedFilterOptions () {
+        let array = []
+
+        // create an empty array for each filter
+        this.filters.forEach(filter => {
+          if(filter.name !== undefined && filter.options.length > 0){
+            let obj = {}
+
+            obj.name = filter.name,
+            obj.options = []
+
+            array.push(obj)
+          }
+        })
+        
+        this.$store.commit('updateFilterOptions', array)
       }
     }
   }

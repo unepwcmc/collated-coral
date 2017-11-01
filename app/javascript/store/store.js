@@ -11,7 +11,7 @@ export default new Vuex.Store({
     itemsPerPage: 0,
     totalPages: 0,
     currentPage: 1,
-    selectedFilterOptions: [], // contains strings for the name of each filter option selected
+    selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
     filters: []
   },
 
@@ -36,8 +36,15 @@ export default new Vuex.Store({
       this.state.currentPage = currentPage
     },
 
+    updateFilterOptions (state, options) {
+      this.state.selectedFilterOptions = options
+    },
+
     addFilterOption (state, option) {
-      this.state.selectedFilterOptions.push(option)
+      this.state.selectedFilterOptions.forEach(filter => {
+        if(filter.name == option.name){ filter.options.push(option.option)}
+      })
+      console.log(this.state.selectedFilterOptions)
     },
 
     removeFilterOption (state, index) {
