@@ -44,11 +44,21 @@ export default new Vuex.Store({
       this.state.selectedFilterOptions.forEach(filter => {
         if(filter.name == option.name){ filter.options.push(option.option)}
       })
-      console.log(this.state.selectedFilterOptions)
     },
 
-    removeFilterOption (state, index) {
-      this.state.selectedFilterOptions.splice(index, 1)
+    removeFilterOption (state, removeOption) {
+
+      this.state.selectedFilterOptions.forEach(filter => {
+        if(filter.name == removeOption.name){ 
+          filter.options.forEach(option => {
+            if(option == removeOption.option){
+              const index = filter.options.indexOf(removeOption.option)
+
+              filter.options.splice(index, 1)
+            }
+          })
+        }
+      })
     },
 
     updateFilters (state, filters) {

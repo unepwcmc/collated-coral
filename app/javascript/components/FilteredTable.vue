@@ -47,8 +47,7 @@
           itemsPerPage: 2
         },
         items: [],
-        itemsOnCurrentPage: [],
-        selectedFilterOptions: this.$store.state.selectedFilterOptions,
+        itemsOnCurrentPage: []
       }
     },
 
@@ -62,6 +61,25 @@
     computed: {
       totalItems () {
         return this.$store.state.activeItems.length
+      },
+
+      selectedFilterOptions () {
+        let options = []
+
+        this.$store.state.selectedFilterOptions.forEach(filter => {
+          if (filter.options.length !== 0) {
+            filter.options.forEach(selectedOption => {
+              let obj = {}
+
+              obj.name = filter.name
+              obj.option = selectedOption
+
+              options.push(obj)
+            })
+          }
+        })
+
+        return options
       }
     },
 
@@ -80,26 +98,28 @@
       filterItems () {
         this.$store.commit('clearActiveItems')
 
-        //create array of ids of items that match ALL selected filters
+        // an item must match one option from each filter (if any have been selected)
         this.items.forEach(item => {
-          let pass
+          let filterMatch = true
           
-          // an item must match one option from each filter (if any have been selected)
           this.$store.state.selectedFilterOptions.forEach(filter => {
-
+            
             // if there are some selected options check to see if one matches
-            if(filter.options.length !== 0){
-
+            if (filter.options.length !== 0) {
+              let optionMatch = false
+              
               filter.options.forEach(option => {
-                if(item[filter.name] == option) match++
+                if (item[filter.name] == option) optionMatch = true
               })
 
-              if(match == 0) { pass = false }
+              // once filterMatch is set to false it will always be false and the item
+              // will not be shown because it did match an option in one of the filters
+              filterMatch = filterMatch && optionMatch
             }
           })
-          console.log(pass)
+          
           // only push the item id into the active items array if there are no fails
-          if(pass){
+          if (filterMatch) {
             this.$store.commit('updateActiveItems', item.id)
           }
         })
@@ -131,7 +151,7 @@
 
         // create an empty array for each filter
         this.filters.forEach(filter => {
-          if(filter.name !== undefined && filter.options.length > 0){
+          if (filter.name !== undefined && filter.options.length > 0) {
             let obj = {}
 
             obj.name = filter.name,

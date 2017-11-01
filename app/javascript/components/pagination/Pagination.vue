@@ -74,7 +74,7 @@
 
       changePage (isActive, direction) {
         // only change the page if the button is active
-        if(isActive) {
+        if (isActive) {
           const newPage = direction == 'next' ? this.currentPage + 1 : this.currentPage - 1
           
           this.$store.commit('updateCurrentPage', newPage)
