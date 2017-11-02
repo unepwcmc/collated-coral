@@ -1,0 +1,41 @@
+/**************************************************/
+/* html elements
+/**************************************************/
+body {
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  margin: rem-calc(20 0);
+  width: 100%;
+
+  thead {
+    border-bottom: solid gray rem-calc(2);
+  }
+
+  tr {
+    border-bottom: solid $grey-light rem-calc(1);
+  }
+
+  td {
+    padding: rem-calc(5 8);
+  }
+}
+
+select {
+  width: 100%;
+}
+
+/**************************************************/
+/* site structure
+/**************************************************/
+.site-width {
+  width: $site-width;
+}
+
+.container {
+  @extend .site-width;
+
+  margin: 0 auto;
+}
