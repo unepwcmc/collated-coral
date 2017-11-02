@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p class="selected">
     {{ option }}
     <button @click="deselectOption()">x</button>
   </p>
