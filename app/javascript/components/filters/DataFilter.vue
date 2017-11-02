@@ -20,7 +20,7 @@
   export default {
     name: 'data-filter',
 
-    components: { DataFilterOption},
+    components: { DataFilterOption },
 
     props: {
       name: {
@@ -37,8 +37,6 @@
 
     data () {
       return {
-        remainingOptions: this.options,
-        isActive: false,
         children: this.$children
       }
     },
@@ -56,10 +54,11 @@
 
     methods: {
       updateFilterOptions (filterOption) {
+        // if the filter matches the one that has been deselected 
+        // search for the matching option and set isSelected to false
         if(this.name == filterOption.name){
           this.children.forEach(child => {
-            if(child.option == filterOption.option)
-              child.isSelected = false
+            if(child.option == filterOption.option) child.isSelected = false
           })
         }
       }

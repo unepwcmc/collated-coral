@@ -8,8 +8,6 @@ export default new Vuex.Store({
   state: {
     totalItems: [], // contains project objects
     activeItems: [], // contains indices of articles which match the filters
-    itemsPerPage: 0,
-    totalPages: 0,
     currentPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
     filters: []
@@ -27,11 +25,7 @@ export default new Vuex.Store({
     clearActiveItems () {
       this.state.activeItems = []
     },
-
-    updateItemsPerPage (state, total) {
-      this.state.itemsPerPage = total
-    },
-
+    
     updateCurrentPage (state, currentPage) {
       this.state.currentPage = currentPage
     },
@@ -63,10 +57,6 @@ export default new Vuex.Store({
 
     updateFilters (state, filters) {
       this.state.filters = filters
-    },
-
-    updateTotalPages (state, total) {
-      this.state.totalPages = total
     }
   }
 })

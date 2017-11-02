@@ -12,7 +12,6 @@
     name: 'selected-filter',
 
     props: {
-      index: Number,
       name: {
         required: true,
         type: String

@@ -33,14 +33,9 @@
     data () {
       return {
         totalItems: this.$store.state.totalItems,
-        test: Number,
         previousIsActive: false,
         nextIsActive: false
       }
-    },
-
-    created () {
-      this.$store.commit('updateItemsPerPage', this.itemsPerPage)
     },
 
     mounted () {

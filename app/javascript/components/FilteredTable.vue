@@ -3,8 +3,7 @@
     <div>
       selected filters
       <div>
-        <selected-filter v-for="selectedFilterOption, index in selectedFilterOptions"
-          :index="index"
+        <selected-filter v-for="selectedFilterOption in selectedFilterOptions"
           :name="selectedFilterOption.name"
           :option="selectedFilterOption.option"
         ></selected-filter>
@@ -58,12 +57,20 @@
       this.$store.commit('updateFilters', this.filters)
     },
 
-    computed: {
-      totalItems () {
-        return this.$store.state.activeItems.length
-      },
+    mounted () {
+      // refilter the items when the filters are changed
+      eventHub.$on('filtersChanged', this.filterItems)
 
+      // repaginate the items when the previous/next buttons are clicked
+      eventHub.$on('pageChanged', this.paginateItems)
+
+      // only display the items that match the page number
+      this.filterItems()
+    },  
+
+    computed: {
       selectedFilterOptions () {
+        // return selected filter options in an appropriate format to loop over
         let options = []
 
         this.$store.state.selectedFilterOptions.forEach(filter => {
@@ -82,17 +89,6 @@
         return options
       }
     },
-
-    mounted () {
-      // refilter the items when the filters are changed
-      eventHub.$on('filtersChanged', this.filterItems)
-
-      // repaginate the items when the previous/next buttons are clicked
-      eventHub.$on('pageChanged', this.paginateItems)
-
-      // only display the items that match the page number
-      this.filterItems()
-    },  
 
     methods: {
       filterItems () {
