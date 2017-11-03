@@ -11,12 +11,16 @@
     </div>
 
     <table>
-      <filters :filters="filters"></filters>
+      <thead>
+        <filters :filters="filters"></filters>
+      </thead>
 
-      <row v-for="item, key in items" 
-        :key="key"
-        :item="item">
-      </row>
+      <tbody>
+        <row v-for="item, key in items" 
+          :key="key"
+          :item="item">
+        </row>
+      </tbody>
     </table>
 
     <pagination :items-per-page="config.itemsPerPage"></pagination>

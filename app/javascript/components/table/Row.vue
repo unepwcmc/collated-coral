@@ -1,7 +1,7 @@
 <template>
   <tr v-show="item.isActive">
     <td>{{ item.id }}</td>
-    <td>{{ item.projectTitle }}</td>
+    <td><button @click="openModal()">{{ item.projectTitle }}</button></td>
     <td>{{ item.donor }}</td>
     <td>{{ item.status }}</td>
     <td>{{ item.startDate }}</td>
@@ -13,12 +13,22 @@
 </template>
 
 <script>
+  import { eventHub } from '../../home.js'
+
   export default {
     name: "row",
     props: {
       item: {
         required: true,
         type: Object,
+      }
+    },
+
+    methods: {
+      openModal () {
+        this.$store.commit('updateModalContent', this.item)
+
+        eventHub.$emit('openModal')
       }
     }
   }

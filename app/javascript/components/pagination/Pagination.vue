@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="center">
     <div v-if="haveResults">
       <button 
         v-bind="{ 'disabled' : !previousIsActive }"
