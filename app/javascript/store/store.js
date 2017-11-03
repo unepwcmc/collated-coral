@@ -10,7 +10,8 @@ export default new Vuex.Store({
     activeItems: [], // contains indices of articles which match the filters
     currentPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
-    filters: []
+    filters: [],
+    modalContent: {}
   },
 
   mutations: {
@@ -57,6 +58,10 @@ export default new Vuex.Store({
 
     updateFilters (state, filters) {
       this.state.filters = filters
+    },
+
+    updateModalContent (state, content) {
+      this.state.modalContent = content
     }
   }
 })
