@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(version: 20171102155207) do
   create_table "projects", force: :cascade do |t|
     t.integer "number"
     t.text "project_title"
-    t.string "donors"
-    t.string "status"
-    t.date "start_date"
-    t.date "end_date"
-    t.string "country"
-    t.string "ocean_based_region"
+    t.string "donors", null: false
+    t.string "status", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "country", null: false
+    t.string "ocean_based_region", null: false
     t.string "beneficiaries"
     t.string "implementing_agency"
-    t.integer "total_project_cost"
+    t.string "total_project_cost"
     t.string "co_funding_entities"
     t.string "category"
     t.string "team_leader"
