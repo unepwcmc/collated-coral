@@ -15,7 +15,7 @@ namespace :import do
       project.end_date = Date.strptime(project_row["End Date"] || DateTime.now.year.to_s, '%Y')
       project.country = project_row["Country"] || "Empty"
       project.ocean_based_region = project_row["Ocean-based Region"] || "Empty"
-      project.beneficiaries = project_row["Beneficiaries "]
+      project.beneficiaries = project_row["Beneficiaries"]
       project.implementing_agency = project_row["Implementing Agency"]
       project.total_project_cost = project_row["Total Project Cost"]
       project.co_funding_entities = project_row["Co-funding entities"]
