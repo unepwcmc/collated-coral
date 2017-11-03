@@ -7,7 +7,7 @@ namespace :import do
 
     csv_headers = File.readlines(csv).first.split(",")
 
-    title_hash = {
+    project_hash = {
       number: csv_headers[0],
       project_title: csv_headers[1],
       donors: csv_headers[2],
@@ -29,21 +29,21 @@ namespace :import do
       project_row = row.to_hash
 
       project = Project.new
-      project.number = project_row[title_hash[:number]].to_i
-      project.project_title = project_row[title_hash[:project_title]]
-      project.donors = project_row[title_hash[:donors]] || "Empty"
-      project.status = project_row[title_hash[:status]] || "Empty"
-      project.start_date = Date.strptime(project_row[title_hash[:start_date]] || DateTime.now.year.to_s, '%Y')
-      project.end_date = Date.strptime(project_row[title_hash[:end_date]] || DateTime.now.year.to_s, '%Y')
-      project.country = project_row[title_hash[:country]] || "Empty"
-      project.ocean_based_region = project_row[title_hash[:ocean_based_region]] || "Empty"
-      project.beneficiaries = project_row[title_hash[:beneficiaries]]
-      project.implementing_agency = project_row[title_hash[:implementing_agency]]
-      project.total_project_cost = project_row[title_hash[:total_project_cost]]
-      project.co_funding_entities = project_row[title_hash[:co_funding_entities]]
-      project.category = project_row[title_hash[:category]]
-      project.team_leader = project_row[title_hash[:team_leader]]
-      project.further_information = project_row[title_hash[:further_information]]
+      project.number = project_row[project_hash[:number]].to_i
+      project.project_title = project_row[project_hash[:project_title]]
+      project.donors = project_row[project_hash[:donors]] || "Empty"
+      project.status = project_row[project_hash[:status]] || "Empty"
+      project.start_date = Date.strptime(project_row[project_hash[:start_date]] || DateTime.now.year.to_s, '%Y')
+      project.end_date = Date.strptime(project_row[project_hash[:end_date]] || DateTime.now.year.to_s, '%Y')
+      project.country = project_row[project_hash[:country]] || "Empty"
+      project.ocean_based_region = project_row[project_hash[:ocean_based_region]] || "Empty"
+      project.beneficiaries = project_row[project_hash[:beneficiaries]]
+      project.implementing_agency = project_row[project_hash[:implementing_agency]]
+      project.total_project_cost = project_row[project_hash[:total_project_cost]]
+      project.co_funding_entities = project_row[project_hash[:co_funding_entities]]
+      project.category = project_row[project_hash[:category]]
+      project.team_leader = project_row[project_hash[:team_leader]]
+      project.further_information = project_row[project_hash[:further_information]]
 
       unless project.save!
         Rails.logger.info "Cannot import! #{project.project_title}"
