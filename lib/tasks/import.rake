@@ -51,6 +51,10 @@ namespace :import do
 
     end
 
+    csv.close
+
+    Rails.logger.info "Imported projects, total records: #{Project.count}"
+
   end
 
 end
