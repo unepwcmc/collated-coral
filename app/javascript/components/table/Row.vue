@@ -1,6 +1,6 @@
 <template>
   <tr v-show="item.isActive">
-    <td>{{ item.number }}</td>
+    <td>{{ item.id }}</td>
     <td><button @click="openModal()">{{ item.project_title }}</button></td>
     <td>{{ item.donor }}</td>
     <td>{{ item.status }}</td>

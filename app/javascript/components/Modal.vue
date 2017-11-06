@@ -4,7 +4,7 @@
       <div class="modal__content">
         <button class="modal__close" @click="closeModal()">X</button>
 
-        <p><strong>ID</strong> {{ modalContent.number }}</p>
+        <p><strong>ID</strong> {{ modalContent.id }}</p>
         <p><strong>Project Title</strong> {{ modalContent.project_title }}</p>
         <p><strong>Donor name</strong> {{ modalContent.donors }}</p>
         <p><strong>Status</strong> {{ modalContent.status }}</p>
