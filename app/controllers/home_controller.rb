@@ -99,7 +99,7 @@ class HomeController < ApplicationController
 
     projects = Project.all.order(start_date: :desc)
 
-    projectlist = projects.map do |project|
+    project_list = projects.map do |project|
       {
         :id => project.number,
         :projectTitle => project.project_title,
@@ -120,6 +120,6 @@ class HomeController < ApplicationController
     end
 
     @filters = filters.to_json
-    @projects = projectlist.to_json
+    @projects = project_list.to_json
   end
 end
