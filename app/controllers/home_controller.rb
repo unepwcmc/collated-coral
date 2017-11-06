@@ -98,6 +98,6 @@ class HomeController < ApplicationController
     ]
 
     @filters = filters.to_json
-    @projects = projects.to_json
+    @projects = Project.all.order(start_date: :desc).to_json
   end
 end

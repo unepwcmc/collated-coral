@@ -16,7 +16,7 @@
       </thead>
 
       <tbody>
-        <row v-for="item, key in items" 
+        <row v-for="item, key in items"
           :key="key"
           :item="item">
         </row>
@@ -24,7 +24,7 @@
     </table>
 
     <pagination :items-per-page="config.itemsPerPage"></pagination>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -47,7 +47,7 @@
     data () {
       return {
         config: {
-          itemsPerPage: 2
+          itemsPerPage: 5
         },
         items: [],
         itemsOnCurrentPage: []
@@ -70,7 +70,7 @@
 
       // only display the items that match the page number
       this.filterItems()
-    },  
+    },
 
     computed: {
       selectedFilterOptions () {
@@ -101,13 +101,13 @@
         // an item must match one option from each filter (if any have been selected)
         this.items.forEach(item => {
           let filterMatch = true
-          
+
           this.$store.state.selectedFilterOptions.forEach(filter => {
-            
+
             // if there are some selected options check to see if one matches
             if (filter.options.length !== 0) {
               let optionMatch = false
-              
+
               filter.options.forEach(option => {
                 if (item[filter.name] == option) optionMatch = true
               })
@@ -117,7 +117,7 @@
               filterMatch = filterMatch && optionMatch
             }
           })
-          
+
           // only push the item id into the active items array if there are no fails
           if (filterMatch) {
             this.$store.commit('updateActiveItems', item.id)
@@ -139,9 +139,9 @@
 
         // loop through all articles and update the active state
         this.items.forEach(item => {
-          
+
           const isActive = this.itemsOnCurrentPage.indexOf(item.id) >= 0
-          
+
           this.$set(item, 'isActive', isActive)
         })
       },
@@ -160,7 +160,7 @@
             array.push(obj)
           }
         })
-        
+
         this.$store.commit('updateFilterOptions', array)
       }
     }
@@ -168,6 +168,5 @@
 </script>
 
 <style>
-  
+
 </style>
-      
