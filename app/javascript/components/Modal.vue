@@ -4,21 +4,21 @@
       <div class="modal__content">
         <button class="modal__close" @click="closeModal()">X</button>
 
-        <p><strong>ID</strong> {{ modalContent.id }}</p>
-        <p><strong>Project Title</strong> {{ modalContent.projectTitle }}</p>
-        <p><strong>Donor name</strong> {{ modalContent.donor }}</p>
+        <p><strong>ID</strong> {{ modalContent.number }}</p>
+        <p><strong>Project Title</strong> {{ modalContent.project_title }}</p>
+        <p><strong>Donor name</strong> {{ modalContent.donors }}</p>
         <p><strong>Status</strong> {{ modalContent.status }}</p>
-        <p><strong>Start Date</strong> {{ modalContent.startDate }}</p>
-        <p><strong>End Date</strong> {{ modalContent.endDate }}</p>
+        <p><strong>Start Date</strong> {{ modalContent.start_date }}</p>
+        <p><strong>End Date</strong> {{ modalContent.end_date }}</p>
         <p><strong>Country</strong> {{ modalContent.country }}</p>
-        <p><strong>Ocean Based Region</strong> {{ modalContent.oceanBasedRegion }}</p>
+        <p><strong>Ocean Based Region</strong> {{ modalContent.ocean_based_region }}</p>
         <p><strong>Beneficiaries</strong> {{ modalContent.beneficiaries }}</p>
-        <p><strong>Implementing Agency</strong> {{ modalContent.implementingAgency }}</p>
-        <p><strong>Total Project Cost</strong> {{ modalContent.totalProjectCost }}</p>
-        <p><strong>Co-funding Entities</strong> {{ modalContent.coFundingEntities }}</p>
+        <p><strong>Implementing Agency</strong> {{ modalContent.implementing_agency }}</p>
+        <p><strong>Total Project Cost</strong> {{ modalContent.total_project_cost }}</p>
+        <p><strong>Co-funding Entities</strong> {{ modalContent.co_funding_entities }}</p>
         <p><strong>Category</strong> {{ modalContent.category }}</p>
-        <p><strong>Team Leader</strong> {{ modalContent.teamLeader }}</p>
-        <p><strong>Further Information</strong> {{ modalContent.furtherInformation }}</p>
+        <p><strong>Team Leader</strong> {{ modalContent.team_leader }}</p>
+        <p><strong>Further Information</strong> {{ modalContent.further_information }}</p>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
           } else {
             this.modalOffset = window.pageYOffset
           }
-          
+
           this.styleObject.top = this.modalOffset + 'px'
 
           this.isActive = !this.isActive

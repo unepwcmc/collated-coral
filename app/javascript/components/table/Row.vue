@@ -1,14 +1,14 @@
 <template>
   <tr v-show="item.isActive">
-    <td>{{ item.id }}</td>
-    <td><button @click="openModal()">{{ item.projectTitle }}</button></td>
+    <td>{{ item.number }}</td>
+    <td><button @click="openModal()">{{ item.project_title }}</button></td>
     <td>{{ item.donor }}</td>
     <td>{{ item.status }}</td>
-    <td>{{ item.startDate }}</td>
-    <td>{{ item.endDate }}</td>
+    <td>{{ item.start_date }}</td>
+    <td>{{ item.end_date }}</td>
     <td>{{ item.country }}</td>
-    <td>{{ item.oceanBasedRegion }}</td>
-    <td>{{ item.totalProjectCost }}</td>
+    <td>{{ item.ocean_based_region }}</td>
+    <td>{{ item.total_project_cost }}</td>
   </tr>
 </template>
 

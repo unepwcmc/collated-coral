@@ -97,29 +97,7 @@ class HomeController < ApplicationController
       }
     ]
 
-    projects = Project.all.order(start_date: :desc)
-
-    project_list = projects.map do |project|
-      {
-        :id => project.number,
-        :projectTitle => project.project_title,
-        :donor => project.donors,
-        :status => project.status,
-        :startDate => project.start_date,
-        :endDate => project.end_date,
-        :country => project.country,
-        :oceanBasedRegion => project.ocean_based_region,
-        :beneficiaries => project.beneficiaries,
-        :implementingAgency => project.implementing_agency,
-        :totalProjectCost => project.total_project_cost,
-        :coFundingEntities => project.co_funding_entities,
-        :category => project.category,
-        :teamLeader => project.team_leader,
-        :furtherInformation => project.further_information
-      }
-    end
-
     @filters = filters.to_json
-    @projects = project_list.to_json
+    @projects = Project.all.order(start_date: :desc).to_json
   end
 end
