@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20171102155207) do
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.integer "number"
     t.text "project_title"
     t.string "donors", null: false
     t.string "status", null: false
