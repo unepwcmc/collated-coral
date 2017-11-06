@@ -97,7 +97,7 @@ class HomeController < ApplicationController
       }
     ]
 
-    projects = Project.all
+    projects = Project.all.order(start_date: :desc)
 
     projectlist = projects.map do |project|
       {
