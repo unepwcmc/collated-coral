@@ -1,0 +1,58 @@
+.filter {
+  position: relative;
+
+//*************************************************
+// title
+//**************************************************
+  &__title {
+    border: solid rem-calc(1) gray;
+    border-radius: $global-radius;
+    cursor: pointer;
+    margin: 0;
+    padding: rem-calc(6 24 6 8);
+
+    position: relative;
+
+    &:after {
+      content: '\f107';
+      font: $fontAwesome;
+
+      position: absolute;
+      right: rem-calc(8);
+    }
+
+    &--active {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &:after { content: '\f106'; }
+    }
+  }
+
+//**************************************************
+// multiselect
+//**************************************************
+  &__select {
+    border-bottom-right-radius: $global-radius;
+    border-bottom-left-radius: $global-radius;
+
+    display: none;
+    position: absolute;
+
+    &--active {
+      display: block;
+    }
+  }
+
+//**************************************************
+// selected filter options
+//**************************************************
+  &--selected {
+    border: solid $grey-light rem-calc(1);
+    border-radius: rem-calc(3);
+    margin: rem-calc(2 4);
+    padding: rem-calc(3 4);
+    
+    display: inline-block;
+  }
+}

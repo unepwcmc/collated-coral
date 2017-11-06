@@ -1,15 +1,20 @@
 <template>
   <td>
-    <span>
-      <p>{{ title }}</p>
-      <select v-if="hasOptions" multiple>
+    <div v-if="hasOptions" class="filter">
+      <p @click="openSelect()" class="filter__title" :class="{ 'filter__title--active' : isOpen }">{{ title }}</p>
+
+      <select multiple class="filter__select" :class="{ 'filter__select--active' : isOpen }">
         <data-filter-option v-for="option in options" 
           :name="name"
           :filter="title" 
           :option="option">
         </data-filter-option>
       </select>
-    </span>
+    </div>
+
+    <div v-else class="filter">
+      <p>{{ title }}</p>
+    </div>
   </td>
 </template>
 
@@ -37,7 +42,8 @@
 
     data () {
       return {
-        children: this.$children
+        children: this.$children,
+        isOpen: false
       }
     },
 
@@ -61,6 +67,19 @@
             if(child.option == filterOption.option) child.isSelected = false
           })
         }
+      },
+
+      openSelect () {
+        // if the filter is open is close it, else open it and close the others
+        if(this.isOpen){
+          this.isOpen = false
+        } else {
+          eventHub.$emit('clickDropdown', this.name)  
+        }
+      },
+
+      closeSelect() {
+        this.isOpen = false
       }
     }
   }
