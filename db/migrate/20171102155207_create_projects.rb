@@ -4,8 +4,8 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.text :project_title
       t.string :donors, null: false
       t.string :status, null: false
-      t.string :start_date, null: false
-      t.string :end_date, null: false
+      t.integer :start_date, null: false
+      t.integer :end_date, null: false
       t.string :country, null: false
       t.string :ocean_based_region, null: false
       t.string :beneficiaries

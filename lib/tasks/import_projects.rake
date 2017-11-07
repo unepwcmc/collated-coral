@@ -33,8 +33,8 @@ namespace :import do
       project.project_title = project_row[project_hash[:project_title]]
       project.donors = project_row[project_hash[:donors]] || "Empty"
       project.status = project_row[project_hash[:status]] || "Empty"
-      project.start_date = project_row[project_hash[:start_date]] || DateTime.now.year.to_s
-      project.end_date = project_row[project_hash[:end_date]] || DateTime.now.year.to_s
+      project.start_date = project_row[project_hash[:start_date]] || DateTime.now.year.to_i
+      project.end_date = project_row[project_hash[:end_date]] || DateTime.now.year.to_i
       project.country = project_row[project_hash[:country]] || "Empty"
       project.ocean_based_region = project_row[project_hash[:ocean_based_region]] || "Empty"
       project.beneficiaries = project_row[project_hash[:beneficiaries]]
