@@ -1,7 +1,8 @@
 <div class="container">
-  
+
   <filtered-table :filters="<%= @filters %>" :projects="<%= @projects %>"></filtered-table>
-  
+
 </div>
 
 <modal></modal>
+<%= link_to 'Download CSV', root_path(format: :csv) %>
