@@ -1,5 +1,7 @@
 <template>
   <div>
+    <a :href="postIds" title="Download CSV file of filtered Coral projects">Download CSV</a>
+
     <div>
       selected filters
       <div>
@@ -98,6 +100,19 @@
         })
 
         return options
+      },
+
+      postIds () {
+        let url = '/download'
+
+        this.$store.state.activeItems.forEach((item, index) => {
+          let string = (index == 0) ? '?' : '&'
+          
+          string += 'ids[]=' + item
+          url += string
+        })
+
+        return url
       }
     },
 
