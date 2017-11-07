@@ -99,5 +99,13 @@ class HomeController < ApplicationController
 
     @filters = filters.to_json
     @projects = Project.all.order(start_date: :desc).to_json
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Project.to_csv([1...3]), :type => "text/csv; charset=iso-8859-1; header=present",
+                                                      :disposition => "attachment",
+                                                      filename: "collated-coral-#{Date.today}.csv" }
+    end
+
   end
 end
