@@ -1,5 +1,7 @@
 <template>
   <div>
+    <button @click="postResults()">Download CSV</button>
+
     <div>
       selected filters
       <div>
@@ -162,6 +164,23 @@
         })
 
         this.$store.commit('updateFilterOptions', array)
+      },
+
+      postResults(){
+        let data = JSON.stringify(this.$store.state.activeItems)
+
+        let request = new XMLHttpRequest()
+        request.open('POST', '?')
+        request.setRequestHeader('Content-Type', 'application/json')
+        request.onload = function() {
+          if (request.status === 200) {
+            console.log('success')
+          }
+          else {
+            console.log('fail')
+          }
+        }
+        request.send(data)
       }
     }
   }
