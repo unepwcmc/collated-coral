@@ -6,10 +6,14 @@ class Project < ApplicationRecord
 
     csv = ''
 
-    project_columns = ["Number", "Project Title", "Donor(s)", "Status", "Start Date", "End Date",
-                       "Country", "Ocean-based Region", "Beneficiaries", "Implementing Agency",
-                       "Total Project Cost", "Co-funding entities", "Category", "Team Leader",
-                       "Further Information"]
+    project_columns = Project.new.attributes.keys
+
+    project_columns.delete("created_at")
+    project_columns.delete("updated_at")
+
+    project_columns.map! { |e|
+      e.gsub("_", " ").capitalize
+    }
 
     csv << project_columns.join(',')
     csv << "\r\n"
