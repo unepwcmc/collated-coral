@@ -25,8 +25,6 @@ class Project < ApplicationRecord
       csv << "\r\n"
     end
 
-    File.open("collated-coral-#{Date.today}.csv", "w") { |file| file.write csv }
-
     csv
 
   end

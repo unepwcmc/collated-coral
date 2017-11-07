@@ -102,9 +102,10 @@ class HomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data Project.to_csv([1...3]), :type => "text/csv; charset=iso-8859-1; header=present",
-                                                      :disposition => "attachment",
-                                                      filename: "collated-coral-#{Date.today}.csv" }
+      format.csv { send_data Project.to_csv(params[:ids]),
+                   :type => "text/csv; charset=iso-8859-1; header=present",
+                   :disposition => "attachment",
+                   :filename => "collated-coral-#{Date.today}.csv" }
     end
 
   end
