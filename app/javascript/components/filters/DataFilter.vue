@@ -12,8 +12,8 @@
       </select>
 
       <p>
-        <button @click="sort('ascending')" class="filter__sort filter__sort--ascending"></button>
-        <button @click="sort('descending')" class="filter__sort filter__sort--descending"></button>
+        <button @click="sort('+')" class="filter__sort filter__sort--ascending"></button>
+        <button @click="sort('-')" class="filter__sort filter__sort--descending"></button>
       </p>
     </div>
 
@@ -88,9 +88,14 @@
       },
 
       sort (direction) {
-        console.log(direction)
-
-        eventHub.$emit('sort', direction)
+        const sortDirection = direction + this.name
+        
+        // do not re sort if the order is already correct otherwise the results that
+        // have the same value can change places and it looks like the controls aren't working
+        if(this.$store.state.sortDirection !== sortDirection){
+          this.$store.commit('updateSortDirection', sortDirection)
+          eventHub.$emit('sort')
+        }
       }
     }
   }
