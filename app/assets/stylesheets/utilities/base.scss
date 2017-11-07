@@ -27,6 +27,16 @@ select {
   width: 100%;
 }
 
+option {
+  cursor: pointer;
+  font-size: rem-calc(14);
+  padding: rem-calc(2 8);
+
+  &:hover {
+    background-color: $grey-light;
+  }
+}
+
 p {
   margin-top: 0;
 }
