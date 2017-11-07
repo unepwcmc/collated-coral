@@ -2,11 +2,11 @@ class HomeController < ApplicationController
   def index
 
     projects = Project.all.order(start_date: :desc)
-    unique_donors = projects.uniq{|x| x.donors}.map{ |e| e.donors }
+    unique_donors = projects.uniq{|x| x.donors}.map{ |e| e.donors }.sort
     unique_start_date = projects.uniq{|x| x.start_date}.map{ |e| e.start_date }
     unique_end_date = projects.uniq{|x| x.end_date}.map{ |e| e.end_date }
-    unique_country = projects.uniq{|x| x.country}.map{ |e| e.country }
-    unique_ocean_based_region = projects.uniq{|x| x.ocean_based_region}.map{ |e| e.ocean_based_region }
+    unique_country = projects.uniq{|x| x.country}.map{ |e| e.country }.sort
+    unique_ocean_based_region = projects.uniq{|x| x.ocean_based_region}.map{ |e| e.ocean_based_region }.sort
 
     filters = [
       {
