@@ -11,7 +11,8 @@ export default new Vuex.Store({
     currentPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
     filters: [],
-    modalContent: {}
+    modalContent: {},
+    sortDirection: ''
   },
 
   mutations: {
@@ -62,6 +63,10 @@ export default new Vuex.Store({
 
     updateModalContent (state, content) {
       this.state.modalContent = content
+    },
+
+    updateSortDirection (state, direction) {
+      this.state.sortDirection = direction
     }
   }
 })
