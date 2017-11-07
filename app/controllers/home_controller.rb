@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   def index
-    # dummy data to build out the front end
+
+    projects = Project.all.order(start_date: :desc)
+    unique_donors = projects.pluck(:donors).uniq.sort
+    unique_start_date = projects.pluck(:start_date).uniq.sort.reverse
+    unique_end_date = projects.pluck(:end_date).uniq.sort.reverse
+    unique_country = projects.pluck(:country).uniq.sort
+    unique_ocean_based_region = projects.pluck(:ocean_based_region).uniq.sort
+
     filters = [
       {
         title:"ID"
@@ -11,7 +18,7 @@ class HomeController < ApplicationController
       {
         name: "donor",
         title: "Donor(s)",
-        options: [ "Donor name", "Donor name 2", "Donor name 3" ]
+        options: unique_donors
       },
       {
         name: "status",
@@ -21,22 +28,22 @@ class HomeController < ApplicationController
       {
         name: "start_date",
         title: "Start Date",
-        options: [ '2000', '2003' ]
+        options: unique_start_date
       },
       {
         name: "end_date",
         title: "End Date",
-        options: [ '2002', '2005' ]
+        options: unique_end_date
       },
       {
         name: "country",
         title: "Country",
-        options: [ "UK", "Australia"]
+        options: unique_country
       },
       {
         name: "ocean_based_region",
         title: "Ocean Based Region",
-        options: [ "Ocean 2"]
+        options: unique_ocean_based_region
       },
       {
         title: "Total Project Cost"
@@ -44,7 +51,7 @@ class HomeController < ApplicationController
     ]
 
     @filters = filters.to_json
-    @projects = Project.all.order(start_date: :desc).to_json
+    @projects = projects.to_json
 
   end
 

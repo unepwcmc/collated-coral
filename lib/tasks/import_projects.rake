@@ -29,21 +29,21 @@ namespace :import do
       project_row = row.to_hash
 
       project = Project.new
-      project.id = project_row[project_hash[:id]].to_i
-      project.project_title = project_row[project_hash[:project_title]]
-      project.donors = project_row[project_hash[:donors]] || "Empty"
-      project.status = project_row[project_hash[:status]] || "Empty"
-      project.start_date = project_row[project_hash[:start_date]] || DateTime.now.year.to_i
-      project.end_date = project_row[project_hash[:end_date]] || DateTime.now.year.to_i
-      project.country = project_row[project_hash[:country]] || "Empty"
-      project.ocean_based_region = project_row[project_hash[:ocean_based_region]] || "Empty"
-      project.beneficiaries = project_row[project_hash[:beneficiaries]]
-      project.implementing_agency = project_row[project_hash[:implementing_agency]]
-      project.total_project_cost = project_row[project_hash[:total_project_cost]]
-      project.co_funding_entities = project_row[project_hash[:co_funding_entities]]
-      project.category = project_row[project_hash[:category]]
-      project.team_leader = project_row[project_hash[:team_leader]]
-      project.further_information = project_row[project_hash[:further_information]]
+      project.id = project_row[project_hash[:id]]&.strip.to_i
+      project.project_title = project_row[project_hash[:project_title]]&.strip
+      project.donors = project_row[project_hash[:donors]]&.strip || "Empty"
+      project.status = project_row[project_hash[:status]]&.strip || "Empty"
+      project.start_date = project_row[project_hash[:start_date]]&.strip || DateTime.now.year.to_i
+      project.end_date = project_row[project_hash[:end_date]]&.strip || DateTime.now.year.to_i
+      project.country = project_row[project_hash[:country]]&.strip || "Empty"
+      project.ocean_based_region = project_row[project_hash[:ocean_based_region]]&.strip || "Empty"
+      project.beneficiaries = project_row[project_hash[:beneficiaries]]&.strip
+      project.implementing_agency = project_row[project_hash[:implementing_agency]]&.strip
+      project.total_project_cost = project_row[project_hash[:total_project_cost]]&.strip
+      project.co_funding_entities = project_row[project_hash[:co_funding_entities]]&.strip
+      project.category = project_row[project_hash[:category]]&.strip
+      project.team_leader = project_row[project_hash[:team_leader]]&.strip
+      project.further_information = project_row[project_hash[:further_information]]&.strip
 
       unless project.save!
         Rails.logger.info "Cannot import! #{project.project_title}"
