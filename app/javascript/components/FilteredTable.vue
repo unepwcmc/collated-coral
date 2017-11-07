@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="postResults()">Download CSV</button>
+    <a :href="postIds" title="Download CSV file of filtered Coral projects">Download CSV</a>
 
     <div>
       selected filters
@@ -93,6 +93,19 @@
         })
 
         return options
+      },
+
+      postIds () {
+        let url = '/download'
+
+        this.$store.state.activeItems.forEach((item, index) => {
+          let string = (index == 0) ? '?' : '&'
+          
+          string += 'ids[]=' + item
+          url += string
+        })
+
+        return url
       }
     },
 
@@ -164,23 +177,6 @@
         })
 
         this.$store.commit('updateFilterOptions', array)
-      },
-
-      postResults(){
-        let data = JSON.stringify(this.$store.state.activeItems)
-
-        let request = new XMLHttpRequest()
-        request.open('POST', '?')
-        request.setRequestHeader('Content-Type', 'application/json')
-        request.onload = function() {
-          if (request.status === 200) {
-            console.log('success')
-          }
-          else {
-            console.log('fail')
-          }
-        }
-        request.send(data)
       }
     }
   }
