@@ -183,7 +183,6 @@
       },
 
       sortActiveItems (sort) {
-        console.log('sort')
         // sort the items using the main array the contains all data
         this.items.sort(this.compare())
 
