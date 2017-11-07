@@ -68,8 +68,15 @@
       // repaginate the items when the previous/next buttons are clicked
       eventHub.$on('pageChanged', this.paginateItems)
 
+      // sort the active items when a sort button is clicked
+      eventHub.$on('sort', this.sortActiveItems)
+
       // only display the items that match the page number
       this.filterItems()
+
+      this.items.forEach(t => {
+        console.log(t.country)
+      })
     },
 
     computed: {
@@ -162,11 +169,27 @@
         })
 
         this.$store.commit('updateFilterOptions', array)
+      },
+
+      sortActiveItems () {
+        this.items.sort(this.compare)
+
+        this.items.forEach(t => {
+          console.log(t.country)
+        })
+        
+        this.filterItems()
+      },
+
+      compare (a, b) {
+        if (a.country > b.country) {
+          return 1
+        } else if (a.country < b.country) {
+          return -0.9
+        } else {
+          return 0
+        }
       }
     }
   }
 </script>
-
-<style>
-
-</style>

@@ -10,6 +10,11 @@
           :option="option">
         </data-filter-option>
       </select>
+
+      <p>
+        <button @click="sort('ascending')" class="filter__sort filter__sort--ascending"></button>
+        <button @click="sort('descending')" class="filter__sort filter__sort--descending"></button>
+      </p>
     </div>
 
     <div v-else class="filter">
@@ -78,8 +83,14 @@
         }
       },
 
-      closeSelect() {
+      closeSelect () {
         this.isOpen = false
+      },
+
+      sort (direction) {
+        console.log(direction)
+
+        eventHub.$emit('sort', direction)
       }
     }
   }
