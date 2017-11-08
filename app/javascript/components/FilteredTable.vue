@@ -70,6 +70,9 @@
       // repaginate the items when the previous/next buttons are clicked
       eventHub.$on('pageChanged', this.paginateItems)
 
+      // sort the active items when a sort button is clicked
+      eventHub.$on('sort', this.sortActiveItems)
+
       // only display the items that match the page number
       this.filterItems()
     },
@@ -177,11 +180,29 @@
         })
 
         this.$store.commit('updateFilterOptions', array)
+      },
+
+      sortActiveItems (sort) {
+        // sort the items using the main array the contains all data
+        this.items.sort(this.compare())
+
+        // trigger filtering function so that the active items array is updated with 
+        // the new order and the results are paginated correctly
+        this.filterItems()
+      },
+
+      compare () {
+        // use a negative to flip the order if the button is descending
+        let order = (this.$store.state.sortDirection.substr(0, 1) === '+') ? 1 : -1
+
+        let filter = this.$store.state.sortDirection.substr(1)
+        
+        // order the items using the correct property
+        return function (a, b) {
+          let result = (a[filter] < b[filter]) ? -1 : (a[filter] > b[filter]) ? 1 : 0;
+          return result * order;
+        }
       }
     }
   }
 </script>
-
-<style>
-
-</style>

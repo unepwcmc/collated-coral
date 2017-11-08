@@ -45,6 +45,36 @@
   }
 
 //**************************************************
+// sort column buttons
+//**************************************************
+  &__sort {
+    border: none;
+    cursor: pointer;
+    padding: rem-calc(4 8);
+
+    display: block;
+
+    &:before {
+      font: $fontAwesome;
+    }
+
+    &--ascending {
+      border-bottom: solid rem-calc(1) grey;
+      border-top-right-radius: $global-radius;
+      border-top-left-radius: $global-radius;
+
+      &:before { content: '\f106'; }
+    }
+
+    &--descending {
+      border-bottom-right-radius: $global-radius;
+      border-bottom-left-radius: $global-radius;
+
+      &:before { content: '\f107'; }
+    }
+  }
+
+//**************************************************
 // selected filter options
 //**************************************************
   &--selected {

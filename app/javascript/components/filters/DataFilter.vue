@@ -10,6 +10,11 @@
           :option="option">
         </data-filter-option>
       </select>
+
+      <p>
+        <button @click="sort('+')" class="filter__sort filter__sort--ascending"></button>
+        <button @click="sort('-')" class="filter__sort filter__sort--descending"></button>
+      </p>
     </div>
 
     <div v-else class="filter">
@@ -78,8 +83,19 @@
         }
       },
 
-      closeSelect() {
+      closeSelect () {
         this.isOpen = false
+      },
+
+      sort (direction) {
+        const sortDirection = direction + this.name
+        
+        // do not re sort if the order is already correct otherwise the results that
+        // have the same value can change places and it looks like the controls aren't working
+        if(this.$store.state.sortDirection !== sortDirection){
+          this.$store.commit('updateSortDirection', sortDirection)
+          eventHub.$emit('sort')
+        }
       }
     }
   }
