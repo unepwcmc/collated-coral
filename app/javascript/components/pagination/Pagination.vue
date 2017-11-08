@@ -3,15 +3,21 @@
     <div v-if="haveResults">
       <button 
         v-bind="{ 'disabled' : !previousIsActive }"
-        @click="changePage(previousIsActive, 'previous')" 
-      >Previous</button>
+        @click="changePage(previousIsActive, 'previous')"
+        class="button button--previous"
+        :class="{ 'button--disabled' : !previousIsActive }">
+        Previous
+      </button>
 
       Page {{ currentPage }} of {{ totalPages }}
 
       <button 
         v-bind="{ 'disabled' : !nextIsActive }"
         @click="changePage(nextIsActive, 'next')"
-      >Next</button>
+        class="button button--next"
+        :class="{ 'button--disabled' : !nextIsActive }">
+        Next
+      </button>
     </div>
 
     <div v-else>
