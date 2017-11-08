@@ -1,9 +1,9 @@
 <template>
   <div>
-    <a :href="postIds" title="Download CSV file of filtered Coral projects">Download CSV</a>
+    <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
 
-    <div>
-      selected filters
+    <div class="selected">
+      <h3>Selected filters</h3>
       <div>
         <selected-filter v-for="selectedFilterOption in selectedFilterOptions"
           :name="selectedFilterOption.name"

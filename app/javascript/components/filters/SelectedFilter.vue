@@ -1,7 +1,7 @@
 <template>
-  <p class="selected">
-    {{ option }}
-    <button @click="deselectOption()">x</button>
+  <p class="selected__option">
+    <span class="selected__text">{{ option }}</span>
+    <button @click="deselectOption()" class="selected__close fa fa-times"></button>
   </p>
 </template>
 

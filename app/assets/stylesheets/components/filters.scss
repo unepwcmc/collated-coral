@@ -1,3 +1,6 @@
+//**************************************************
+// filters
+//**************************************************
 .filter {
   position: relative;
 
@@ -92,14 +95,9 @@
     }
 
 //**************************************************
-// selected filter options
+// download csv
 //**************************************************
-  &--selected {
-    border: solid $grey-light rem-calc(1);
-    border-radius: rem-calc(3);
-    margin: rem-calc(2 4);
-    padding: rem-calc(3 4);
-    
-    display: inline-block;
+  &__download {
+    float: right;
   }
 }

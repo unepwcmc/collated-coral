@@ -4,6 +4,7 @@
 * { box-sizing: border-box; }
 
 body {
+  color: $grey-dark;
   font-family: sans-serif;
   margin: 0;
 }
@@ -18,7 +19,14 @@ table {
   }
 
   tbody {
-    tr { border-bottom: solid $grey-light rem-calc(1); }
+    tr { 
+      border-bottom: solid $grey-light rem-calc(1); 
+      cursor: pointer;
+
+      &:hover {
+        background-color: $blue-light;
+      }
+    }
   }
 
   td {
@@ -44,6 +52,10 @@ option {
   }
 }
 
+h1, h2, h3 {
+  color: $blue-dark;
+}
+
 p {
   margin-top: 0;
 }
@@ -59,4 +71,12 @@ p {
   @extend .site-width;
 
   margin: 0 auto;
+}
+
+.page-padding {
+  padding: rem-calc(20 0 30 0);
+}
+
+.page-content {
+  width: 60%;
 }

@@ -1,0 +1,19 @@
+.button {
+  border-radius: $global-radius;
+  color: white;
+  padding: rem-calc(8 12);
+  text-decoration: none;
+
+  &--red {
+    background-color: $red;
+  }
+
+  &--download {
+    &:after {
+      color: white;
+      content: '\f019';
+      font: $fontAwesome;
+      margin-left: rem-calc(8);
+    }
+  }
+}
