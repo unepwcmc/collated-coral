@@ -20,17 +20,18 @@ table {
 
   tbody {
     tr { 
-      border-bottom: solid $grey-light rem-calc(1); 
+      border-bottom: solid $grey-light rem-calc(1);
       cursor: pointer;
 
       &:hover {
-        background-color: $blue-light;
+        background-color: $grey-light;
       }
     }
   }
 
-  td {
+  td, th {
     padding: rem-calc(5 8);
+    text-align: left;
     width: 10%;
 
     &:first-child { width: 1%; }

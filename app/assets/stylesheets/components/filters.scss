@@ -8,9 +8,7 @@
 // dropdown
 //**************************************************
   &__dropdown {
-    vertical-align: top;
-    width: 80%;
-
+    width: 200px;
     display: inline-block;
   }
 
@@ -49,9 +47,12 @@
   &__select {
     border-bottom-right-radius: $global-radius;
     border-bottom-left-radius: $global-radius;
+    width: auto;
+    max-width: rem-calc(400);
 
     display: none;
     position: absolute;
+    z-index: 1;
 
     &--active {
       display: block;

@@ -2,6 +2,10 @@
   <div>
     <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
 
+    <h3>Filters</h3>
+    
+    <filters :filters="filters"></filters>
+
     <div class="selected">
       <h3>Selected filters</h3>
       <div>
@@ -11,10 +15,14 @@
         ></selected-filter>
       </div>
     </div>
+    
+    <h3>Results</h3>
 
     <table>
       <thead>
-        <filters :filters="filters"></filters>
+        <tr>
+          <th v-for="filter in filters">{{ filter.title }}</th>
+        </tr>
       </thead>
 
       <tbody>
