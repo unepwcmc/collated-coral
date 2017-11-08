@@ -42,7 +42,7 @@ class HomeController < ApplicationController
       },
       {
         name: "ocean_based_region",
-        title: "Ocean Based Region",
+        title: "Ocean Region",
         options: unique_ocean_based_region
       },
       {

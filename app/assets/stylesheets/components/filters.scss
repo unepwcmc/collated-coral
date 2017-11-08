@@ -2,6 +2,16 @@
   position: relative;
 
 //**************************************************
+// dropdown
+//**************************************************
+  &__dropdown {
+    vertical-align: top;
+    width: 80%;
+
+    display: inline-block;
+  }
+
+//**************************************************
 // title
 //**************************************************
   &__title {
@@ -9,15 +19,16 @@
     border-radius: $global-radius;
     cursor: pointer;
     margin: 0;
-    padding: rem-calc(6 24 6 8);
+    padding: rem-calc(0 24 0 8);
+    min-height: rem-calc(43);
 
     position: relative;
 
     &:after {
+      @extend .vertical-center;
       content: '\f107';
       font: $fontAwesome;
 
-      position: absolute;
       right: rem-calc(8);
     }
 
@@ -47,32 +58,38 @@
 //**************************************************
 // sort column buttons
 //**************************************************
-  &__sort {
-    border: none;
-    cursor: pointer;
-    padding: rem-calc(4 8);
+  &__sorting {
+    width: 16%;
 
-    display: block;
-
-    &:before {
-      font: $fontAwesome;
-    }
-
-    &--ascending {
-      border-bottom: solid rem-calc(1) grey;
-      border-top-right-radius: $global-radius;
-      border-top-left-radius: $global-radius;
-
-      &:before { content: '\f106'; }
-    }
-
-    &--descending {
-      border-bottom-right-radius: $global-radius;
-      border-bottom-left-radius: $global-radius;
-
-      &:before { content: '\f107'; }
-    }
+    display: inline-block;
   }
+
+    &__sort {
+      border: none;
+      cursor: pointer;
+      padding: rem-calc(3 6 4 6);
+
+      display: block;
+
+      &:before {
+        font: $fontAwesome;
+      }
+
+      &--ascending {
+        border-bottom: solid rem-calc(1) grey;
+        border-top-right-radius: $global-radius;
+        border-top-left-radius: $global-radius;
+
+        &:before { content: '\f106'; }
+      }
+
+      &--descending {
+        border-bottom-right-radius: $global-radius;
+        border-bottom-left-radius: $global-radius;
+
+        &:before { content: '\f107'; }
+      }
+    }
 
 //**************************************************
 // selected filter options
