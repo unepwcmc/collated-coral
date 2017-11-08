@@ -5,6 +5,7 @@
 
 body {
   font-family: sans-serif;
+  margin: 0;
 }
 
 table {
@@ -13,20 +14,23 @@ table {
   width: 100%;
 
   thead {
-    border-bottom: solid gray rem-calc(2);
+    border-bottom: solid $blue-dark rem-calc(2);
   }
 
-  tr {
-    border-bottom: solid $grey-light rem-calc(1);
+  tbody {
+    tr { border-bottom: solid $grey-light rem-calc(1); }
   }
 
   td {
     padding: rem-calc(5 8);
-    width: 1%;
+    width: 10%;
+
+    &:first-child { width: 1%; }
   }
 }
 
 select {
+  background: white;
   width: 100%;
 }
 
