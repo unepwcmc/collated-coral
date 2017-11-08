@@ -1,0 +1,17 @@
+.header {
+  background: image-url('hero.jpg') no-repeat center;
+  background-size: cover;
+  padding: rem-calc(70);
+
+  &__logo {
+    margin-top: rem-calc(18);
+  }
+
+  &__title-box {
+    background-color: white;
+    border-radius: $global-radius;
+    margin: 0 auto;
+    padding: rem-calc(18);
+    width: 60%;
+  }
+}
