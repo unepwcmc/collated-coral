@@ -14,8 +14,7 @@
         type: String
       },
       option: {
-        required: true,
-        type: String
+        required: true
       }
     },
 
