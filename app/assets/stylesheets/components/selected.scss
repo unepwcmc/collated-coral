@@ -8,13 +8,13 @@
   &__option {
     border: solid $blue rem-calc(1);
     border-radius: rem-calc(3);
-    margin: rem-calc(2 4);
+    margin: rem-calc(0 14 10 0);
     
     display: inline-block;
   }
 
     &__text {
-      padding: rem-calc(6 4 6 8);
+      padding: rem-calc(8 4 8 8);
     }
 
     &__close {
@@ -24,7 +24,7 @@
       border-bottom-right-radius: rem-calc(3);
       color: $grey-light;
       cursor: pointer;
-      padding: rem-calc(6 8);
+      padding: rem-calc(8 11);
 
       &:hover { 
         background-color: lighten($blue, 5%); 

@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
-
+  <div class="relative">
     <filters :filters="filters"></filters>
 
     <div class="selected">
-      <h3>Selected filters</h3>
-      <div>
+      <h3>Selected options</h3>
+      <div v-if="hasSelected">
         <selected-filter v-for="selectedFilterOption in selectedFilterOptions"
           :name="selectedFilterOption.name"
           :option="selectedFilterOption.option"
         ></selected-filter>
       </div>
+      <p v-else>No filter options selected</p>
     </div>
     
+    <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
+
     <h2>Results</h2>
 
     <table>
@@ -30,6 +31,8 @@
         </row>
       </tbody>
     </table>
+    
+    <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
 
     <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>
@@ -56,7 +59,7 @@
     data () {
       return {
         config: {
-          itemsPerPage: 5
+          itemsPerPage: 30
         },
         items: [],
         itemsOnCurrentPage: []
@@ -116,6 +119,10 @@
         })
 
         return url
+      },
+
+      hasSelected () {
+        return this.selectedFilterOptions.length > 0
       }
     },
 

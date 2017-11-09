@@ -37,9 +37,9 @@
     margin-left: rem-calc(8);
 
     &:after {
-      content: '\f054';
+      content: '\f105';
       font: $fontAwesome;
-      font-size: rem-calc(11);
+      font-size: rem-calc(15);
       margin-left: rem-calc(6);
     }
   }
@@ -50,9 +50,9 @@
     margin-right: rem-calc(8);
 
     &:before {
-      content: '\f053';
+      content: '\f104';
       font: $fontAwesome;
-      font-size: rem-calc(11);
+      font-size: rem-calc(15);
       margin-right: rem-calc(6);     
     }
   }
