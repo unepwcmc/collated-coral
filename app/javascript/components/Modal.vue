@@ -2,7 +2,7 @@
   <div class="modal-wrapper" :class="{ 'modal--active' : isActive }">
     <div id="modal" :style="styleObject" class="modal">
       <div class="modal__content">
-        <button class="modal__close" @click="closeModal()">X</button>
+        <button class="modal__close fa fa-times" @click="closeModal()"></button>
 
         <p><strong>ID</strong> {{ modalContent.id }}</p>
         <p><strong>Project Title</strong> {{ modalContent.project_title }}</p>

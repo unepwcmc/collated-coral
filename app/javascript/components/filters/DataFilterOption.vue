@@ -30,6 +30,7 @@
 
         this.isSelected = true
 
+        eventHub.$emit('selectOption')
         eventHub.$emit('filtersChanged')
       }
     }

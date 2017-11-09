@@ -1,11 +1,34 @@
-//*************************************************
+//**************************************************
 // selected filter options
-//*************************************************
+//**************************************************
 .selected {
-  border: solid $grey-light rem-calc(1);
-  border-radius: rem-calc(3);
-  margin: rem-calc(2 4);
-  padding: rem-calc(3 4);
-  
-  display: inline-block;
+  border-radius: $global-radius;
+  padding: rem-calc(20 0);
+
+  &__option {
+    border: solid $blue rem-calc(1);
+    border-radius: rem-calc(3);
+    margin: rem-calc(0 14 10 0);
+    
+    display: inline-block;
+  }
+
+    &__text {
+      padding: rem-calc(8 4 8 8);
+    }
+
+    &__close {
+      background-color: $blue;
+      border: none;
+      border-top-right-radius: rem-calc(3);
+      border-bottom-right-radius: rem-calc(3);
+      color: $grey-light;
+      cursor: pointer;
+      padding: rem-calc(8 11);
+
+      &:hover { 
+        background-color: lighten($blue, 5%); 
+        color: white;
+      }
+    }
 }

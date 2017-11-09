@@ -27,11 +27,13 @@
   </head>
 
   <body>
-    <%= render "global/social_sharing" %>
+    <%= render "global/header" %>
 
     <div id="v-app">
       <%= yield %>
     </div>
+
+    <%= render "global/footer" %>
     
     <%= javascript_pack_tag 'application' %>
   </body>

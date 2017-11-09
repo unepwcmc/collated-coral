@@ -1,11 +1,11 @@
 <template>
-  <tr>
+  <div>
     <data-filter v-for="filter in filters"
       :name="filter.name"
       :title="filter.title" 
       :options="filter.options">
     </data-filter>
-  </tr>
+  </div>
 </template>
 
 <script>

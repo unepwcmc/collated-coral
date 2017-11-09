@@ -4,40 +4,52 @@
 * { box-sizing: border-box; }
 
 body {
+  color: $grey-dark;
   font-family: sans-serif;
+  margin: 0;
 }
 
 table {
   border-collapse: collapse;
-  margin: rem-calc(20 0);
+  margin: rem-calc(20 0 40 0);
   width: 100%;
 
   thead {
-    border-bottom: solid gray rem-calc(2);
+    border-bottom: solid $blue-dark rem-calc(2);
   }
 
-  tr {
-    border-bottom: solid $grey-light rem-calc(1);
+  tbody {
+    tr { 
+      border-bottom: solid $grey-light rem-calc(1);
+      cursor: pointer;
+
+      &:hover {
+        background-color: $grey-light;
+      }
+    }
   }
 
-  td {
+  td, th {
     padding: rem-calc(5 8);
-    width: 1%;
-  }
-}
+    text-align: left;
+    width: 10%;
 
-select {
-  width: 100%;
+    &:first-child { width: 1%; }
+  }
 }
 
 option {
   cursor: pointer;
-  font-size: rem-calc(14);
-  padding: rem-calc(2 8);
+  font-size: rem-calc(16);
+  padding: rem-calc(3 8);
 
   &:hover {
     background-color: $grey-light;
   }
+}
+
+h1, h2, h3 {
+  color: $blue-dark;
 }
 
 p {
@@ -55,4 +67,12 @@ p {
   @extend .site-width;
 
   margin: 0 auto;
+}
+
+.page-padding {
+  padding: rem-calc(30 20 70 20);
+}
+
+.page-content {
+  width: 60%;
 }

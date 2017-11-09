@@ -1,0 +1,67 @@
+//**************************************************
+// button mixins
+//**************************************************
+@mixin button-background($colour){
+  background-color: $colour;
+
+  &:hover { background-color: lighten($colour, 10%); }
+}
+
+//**************************************************
+// buttons
+//**************************************************
+
+.button {
+  border-radius: $global-radius;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: rem-calc(16);
+  padding: rem-calc(8 12);
+  text-decoration: none;
+  
+  &--blue { @include button-background($blue); }
+  &--red { @include button-background($red); }
+
+  &--download {
+    &:after {
+      color: white;
+      content: '\f019';
+      font: $fontAwesome;
+      margin-left: rem-calc(8);
+    }
+  }
+
+  &--next {
+    @extend .button--blue;
+    font-size: rem-calc(14);
+    margin-left: rem-calc(8);
+
+    &:after {
+      content: '\f105';
+      font: $fontAwesome;
+      font-size: rem-calc(15);
+      margin-left: rem-calc(6);
+    }
+  }
+
+  &--previous {
+    @extend .button--blue;
+    font-size: rem-calc(14);
+    margin-right: rem-calc(8);
+
+    &:before {
+      content: '\f104';
+      font: $fontAwesome;
+      font-size: rem-calc(15);
+      margin-right: rem-calc(6);     
+    }
+  }
+
+  &--disabled {
+    background-color: $grey-light;
+    cursor: default;
+
+    &:hover { background-color: $grey-light; }
+  }
+}

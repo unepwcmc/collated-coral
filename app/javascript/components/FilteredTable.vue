@@ -1,24 +1,30 @@
 <template>
-  <div>
+  <div class="relative">
+    <filters :filters="filters"></filters>
 
-    <form action="/download" method="post">
-      <input name="ids" type="hidden" v-bind:value="postIds"></input>
-      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects"></input>
-    </form>
-
-    <div>
-      selected filters
-      <div>
+    <div class="selected">
+      <h3>Selected options</h3>
+      <div v-if="hasSelected">
         <selected-filter v-for="selectedFilterOption in selectedFilterOptions"
           :name="selectedFilterOption.name"
           :option="selectedFilterOption.option"
         ></selected-filter>
       </div>
+      <p v-else>No filter options selected</p>
     </div>
+
+    <form action="/download" method="post">
+      <input name="ids" type="hidden" v-bind:value="postIds"></input>
+      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
+    </form>
+
+    <h2>Results</h2>
 
     <table>
       <thead>
-        <filters :filters="filters"></filters>
+        <tr>
+          <table-header v-for="filter in filters" :filter="filter"></table-header>
+        </tr>
       </thead>
 
       <tbody>
@@ -29,6 +35,11 @@
       </tbody>
     </table>
 
+    <form action="/download" method="post">
+      <input name="ids" type="hidden" v-bind:value="postIds"></input>
+      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
+    </form>
+
     <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>
 </template>
@@ -37,13 +48,14 @@
   import { eventHub } from '../home.js'
   import Filters from './filters/Filters.vue'
   import SelectedFilter from './filters/SelectedFilter.vue'
+  import TableHeader from './table/TableHeader.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, Row, Pagination },
+    components: { SelectedFilter, Filters, TableHeader, Row, Pagination },
 
     props: {
       filters: { type: Array },
@@ -53,7 +65,7 @@
     data () {
       return {
         config: {
-          itemsPerPage: 5
+          itemsPerPage: 30
         },
         items: [],
         itemsOnCurrentPage: []
@@ -103,7 +115,11 @@
       },
 
       postIds () {
-        return this.$store.state.activeItems;
+        return this.$store.state.activeItems
+      },
+
+      hasSelected () {
+        return this.selectedFilterOptions.length > 0
       }
     },
 

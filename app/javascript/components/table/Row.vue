@@ -1,7 +1,7 @@
 <template>
-  <tr v-show="item.isActive">
+  <tr @click="openModal()" v-show="item.isActive">
     <td>{{ item.id }}</td>
-    <td><button @click="openModal()">{{ item.project_title }}</button></td>
+    <td>{{ projectTitle }}</td>
     <td>{{ item.donor }}</td>
     <td>{{ item.status }}</td>
     <td>{{ item.start_date }}</td>
@@ -21,6 +21,21 @@
       item: {
         required: true,
         type: Object,
+      }
+    },
+
+    computed: {
+      projectTitle () {
+        let title = ''
+        const length = this.item.project_title.length
+        
+        if (length <= 30) {
+          title = this.item.project_title
+        } else {
+          title = this.item.project_title.substring(0,27) + '...'
+        }
+
+        return title
       }
     },
 

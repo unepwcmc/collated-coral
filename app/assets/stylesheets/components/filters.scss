@@ -1,25 +1,36 @@
+//**************************************************
+// filters
+//**************************************************
 .filter {
+  margin-right: rem-calc(14);
+
+  display: inline-block;
   position: relative;
 
 //**************************************************
 // title
 //**************************************************
   &__title {
-    border: solid rem-calc(1) gray;
+    border: solid rem-calc(1) $grey;
     border-radius: $global-radius;
     cursor: pointer;
     margin: 0;
-    padding: rem-calc(6 24 6 8);
+    padding: rem-calc(7 50 7 10);
 
     position: relative;
 
     &:after {
+      @extend .vertical-center;
+      background-color: $grey;
+      border-left: solid rem-calc(1) $grey;
       content: '\f107';
       font: $fontAwesome;
+      padding: rem-calc(9 12);
 
-      position: absolute;
-      right: rem-calc(8);
+      right: 0;
     }
+
+    &:hover:after { background-color: lighten($grey, 7%); }
 
     &--active {
       border-bottom-right-radius: 0;
@@ -35,9 +46,14 @@
   &__select {
     border-bottom-right-radius: $global-radius;
     border-bottom-left-radius: $global-radius;
+    font-size: rem-calc(16);
+    min-width: 100%;
+    max-width: rem-calc(200);
+    height: rem-calc(150);
 
     display: none;
     position: absolute;
+    z-index: 1;
 
     &--active {
       display: block;
@@ -45,44 +61,10 @@
   }
 
 //**************************************************
-// sort column buttons
+// download csv
 //**************************************************
-  &__sort {
-    border: none;
-    cursor: pointer;
-    padding: rem-calc(4 8);
-
-    display: block;
-
-    &:before {
-      font: $fontAwesome;
-    }
-
-    &--ascending {
-      border-bottom: solid rem-calc(1) grey;
-      border-top-right-radius: $global-radius;
-      border-top-left-radius: $global-radius;
-
-      &:before { content: '\f106'; }
-    }
-
-    &--descending {
-      border-bottom-right-radius: $global-radius;
-      border-bottom-left-radius: $global-radius;
-
-      &:before { content: '\f107'; }
-    }
-  }
-
-//**************************************************
-// selected filter options
-//**************************************************
-  &--selected {
-    border: solid $grey-light rem-calc(1);
-    border-radius: rem-calc(3);
-    margin: rem-calc(2 4);
-    padding: rem-calc(3 4);
-    
-    display: inline-block;
+  &__download {
+    position: absolute;
+    right: 0;
   }
 }
