@@ -27,13 +27,13 @@
   </head>
 
   <body>
-    <%= render "global/header" %>
+    <div id="v-app" class="relative">
+      <%= render "global/header" %>
 
-    <div id="v-app">
       <%= yield %>
-    </div>
 
-    <%= render "global/footer" %>
+      <%= render "global/footer" %>
+    </div>
     
     <%= javascript_pack_tag 'application' %>
   </body>
