@@ -2,8 +2,6 @@
   <div>
     <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
 
-    <h3>Filters</h3>
-    
     <filters :filters="filters"></filters>
 
     <div class="selected">
@@ -16,12 +14,12 @@
       </div>
     </div>
     
-    <h3>Results</h3>
+    <h2>Results</h2>
 
     <table>
       <thead>
         <tr>
-          <th v-for="filter in filters">{{ filter.title }}</th>
+          <table-header v-for="filter in filters" :filter="filter"></table-header>
         </tr>
       </thead>
 
@@ -41,13 +39,14 @@
   import { eventHub } from '../home.js'
   import Filters from './filters/Filters.vue'
   import SelectedFilter from './filters/SelectedFilter.vue'
+  import TableHeader from './table/TableHeader.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, Row, Pagination },
+    components: { SelectedFilter, Filters, TableHeader, Row, Pagination },
 
     props: {
       filters: { type: Array },

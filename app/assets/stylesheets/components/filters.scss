@@ -2,15 +2,10 @@
 // filters
 //**************************************************
 .filter {
-  position: relative;
+  margin-right: rem-calc(14);
 
-//**************************************************
-// dropdown
-//**************************************************
-  &__dropdown {
-    width: 200px;
-    display: inline-block;
-  }
+  display: inline-block;
+  position: relative;
 
 //**************************************************
 // title
@@ -20,8 +15,7 @@
     border-radius: $global-radius;
     cursor: pointer;
     margin: 0;
-    padding: rem-calc(0 24 0 8);
-    min-height: rem-calc(43);
+    padding: rem-calc(8 28 8 10);
 
     position: relative;
 
@@ -30,7 +24,7 @@
       content: '\f107';
       font: $fontAwesome;
 
-      right: rem-calc(8);
+      right: rem-calc(10);
     }
 
     &--active {
@@ -47,7 +41,7 @@
   &__select {
     border-bottom-right-radius: $global-radius;
     border-bottom-left-radius: $global-radius;
-    width: auto;
+    min-width: 100%;
     max-width: rem-calc(400);
 
     display: none;

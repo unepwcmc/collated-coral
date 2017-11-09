@@ -1,24 +1,14 @@
 <template>
   <div v-if="hasOptions" class="filter">
-    <div class="filter__dropdown">
-      <p @click="openSelect()" class="filter__title" :class="{ 'filter__title--active' : isOpen }">
-        <span class="vertical-center">{{ title }}</span>
-      </p>
+    <p @click="openSelect()" class="filter__title" :class="{ 'filter__title--active' : isOpen }">{{ title }}</p>
 
-      <select multiple class="filter__select" :class="{ 'filter__select--active' : isOpen }">
-        <data-filter-option v-for="option in options" 
-          :name="name"
-          :filter="title" 
-          :option="option">
-        </data-filter-option>
-      </select>
-    </div>
-
-  <!--     <div class="filter__sorting">
-        <button @click="sort('+')" class="filter__sort filter__sort--ascending"></button>
-        <button @click="sort('-')" class="filter__sort filter__sort--descending"></button>
-      </div>
-   -->  
+    <select multiple class="filter__select" :class="{ 'filter__select--active' : isOpen }">
+      <data-filter-option v-for="option in options" 
+        :name="name"
+        :filter="title" 
+        :option="option">
+      </data-filter-option>
+    </select>
  </div>
   
 </template>
@@ -86,17 +76,6 @@
 
       closeSelect () {
         this.isOpen = false
-      },
-
-      sort (direction) {
-        const sortDirection = direction + this.name
-        
-        // do not re sort if the order is already correct otherwise the results that
-        // have the same value can change places and it looks like the controls aren't working
-        if(this.$store.state.sortDirection !== sortDirection){
-          this.$store.commit('updateSortDirection', sortDirection)
-          eventHub.$emit('sort')
-        }
       }
     }
   }
