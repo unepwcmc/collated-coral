@@ -2,7 +2,7 @@
 // modal wrapper
 //*************************************************
 .modal-wrapper {
-  background-color: rgba($grey-light, .8);
+  background-color: rgba($grey, .8);
 
   display: none;
   position: absolute;
@@ -21,7 +21,8 @@
 //*************************************************
 .modal {
   background-color: white;
-  padding: rem-calc(20);
+  border-radius: $global-radius;
+  padding: rem-calc(34 32);
   width: 60%;
 
   position: absolute;
@@ -32,6 +33,8 @@
     display: block;
   }
 
+  h2 { margin-top: 0; }
+
   &__content {
     position: relative;
   }
@@ -40,7 +43,7 @@
       cursor: pointer;
       
       position: absolute;
-      top: 0;
-      right: 0;
+      top: rem-calc(-18);
+      right: rem-calc(-16);
     }
 }
