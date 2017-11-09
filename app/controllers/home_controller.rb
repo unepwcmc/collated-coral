@@ -56,7 +56,7 @@ class HomeController < ApplicationController
   end
 
   def download
-    send_data Project.to_csv(params[:ids].split(",")), {
+    send_data Project.to_csv(params[:ids]&.split(",")), {
               type: "text/csv; charset=iso-8859-1; header=present",
               disposition: "attachment",
               filename: "collated-coral-#{Date.today}.csv" }
