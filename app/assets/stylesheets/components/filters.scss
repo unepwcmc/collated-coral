@@ -15,7 +15,7 @@
     border-radius: $global-radius;
     cursor: pointer;
     margin: 0;
-    padding: rem-calc(8 28 8 10);
+    padding: rem-calc(8 60 8 10);
 
     position: relative;
 
@@ -41,8 +41,10 @@
   &__select {
     border-bottom-right-radius: $global-radius;
     border-bottom-left-radius: $global-radius;
+    font-size: rem-calc(16);
     min-width: 100%;
-    max-width: rem-calc(400);
+    max-width: rem-calc(200);
+    height: rem-calc(150);
 
     display: none;
     position: absolute;
@@ -52,42 +54,6 @@
       display: block;
     }
   }
-
-//**************************************************
-// sort column buttons
-//**************************************************
-  &__sorting {
-    width: 16%;
-
-    display: inline-block;
-  }
-
-    &__sort {
-      border: none;
-      cursor: pointer;
-      padding: rem-calc(3 6 4 6);
-
-      display: block;
-
-      &:before {
-        font: $fontAwesome;
-      }
-
-      &--ascending {
-        border-bottom: solid rem-calc(1) grey;
-        border-top-right-radius: $global-radius;
-        border-top-left-radius: $global-radius;
-
-        &:before { content: '\f106'; }
-      }
-
-      &--descending {
-        border-bottom-right-radius: $global-radius;
-        border-bottom-left-radius: $global-radius;
-
-        &:before { content: '\f107'; }
-      }
-    }
 
 //**************************************************
 // download csv

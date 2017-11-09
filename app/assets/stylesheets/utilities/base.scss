@@ -11,7 +11,7 @@ body {
 
 table {
   border-collapse: collapse;
-  margin: rem-calc(20 0);
+  margin: rem-calc(20 0 40 0);
   width: 100%;
 
   thead {
@@ -38,15 +38,10 @@ table {
   }
 }
 
-select {
-  background: white;
-  width: 100%;
-}
-
 option {
   cursor: pointer;
-  font-size: rem-calc(14);
-  padding: rem-calc(2 8);
+  font-size: rem-calc(16);
+  padding: rem-calc(3 8);
 
   &:hover {
     background-color: $grey-light;
@@ -75,7 +70,7 @@ p {
 }
 
 .page-padding {
-  padding: rem-calc(20 0 30 0);
+  padding: rem-calc(30 20 70 20);
 }
 
 .page-content {
