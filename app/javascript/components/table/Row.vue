@@ -1,8 +1,8 @@
 <template>
   <tr @click="openModal()" v-show="item.isActive">
     <td>{{ item.id }}</td>
-    <td>{{ projectTitle }}</td>
-    <td>{{ item.donor }}</td>
+    <td :title="item.project_title">{{ projectTitle }}</td>
+    <td>{{ item.donors }}</td>
     <td>{{ item.status }}</td>
     <td>{{ item.start_date }}</td>
     <td>{{ item.end_date }}</td>
@@ -28,7 +28,7 @@
       projectTitle () {
         let title = ''
         const length = this.item.project_title.length
-        
+
         if (length <= 30) {
           title = this.item.project_title
         } else {
