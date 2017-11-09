@@ -12,7 +12,7 @@
       </div>
       <p v-else>No filter options selected</p>
     </div>
-    
+
     <form action="/download" method="post">
       <input name="ids" type="hidden" v-bind:value="postIds"></input>
       <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
@@ -34,7 +34,7 @@
         </row>
       </tbody>
     </table>
-    
+
     <form action="/download" method="post">
       <input name="ids" type="hidden" v-bind:value="postIds"></input>
       <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
@@ -115,16 +115,7 @@
       },
 
       postIds () {
-        let url = '/download'
-
-        this.$store.state.activeItems.forEach((item, index) => {
-          let string = (index == 0) ? '?' : '&'
-          
-          string += 'ids[]=' + item
-          url += string
-        })
-
-        return url
+        return this.$store.state.activeItems
       },
 
       hasSelected () {
