@@ -1,7 +1,7 @@
 <template>
   <tr @click="openModal()" v-show="item.isActive">
     <td>{{ item.id }}</td>
-    <td>{{ projectTitle }}</td>
+    <td :title="item.project_title">{{ projectTitle }}</td>
     <td>{{ item.donor }}</td>
     <td>{{ item.status }}</td>
     <td>{{ item.start_date }}</td>
