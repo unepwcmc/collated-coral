@@ -2,7 +2,7 @@
   <tr @click="openModal()" v-show="item.isActive">
     <td>{{ item.id }}</td>
     <td>{{ projectTitle }}</td>
-    <td>{{ item.donor }}</td>
+    <td>{{ item.donors }}</td>
     <td>{{ item.status }}</td>
     <td>{{ item.start_date }}</td>
     <td>{{ item.end_date }}</td>

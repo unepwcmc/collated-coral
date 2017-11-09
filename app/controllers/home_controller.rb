@@ -16,7 +16,7 @@ class HomeController < ApplicationController
         title: "Project Title"
       },
       {
-        name: "donor",
+        name: "donors",
         title: "Donor(s)",
         options: unique_donors
       },
