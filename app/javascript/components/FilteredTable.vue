@@ -13,7 +13,10 @@
       <p v-else>No filter options selected</p>
     </div>
     
-    <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
+    <form action="/download" method="post">
+      <input name="ids" type="hidden" v-bind:value="postIds"></input>
+      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
+    </form>
 
     <h2>Results</h2>
 
@@ -32,7 +35,10 @@
       </tbody>
     </table>
     
-    <a :href="postIds" class="button button--download button--red filter__download" title="Download CSV file of filtered Coral projects">Download CSV</a>
+    <form action="/download" method="post">
+      <input name="ids" type="hidden" v-bind:value="postIds"></input>
+      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
+    </form>
 
     <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>
@@ -200,7 +206,7 @@
         // sort the items using the main array the contains all data
         this.items.sort(this.compare())
 
-        // trigger filtering function so that the active items array is updated with 
+        // trigger filtering function so that the active items array is updated with
         // the new order and the results are paginated correctly
         this.filterItems()
       },
@@ -210,7 +216,7 @@
         let order = (this.$store.state.sortDirection.substr(0, 1) === '+') ? 1 : -1
 
         let filter = this.$store.state.sortDirection.substr(1)
-        
+
         // order the items using the correct property
         return function (a, b) {
           let result = (a[filter] < b[filter]) ? -1 : (a[filter] > b[filter]) ? 1 : 0;
