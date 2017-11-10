@@ -13,10 +13,7 @@
       <p v-else>No filter options selected</p>
     </div>
 
-    <form action="/download" method="post">
-      <input name="ids" type="hidden" v-bind:value="postIds"></input>
-      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
-    </form>
+    <download-csv></download-csv>
 
     <h2>Results</h2>
 
@@ -35,10 +32,7 @@
       </tbody>
     </table>
 
-    <form action="/download" method="post">
-      <input name="ids" type="hidden" v-bind:value="postIds"></input>
-      <input type="submit" value="Download CSV" title="Download CSV file of filtered Coral projects" class="button button--download button--red filter__download"></input>
-    </form>
+    <download-csv></download-csv>
 
     <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>
@@ -51,11 +45,12 @@
   import TableHeader from './table/TableHeader.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
+  import DownloadCsv from './forms/DownloadCsv.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, TableHeader, Row, Pagination },
+    components: { SelectedFilter, Filters, TableHeader, Row, Pagination, DownloadCsv },
 
     props: {
       filters: { type: Array },
@@ -112,10 +107,6 @@
         })
 
         return options
-      },
-
-      postIds () {
-        return this.$store.state.activeItems
       },
 
       hasSelected () {
