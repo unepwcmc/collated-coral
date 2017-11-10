@@ -5,25 +5,36 @@
     <%= csrf_meta_tags %>
 
     <meta property="og:site_name" content="Collated Coral">
-    <meta property="og:title" content="Collated Coral"> 
-    <meta property="og:description" content="Collated Coral is a filterable database of coral projects"> 
-    <meta property="og:url" content="http://collatedcoral.com"> 
-    <meta property="og:type" content="website"> 
-    <meta property="og:image" content="" > 
-    <meta property="og:image:alt" content="" > 
-    <meta property="og:image:width" content="" > 
+    <meta property="og:title" content="Collated Coral">
+    <meta property="og:description" content="Collated Coral is a filterable database of coral projects">
+    <meta property="og:url" content="http://collatedcoral.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="" >
+    <meta property="og:image:alt" content="" >
+    <meta property="og:image:width" content="" >
     <meta property="og:image:height" content="" >
 
-    <meta name="twitter:card" content="summary" /> 
-    <meta name="twitter:site" content="Collated Coral"> 
-    <meta name="twitter:title" content="Collated Coral"> 
-    <meta name="twitter:description" content="Collated Coral is a filterable database of coral projects"> 
-    <meta name="twitter:creator" content=""> 
-    <meta name="twitter:image" content=""> 
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="Collated Coral">
+    <meta name="twitter:title" content="Collated Coral">
+    <meta name="twitter:description" content="Collated Coral is a filterable database of coral projects">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:image" content="">
     <meta name="twitter:image:alt" content="">
-    
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109508604-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-109508604-1');
+    </script>
+
   </head>
 
   <body>
@@ -34,7 +45,7 @@
 
       <%= render "global/footer" %>
     </div>
-    
+
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
