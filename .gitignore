@@ -15,9 +15,9 @@
 
 /node_modules
 /yarn-error.log
+/vendor/assets/components/
 
 .byebug_history
 /public/packs
 /public/packs-test
-/node_modules
 .DS_Store
