@@ -15,8 +15,7 @@
 
 /node_modules
 /yarn-error.log
-/vendor/assets/components/*
-!/vendor/assets/components/.keep
+/vendor/assets/components/
 
 .byebug_history
 /public/packs
