@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, "fix-font-awesome"
+set :branch, "master"
 
 
 server "web-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
