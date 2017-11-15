@@ -31,7 +31,6 @@
 
     methods: {
       selectOption (option) {
-        console.log('click');
         this.$store.commit('addFilterOption', option)
 
         this.isSelected = true
