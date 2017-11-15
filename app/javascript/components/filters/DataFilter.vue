@@ -2,13 +2,13 @@
   <div v-if="hasOptions" class="filter">
     <p @click="openSelect()" class="filter__title" :class="{ 'filter__title--active' : isOpen }">{{ title }}</p>
 
-    <select multiple class="filter__select" :class="{ 'filter__select--active' : isOpen }">
+    <div class="filter__select" :class="{ 'filter__select--active' : isOpen }">
       <data-filter-option v-for="option in options" 
         :name="name"
         :filter="title" 
         :option="option">
       </data-filter-option>
-    </select>
+    </div>
  </div>
   
 </template>

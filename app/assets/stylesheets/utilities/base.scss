@@ -39,16 +39,6 @@ table {
   }
 }
 
-option {
-  cursor: pointer;
-  font-size: rem-calc(16);
-  padding: rem-calc(3 8);
-
-  &:hover {
-    background-color: $grey-light;
-  }
-}
-
 h1, h2, h3 {
   color: $blue-dark;
 }
