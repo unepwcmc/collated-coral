@@ -1,8 +1,12 @@
 <template>
-  <p class="selected__option">
-    <span class="selected__text">{{ option }}</span>
+  <div class="selected__option">
+    
+    <p class="selected__text">
+      <span v-if="showName" class="selected__filter">{{ filterName }}: </span>{{ option }}
+    </p>
+
     <button @click="deselectOption()" class="selected__close fa fa-times"></button>
-  </p>
+  </div>
 </template>
 
 <script>
@@ -19,6 +23,17 @@
       option: {
         required: true,
         type: String
+      }
+    },
+
+    computed: {
+      filterName () {
+        const length = this.name.length
+        return this.name.substring(0, length - 5)
+      },
+
+      showName () {
+        return this.name.substr(-4) === 'date'
       }
     },
 
