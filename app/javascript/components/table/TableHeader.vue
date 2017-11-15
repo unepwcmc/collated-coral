@@ -3,8 +3,8 @@
     <span class="table__header">{{ filter.title }}</span>
 
     <div v-if="hasOptions" class="table__sorting">
-      <button @click="sort('+')" class="table__sort table__sort--ascending"></button>
-      <button @click="sort('-')" class="table__sort table__sort--descending"></button>
+      <button @click="sort('+')" alt="Sort results ascending" class="table__sort table__sort--ascending"></button>
+      <button @click="sort('-')" alt="Sort results descending" class="table__sort table__sort--descending"></button>
     </div>
   </th>
 </template>
