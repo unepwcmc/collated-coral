@@ -15,7 +15,7 @@
 
     <download-csv></download-csv>
 
-    <h2>Results</h2>
+    <h2>Results ({{ totalResults }})</h2>
 
     <table>
       <thead>
@@ -111,6 +111,10 @@
 
       hasSelected () {
         return this.selectedFilterOptions.length > 0
+      },
+
+      totalResults () {
+        return this.$store.state.totalItems
       }
     },
 

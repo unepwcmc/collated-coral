@@ -10,7 +10,7 @@
 
 - Clone repo
 - `bundle install`
-- `npm install`
+- `yarn install`
 - `rails s`
 
 ## Importing data
