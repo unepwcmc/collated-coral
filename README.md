@@ -1,10 +1,13 @@
 # Collated Coral
 
+See Wiki for more detailed information.
+
 ## Tech
 
 - Ruby
 - Rails 5.1.4
-- Vue.js
+- Vue
+- Vuex
 
 ## Local development
 
