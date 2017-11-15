@@ -1,5 +1,10 @@
 <template>
-  <option v-show="!isSelected" @click="selectOption({ name: name, option: option })">{{ option }}</option>
+  <span 
+    v-show="!isSelected" 
+    @click="selectOption({ name: name, option: option })"
+    class="filter__select-option">
+    {{ option }}
+  </span>
 </template>
 
 <script>
@@ -26,6 +31,7 @@
 
     methods: {
       selectOption (option) {
+        console.log('click');
         this.$store.commit('addFilterOption', option)
 
         this.isSelected = true
