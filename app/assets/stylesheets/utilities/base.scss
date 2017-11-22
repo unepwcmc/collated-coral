@@ -11,12 +11,17 @@ body {
 }
 
 table {
+  border: solid $blue-dark rem-calc(2); 
   border-collapse: collapse;
   margin: rem-calc(20 0 40 0);
+  table-layout: fixed;
   width: 100%;
 
   thead {
     border-bottom: solid $blue-dark rem-calc(2);
+    border-left: solid $grey rem-calc(1);
+
+    &:first-child { border-left: none; }
   }
 
   tbody {
@@ -24,18 +29,22 @@ table {
       border-bottom: solid $grey-light rem-calc(1);
       cursor: pointer;
 
-      &:hover {
-        background-color: $grey-light;
-      }
+      &:nth-child(even){ background-color: lighten($grey-light, 3%); }
+
+      &:hover { background-color: darken($grey-light, 3%); }
     }
   }
 
   td, th {
+    border-left: solid $grey rem-calc(1);
     padding: rem-calc(5 8);
     text-align: left;
     width: 10%;
 
-    &:first-child { width: 1%; }
+    &:first-child { 
+      border-left: none;
+      width: 4%; 
+    }
   }
 }
 

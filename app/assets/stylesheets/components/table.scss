@@ -38,15 +38,15 @@
 
       &--ascending {
         border-bottom: solid rem-calc(1) grey;
-        border-top-right-radius: $global-radius;
-        border-top-left-radius: $global-radius;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
 
         &:before { content: '\f106'; }
       }
 
       &--descending {
-        border-bottom-right-radius: $global-radius;
-        border-bottom-left-radius: $global-radius;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
 
         &:before { content: '\f107'; }
       }

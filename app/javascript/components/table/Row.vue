@@ -4,8 +4,8 @@
     <td :title="item.project_title">{{ projectTitle }}</td>
     <td>{{ item.donors }}</td>
     <td>{{ item.status }}</td>
-    <td>{{ item.start_date }}</td>
-    <td>{{ item.end_date }}</td>
+    <td>{{ item.category }}</td>
+    <td>{{ item.ecosystem }}</td>
     <td>{{ item.country }}</td>
     <td>{{ item.ocean_based_region }}</td>
     <td>{{ item.total_project_cost }}</td>
