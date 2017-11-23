@@ -2,12 +2,12 @@
   <tr @click="openModal()" v-show="item.isActive">
     <td>{{ item.id }}</td>
     <td :title="item.project_title">{{ projectTitle }}</td>
-    <td>{{ item.donors }}</td>
+    <td>{{ checkForMultiples('donors') }}</td>
     <td>{{ item.status }}</td>
     <td>{{ item.category }}</td>
-    <td>{{ item.ecosystem }}</td>
-    <td>{{ item.country }}</td>
-    <td>{{ item.ocean_based_region }}</td>
+    <td>{{ checkForMultiples('ecosystem') }}</td>
+    <td>{{ checkForMultiples('country') }}</td>
+    <td>{{ checkForMultiples('ocean_based_region') }}</td>
     <td>{{ item.total_project_cost }}</td>
   </tr>
 </template>
@@ -44,6 +44,18 @@
         this.$store.commit('updateModalContent', this.item)
 
         eventHub.$emit('openModal')
+      },
+
+      checkForMultiples (field) {
+        // set output to the first item in the array
+        // if the array has more than 1 value then set output to 'multiple'
+        let output = this.item[field][0]
+
+        if(this.item[field].length > 1) {
+          output = 'Multiple'
+        }
+
+        return output
       }
     }
   }

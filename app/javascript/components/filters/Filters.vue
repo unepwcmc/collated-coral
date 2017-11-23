@@ -3,7 +3,8 @@
     <data-filter v-for="filter in filters"
       :name="filter.name"
       :title="filter.title" 
-      :options="filter.options">
+      :options="filter.options"
+      :type="filter.type">
     </data-filter>
   </div>
 </template>

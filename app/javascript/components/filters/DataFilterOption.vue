@@ -1,7 +1,7 @@
 <template>
   <span 
     v-show="!isSelected" 
-    @click="selectOption({ name: name, option: option })"
+    @click="selectOption({ name: name, option: option, type: type })"
     class="filter__select-option">
     {{ option }}
   </span>
@@ -20,6 +20,9 @@
       },
       option: {
         required: true
+      },
+      type: {
+        type: String
       }
     },
 

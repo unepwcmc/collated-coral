@@ -127,14 +127,26 @@
           let filterMatch = true
 
           this.$store.state.selectedFilterOptions.forEach(filter => {
-
+            
             // if there are some selected options check to see if one matches
             if (filter.options.length !== 0) {
               let optionMatch = false
 
-              filter.options.forEach(option => {
-                if (item[filter.name] == option) optionMatch = true
-              })
+              // if the filter is of type multiple you need to loop through an array
+              // otherwise you are matching to a string
+              if(filter.type === 'multiple') {
+                const arrayOfValues = item[filter.name]
+
+                arrayOfValues.forEach(value => {
+                  filter.options.forEach(option => {
+                    if (value == option) optionMatch = true
+                  })
+                })
+              } else {
+                filter.options.forEach(option => {
+                  if (item[filter.name] == option) optionMatch = true
+                })
+              }
 
               // once filterMatch is set to false it will always be false and the item
               // will not be shown because it did match an option in one of the filters
@@ -178,8 +190,9 @@
           if (filter.name !== undefined && filter.options.length > 0) {
             let obj = {}
 
-            obj.name = filter.name,
+            obj.name = filter.name
             obj.options = []
+            obj.type = filter.type
 
             array.push(obj)
           }
