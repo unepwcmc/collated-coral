@@ -58,6 +58,52 @@ class HomeController < ApplicationController
       }
     ]
 
+    tempFilters = [
+      {
+        title:"ID"
+      },
+      {
+        title: "Project Title"
+      },
+      {
+        name: "donors",
+        title: "Donor(s)",
+        options: ["D1", "D2", "D3"],
+        type: 'multiple'
+      },
+      {
+        name: "status",
+        title: "Status",
+        options: [ "Active", "Closed" ]
+      },
+      {
+        name: "category",
+        title: "Category",
+        options: ["Category name 1", "Category name 2", "Category name 3"],
+      },
+      {
+        name: "ecosystem",
+        title: "Ecosystem",
+        options: ["A", "B", "C"],
+        type: 'multiple'
+      },
+      {
+        name: "country",
+        title: "Country",
+        options: ["Australia", "UK", "India", "Norway"],
+        type: 'multiple'
+      },
+      {
+        name: "ocean_based_region",
+        title: "Ocean Region",
+        options: ["O1", "O2", "O3"],
+        type: 'multiple'
+      },
+      {
+        title: "Total Project Cost"
+      }
+    ]
+
     projects = Project.all.order(id: :asc)
     unique_donors = projects.pluck(:donors).uniq.sort
     #unique_category = projects.pluck(:category).uniq.sort
@@ -111,9 +157,8 @@ class HomeController < ApplicationController
       }
     ]
 
-    @filters = filters.to_json
-    @projects = projects.to_json
-    @tempProjects = tempProjects.to_json
+    @filters = tempFilters.to_json
+    @projects = tempProjects.to_json
 
   end
 

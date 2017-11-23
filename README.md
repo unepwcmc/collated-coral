@@ -1,5 +1,7 @@
 # Collated Coral
 
+See wiki for more detailed information.
+
 ## Tech
 
 - Ruby

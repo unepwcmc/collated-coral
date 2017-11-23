@@ -6,7 +6,8 @@
       <data-filter-option v-for="option in options" 
         :name="name"
         :filter="title" 
-        :option="option">
+        :option="option"
+        :type="type">
       </data-filter-option>
     </div>
  </div>
@@ -32,6 +33,9 @@
       },
       options: {
         type: Array
+      },
+      type: {
+        type: String
       }
     },
 
