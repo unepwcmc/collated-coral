@@ -19,14 +19,10 @@
       display: inline;
     }
 
-      &__filter {
-        color: $blue;
-        text-transform: capitalize;
-      }
-
     &__close {
       background-color: $blue;
       border: none;
+      border-radius: 0;
       color: $grey-light;
       cursor: pointer;
       margin: 0;

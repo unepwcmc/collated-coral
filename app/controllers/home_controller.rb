@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
   def index
 
-    projects = Project.all.order(start_date: :desc)
+    projects = Project.all.order(id: :asc)
     unique_donors = projects.pluck(:donors).uniq.sort
-    unique_start_date = projects.pluck(:start_date).uniq.sort.reverse
-    unique_end_date = projects.pluck(:end_date).uniq.sort.reverse
+    #unique_category = projects.pluck(:category).uniq.sort
+    #unique_ecosystem = projects.pluck(:ecosystem).uniq.sort
     unique_country = projects.pluck(:country).uniq.sort
     unique_ocean_based_region = projects.pluck(:ocean_based_region).uniq.sort
 
@@ -26,14 +26,14 @@ class HomeController < ApplicationController
         options: [ "Active", "Closed" ]
       },
       {
-        name: "start_date",
-        title: "Start Date",
-        options: unique_start_date
+        name: "category",
+        title: "Category",
+        options: ["No data yet"]
       },
       {
-        name: "end_date",
-        title: "End Date",
-        options: unique_end_date
+        name: "ecosystem",
+        title: "Ecosystem",
+        options: ["No data yet"]
       },
       {
         name: "country",

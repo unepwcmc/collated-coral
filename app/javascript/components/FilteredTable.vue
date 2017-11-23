@@ -17,7 +17,7 @@
 
     <h2>Results ({{ totalResults }})</h2>
 
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <table-header v-for="filter in filters" :filter="filter"></table-header>
