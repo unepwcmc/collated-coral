@@ -6,7 +6,7 @@
     <td>{{ item.status }}</td>
     <td>{{ item.category }}</td>
     <td>{{ item.ecosystem }}</td>
-    <td>{{ item.country }}</td>
+    <td>{{ country }}</td>
     <td>{{ item.ocean_based_region }}</td>
     <td>{{ item.total_project_cost }}</td>
   </tr>
@@ -36,6 +36,19 @@
         }
 
         return title
+      },
+
+      country () {
+        // set the country to the first item in the array
+        // if the array has more than 1 value then print the strin 'multiple'
+        let country = this.item.country[0]
+
+        console.log(this.item.country.length)
+        if(this.item.country.length > 1) {
+          country = 'Multiple'
+        }
+
+        return country
       }
     },
 
