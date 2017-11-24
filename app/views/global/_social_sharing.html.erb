@@ -1,29 +1,11 @@
 <div class="social--sharing">
-  <a 
-    href="https://facebook.com/sharer/sharer.php?u=<%= encoded_page_url %>" 
-    title="Share Collated Coral on Facebook" 
-    class="social--share social--facebook"
-    target="_blank">
-  </a>
 
-  <a 
-    href="https://www.linkedin.com/shareArticle?url=<%= encoded_page_url %>" 
-    title="Share Collated Coral on LinkedIn" 
-    class="social--share social--linkedin"
-    target="_blank">
-  </a>
+  <%= create_social_link('facebook', 'https://facebook.com/sharer/sharer.php?u=' + encoded_page_url, 'Share Coral Reef Funding Landscape on Facebook', '_blank') %>
+  
+  <%= create_social_link('linkedin', 'https://www.linkedin.com/shareArticle?url=' + encoded_page_url, 'Share Coral Reef Funding Landscape on LinkedIn', '_blank') %>
 
-  <a 
-    href="https://twitter.com/intent/tweet/?text=<%= url_encode('Coral Reef Funding Landscape - Explore international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems.') %>&url=<%= encoded_page_url %>" 
-    title="Share Collated Coral on Twitter" 
-    class="social--share social--twitter"
-    target="_blank">
-  </a>
+  <%= create_social_link('twitter', 'https://twitter.com/intent/tweet/?text=' + url_encode("Coral Reef Funding Landscape - Explore international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems.") + '&url=' + encoded_page_url, 'Share Coral Reef Funding Landscape on Twitter', '_blank') %>
 
-  <a 
-    href="mailto:?subject=<%= url_encode('Coral Reef Funding Landscape') %>&body=<%= url_encode('Coral Reef Funding Landscape') %>%0D%0A%0D%0A<%= url_encode('Search the database to explore international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems.') %>%0D%0A%0D%0A<%= encoded_page_url %>"
-    title="Share Collated Coral via Email" 
-    class="social--share social--email" 
-    target="_self">
-  </a>
+  <%= create_social_link('email', 'mailto:?subject=' + url_encode('Coral Reef Funding Landscape') + '&body=' + url_encode('Coral Reef Funding Landscape') + '%0D%0A%0D%0A' + url_encode('Search the database to explore international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems.') + '%0D%0A%0D%0A' + encoded_page_url, 'Share Coral Reef Funding Landscape via Email', '_self') %>
+  
 </div>
