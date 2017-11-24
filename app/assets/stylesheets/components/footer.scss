@@ -1,5 +1,14 @@
 .footer {
-  background-color: $blue-dark;
-  color: white;
+  border-top: solid rem-calc(3) $blue-dark;
+  color: $blue-dark;
   padding: rem-calc(20 0);
+
+  &__copyright {
+    position: relative;
+    top: rem-calc(12);
+  }
+
+  &__logo {
+    float: right;
+  }
 }
