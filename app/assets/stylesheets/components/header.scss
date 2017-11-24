@@ -3,15 +3,15 @@
   background-size: cover;
   padding: rem-calc(70);
 
-  &__logo {
-    margin-top: rem-calc(18);
-  }
-
   &__title-box {
     background-color: white;
     border-radius: $global-radius;
     margin: 0 auto;
-    padding: rem-calc(18);
+    padding: rem-calc(18 30);
     width: 60%;
+  }
+
+  &__intro {
+    font-size: rem-calc(18);
   }
 }

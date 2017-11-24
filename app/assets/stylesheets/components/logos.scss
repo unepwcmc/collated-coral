@@ -1,0 +1,32 @@
+.logo {
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  display: inline-block;
+
+  &-icri {
+    background-image: image-url('logos/logo-icri.png');
+    margin-right: rem-calc(10);
+    width: rem-calc(97); height: rem-calc(49);
+  }
+  
+  &-iyor {
+    background-image: image-url('logos/logo-iyor.jpg');
+    margin-right: rem-calc(24);
+    width: rem-calc(136); height: rem-calc(59);
+
+    position: relative;
+    top: rem-calc(-8);
+  }
+
+  &-unepwcmc {
+    background-image: url('https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017.svg');
+    width: rem-calc(123); height: rem-calc(40);
+  }
+
+  &-unep {
+    background-image: url('https://s3.amazonaws.com/wcmc.logo/UN-Environment-+logo+2017.svg');
+    margin-right: rem-calc(24);
+    width: rem-calc(74); height: rem-calc(40);
+  }
+}
