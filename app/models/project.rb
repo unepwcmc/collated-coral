@@ -63,7 +63,7 @@ class Project < ApplicationRecord
   end
 
   def self.projects_to_json
-    projects = Project.all.to_a.map! do |project|
+    projects = Project.all.order(id: :asc).to_a.map! do |project|
       {
         id: project.id,
         project_title: project.project_title,
