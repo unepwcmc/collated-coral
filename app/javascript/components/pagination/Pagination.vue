@@ -1,7 +1,7 @@
 <template>
-  <div class="center">
+  <div class="right">
     <div v-if="haveResults">
-      {{ firstItem }} - {{ lastItem }} of {{ totalItems }}
+      <span class="bold">{{ firstItem }} - {{ lastItem }} of {{ totalItems }}</span>
 
       <button 
         v-bind="{ 'disabled' : !previousIsActive }"
@@ -59,7 +59,7 @@
         if (lastItem > this.totalItems) {
           lastItem = this.totalItems
         }
-        
+
         return lastItem
       },
 

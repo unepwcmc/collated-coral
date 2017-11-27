@@ -35,26 +35,23 @@
   &--next {
     @extend .button--blue;
     font-size: rem-calc(14);
-    margin-left: rem-calc(8);
 
     &:after {
       content: '\f105';
       font: $fontAwesome;
       font-size: rem-calc(15);
-      margin-left: rem-calc(6);
     }
   }
 
   &--previous {
     @extend .button--blue;
     font-size: rem-calc(14);
-    margin-right: rem-calc(8);
+    margin-left: rem-calc(6);
 
     &:before {
       content: '\f104';
       font: $fontAwesome;
       font-size: rem-calc(15);
-      margin-right: rem-calc(6);     
     }
   }
 
