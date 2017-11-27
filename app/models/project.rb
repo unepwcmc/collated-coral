@@ -2,6 +2,15 @@ require 'csv'
 
 class Project < ApplicationRecord
 
+  has_many :project_countries
+  has_many :countries, through: :project_countries
+  has_many :project_donors
+  has_many :donors, through: :project_donors
+  has_many :project_ecosystems
+  has_many :ecosystems, through: :project_ecosystems
+  has_many :project_ocean_regions
+  has_many :ocean_regions, through: :project_ocean_regions
+
   def self.to_csv(ids = [])
 
     csv = ''
