@@ -1,6 +1,5 @@
 class Donor < ApplicationRecord
 
-  has_many :project_donors
-  has_many :projects, through: :project_donors
+  has_and_belongs_to_many :projects, class_name: "Project", join_table: 'project_donors'
 
 end

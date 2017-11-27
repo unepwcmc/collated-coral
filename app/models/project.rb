@@ -2,10 +2,10 @@ require 'csv'
 
 class Project < ApplicationRecord
 
-  has_and_belongs_to_many :countries, join_table: 'project_countries'
-  has_and_belongs_to_many :donors, join_table: 'project_donors'
-  has_and_belongs_to_many :ecosystems, join_table: 'project_ecosystems'
-  has_and_belongs_to_many :ocean_regions, join_table: 'project_ocean_regions'
+  has_and_belongs_to_many :countries, class_name: 'Country', join_table: 'project_countries'
+  has_and_belongs_to_many :donors, class_name: 'Donor', join_table: 'project_donors'
+  has_and_belongs_to_many :ecosystems, class_name: 'Ecosystem', join_table: 'project_ecosystems'
+  has_and_belongs_to_many :ocean_regions, class_name: 'OceanRegion', join_table: 'project_ocean_regions'
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
