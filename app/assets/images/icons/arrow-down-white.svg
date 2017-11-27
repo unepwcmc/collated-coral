@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="6px" viewBox="0 0 8 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Coral_Reff_Funding_Landscape_2" transform="translate(-478.000000, -554.000000)" fill-rule="nonzero" fill="#ffffff">
+            <g id="Filters" transform="translate(124.000000, 534.000000)">
+                <g id="Category" transform="translate(251.000000, 1.000000)">
+                    <g id="Arrow" transform="translate(107.000000, 22.000000) scale(-1, 1) rotate(90.000000) translate(-107.000000, -22.000000) translate(104.000000, 18.000000)">
+                        <path d="M5.9163871,3.84313724 L0.303483871,0.0335210059 C0.244064516,-0.00667044538 0.167032258,-0.0108610232 0.103548387,0.0217111956 C0.0398709677,0.054664376 0,0.119427852 0,0.190286714 L0,7.80951919 C0,7.88037805 0.0398709677,7.94533201 0.103548387,7.97828519 C0.131806452,7.99276173 0.162774194,8 0.193548387,8 C0.232064516,8 0.270387097,7.98857115 0.303483871,7.9662849 L5.9163871,4.15666866 C5.96883871,4.12104875 6,4.06257114 6,3.99990295 C6,3.93723476 5.96864516,3.87875715 5.9163871,3.84313724 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

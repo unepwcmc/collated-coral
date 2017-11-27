@@ -10,14 +10,13 @@
 //**************************************************
 // buttons
 //**************************************************
-
 .button {
   border-radius: $global-radius;
   border: none;
   color: white;
   cursor: pointer;
-  font-size: rem-calc(16);
-  padding: rem-calc(8 12);
+  font-size: rem-calc(18);
+  padding: rem-calc(11 18);
   text-decoration: none;
   
   &--blue { @include button-background($blue); }

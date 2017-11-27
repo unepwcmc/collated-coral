@@ -2,57 +2,67 @@
 // filters
 //**************************************************
 .filter {
-  margin-right: rem-calc(14);
+  margin-right: rem-calc(20);
 
   display: inline-block;
   position: relative;
 
-//**************************************************
-// title
-//**************************************************
   &__title {
-    border: solid rem-calc(1) $grey;
-    border-radius: $global-radius;
+    font-size: rem-calc(20);
+    margin-right: rem-calc(20);
+  }
+
+//**************************************************
+// button
+//**************************************************
+  &__button {
+    border: solid rem-calc(1) $black;
+    color: $black;
     cursor: pointer;
+    font-weight: $bold;
     margin: 0;
-    padding: rem-calc(7 70 7 10);
+    padding-right: rem-calc(37);
+    -webkit-font-smoothing: antialiased;
 
     position: relative;
 
-    &:after {
-      @extend .vertical-center;
-      background-color: $grey;
-      border-left: solid rem-calc(1) $grey;
-      content: '\f107';
-      font: $fontAwesome;
-      padding: rem-calc(9 12);
+    &:hover { 
+      background-color: $blue;
+      border-color: $blue;
+      color: white;
 
-      right: 0;
+      &:after { background-image: image-url('icons/arrow-down-white.svg'); }
     }
 
-    &:hover:after { background-color: lighten($grey, 7%); }
-
+    &:after {
+      @extend .vertical-center;
+      background-image: image-url('icons/arrow-down-black.svg');
+      content: '';
+      margin: rem-calc(2 0 0 7);
+      width: rem-calc(8); height: rem-calc(6);
+    }
+    
     &--active {
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      background-color: $blue;
+      border-color: $blue;
+      color: white;     
 
-      &:after { content: '\f106'; }
+      &:after { background-image: image-url('icons/arrow-down-white.svg'); }
     }
   }
 
 //**************************************************
-// multiselect
+// options
 //**************************************************
-  &__select {
+  &__options {
     background-color: white;
-    border: solid rem-calc(1) $grey-light;
-    border-top: none;
-    border-bottom-right-radius: $global-radius;
-    border-bottom-left-radius: $global-radius;
+    border: solid rem-calc(1) $black;
+    border-radius: $global-radius;
     font-size: rem-calc(16);
+    margin-top: rem-calc(18);
     overflow-y: scroll;
-    width: 100%;
-    height: rem-calc(150);
+    padding: rem-calc(30 25);
+    max-height: rem-calc(316);
 
     display: none;
     position: absolute;
@@ -61,17 +71,26 @@
     &--active {
       display: block;
     }
+  }
 
-    &-option {
-      cursor: pointer;
-      font-size: rem-calc(16);
-      padding: rem-calc(4 9);
+  &__option {
+    cursor: pointer;
+    font-size: rem-calc(16);
+    margin: rem-calc(0 20 10 0);
+    width: 100%;
 
-      display: block;
+    display: block;
 
-      &:hover {
-        background-color: $grey-light;
-      }
+    &:hover {
+      background-color: $grey-light;
     }
   }
+    
+    &__checkbox {
+      display: inline-block;
+    }
+
+    &_checkbox-label {
+      display: inline-block;
+    }
 }

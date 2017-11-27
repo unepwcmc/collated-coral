@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>Filters:</span>
+    <span class="filter__title bold">Filters:</span>
 
     <data-filter v-for="filter in filters"
       :name="filter.name"
@@ -9,7 +9,7 @@
       :type="filter.type">
     </data-filter>
 
-    <download-csv></download-csv>
+    <download-csv class="inline-block"></download-csv>
   </div>
 </template>
 
