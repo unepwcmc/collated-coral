@@ -47,8 +47,10 @@ table {
   }
 }
 
-h1, h2, h3 {
-  color: $blue-dark;
+h1 {
+  color: white;
+  font-family: $playfair;
+  font-size: rem-calc(72);
 }
 
 p {
