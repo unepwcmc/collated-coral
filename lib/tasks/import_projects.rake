@@ -10,19 +10,6 @@ namespace :import do
 
   def import_csv_file file
 
-    fields = ["donors", "countries", "ecosystems", "ocean_regions"]
-
-    fields.each do |field|
-      define_method("import_#{field.downcase}".to_sym) do |project, list_of_children|
-        list_of_children = list_of_children.split(",")
-        list_of_children.each do |child_name|
-          field.camelize.singularize.constantize.find_or_create_by(name: child_name) do |new_child|
-            project.send(field.downcase.to_sym) << new_child
-          end
-        end
-      end
-    end
-
     csv = File.open(file)
 
     csv_headers = File.readlines(csv).first.split(",")
@@ -34,8 +21,8 @@ namespace :import do
       status: csv_headers[3],
       start_date: csv_headers[4],
       end_date: csv_headers[5],
-      country: csv_headers[6],
-      ocean_region: csv_headers[7],
+      countries: csv_headers[6],
+      ocean_regions: csv_headers[7],
       beneficiaries: csv_headers[8],
       implementing_agency: csv_headers[9],
       total_project_cost: csv_headers[10],
@@ -57,14 +44,24 @@ namespace :import do
         project.id = current_project_id
       end
 
+      fields = ["donors", "countries", "ecosystems", "ocean_regions"]
+
+      fields.each do |field|
+        list_of_children = project_row[project_hash[field.to_sym]]&.strip
+        next if list_of_children.nil?
+        list_of_children = list_of_children.split(",")
+        list_of_children.each do |child_name|
+          new_child = field.camelize.singularize.constantize.find_or_create_by(name: child_name)
+          unless project.send(field.downcase.to_sym).exists?(new_child.id)
+            project.send(field.downcase.to_sym) << new_child
+          end
+        end
+      end
+
       project.project_title = project_row[project_hash[:project_title]]&.strip
-      import_donors(project, project_row[project_hash[:donors]]&.strip)
       project.status = project_row[project_hash[:status]]&.strip || "Empty"
       project.start_date = project_row[project_hash[:start_date]]&.strip || DateTime.now.year.to_i
       project.end_date = project_row[project_hash[:end_date]]&.strip || DateTime.now.year.to_i
-      import_countries(project, project_row[project_hash[:country]]&.strip)
-      import_ecosystems(project, project_row[project_hash[:ecosystems]]&.strip)
-      import_ocean_regions(project, project_row[project_hash[:ocean_region]]&.strip)
       project.beneficiaries = project_row[project_hash[:beneficiaries]]&.strip
       project.implementing_agency = project_row[project_hash[:implementing_agency]]&.strip
       project.total_project_cost = project_row[project_hash[:total_project_cost]]&.strip
