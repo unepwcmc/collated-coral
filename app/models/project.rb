@@ -93,6 +93,11 @@ class Project < ApplicationRecord
 
     project_columns.delete("created_at")
     project_columns.delete("updated_at")
+    project_columns << "Donors"
+    project_columns << "Country"
+    project_columns << "Ecosystem"
+    project_columns << "Ocean Based Region"
+
 
     project_columns.map! { |e|
       e.gsub("_", " ").capitalize
@@ -101,12 +106,17 @@ class Project < ApplicationRecord
     csv << project_columns.join(',')
     csv << "\r\n"
 
-    projects = Project.where(id: ids).order(start_date: :desc)
+    projects = Project.where(id: ids).order(id: :asc)
 
     projects.to_a.each do |project|
       project_attributes = project.attributes
       project_attributes.delete("created_at")
       project_attributes.delete("updated_at")
+      project_attributes[:donors] = project.donors.pluck(:name).sort.join(",")
+      project_attributes[:countries] = project.countries.pluck(:name).sort.join(",")
+      project_attributes[:ecosystems] = project.ecosystems.pluck(:name).sort.join(",")
+      project_attributes[:ocean_based_regions] = project.ocean_regions.pluck(:name).sort.join(",")
+
       project_attributes = project_attributes.values.map{ |e| "\"#{e}\"" }
       csv << project_attributes.join(',').to_s
       csv << "\r\n"
