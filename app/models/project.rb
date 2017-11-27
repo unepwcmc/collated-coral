@@ -13,11 +13,11 @@ class Project < ApplicationRecord
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
-    unique_donors = Donor.pluck(:name).sort
-    unique_countries = Country.pluck(:name).sort
-    unique_ocean_based_regions = OceanRegion.pluck(:name).sort
-    unique_categories = projects.pluck(:category).uniq.sort
-    unique_ecosystems = Ecosystem.pluck(:name).sort
+    unique_donors = Donor.pluck(:name).compact.sort
+    unique_countries = Country.pluck(:name).compact.sort
+    unique_ocean_based_regions = OceanRegion.pluck(:name).compact.sort
+    unique_categories = projects.pluck(:category).compact.uniq.sort
+    unique_ecosystems = Ecosystem.pluck(:name).compact.sort
 
     filters = [
       {
