@@ -32,8 +32,6 @@
       </tbody>
     </table>
 
-    <download-csv></download-csv>
-
     <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>
 </template>
@@ -60,7 +58,7 @@
     data () {
       return {
         config: {
-          itemsPerPage: 30
+          itemsPerPage: 10
         },
         items: [],
         itemsOnCurrentPage: []
