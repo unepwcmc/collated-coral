@@ -105,11 +105,32 @@ class HomeController < ApplicationController
     ]
 
     projects = Project.all.order(id: :asc)
-    unique_donors = projects.pluck(:donors).uniq.sort
-    #unique_category = projects.pluck(:category).uniq.sort
-    #unique_ecosystem = projects.pluck(:ecosystem).uniq.sort
-    unique_country = projects.pluck(:country).uniq.sort
-    unique_ocean_based_region = projects.pluck(:ocean_based_region).uniq.sort
+    unique_donors = Donor.pluck(:name).sort
+    unique_countries = Country.pluck(:name).sort
+    unique_ocean_based_regions = OceanRegion.pluck(:name).sort
+    unique_categories = projects.pluck(:category).uniq.sort
+    unique_ecosystems = Ecosystem.pluck(:name).sort
+
+    projects = Project.all.to_a.map! do |project|
+      {
+        id: project.id,
+        project_title: project.project_title,
+        donors: project.donors.pluck(:name).sort,
+        status: project.status,
+        start_date: project.start_date,
+        end_date: project.end_date,
+        country: project.countries.pluck(:name).sort,
+        ecosystem: project.ecosystems.pluck(:name).sort,
+        ocean_based_region: project.ocean_regions.pluck(:name).sort,
+        beneficiaries: project.beneficiaries,
+        implementing_agency: project.implementing_agency,
+        total_project_cost: project.total_project_cost,
+        co_funding_entities: project.co_funding_entities,
+        category: project.category,
+        team_leader: project.team_leader,
+        further_information: project.further_information
+      }
+    end
 
     filters = [
       {
@@ -121,7 +142,8 @@ class HomeController < ApplicationController
       {
         name: "donors",
         title: "Donor(s)",
-        options: unique_donors
+        options: unique_donors,
+        type: 'multiple'
       },
       {
         name: "status",
@@ -131,25 +153,24 @@ class HomeController < ApplicationController
       {
         name: "category",
         title: "Category",
-        options: ["No data yet"],
-        type: 'multiple'
+        options: unique_categories
       },
       {
         name: "ecosystem",
         title: "Ecosystem",
-        options: ["No data yet"],
+        options: unique_ecosystems,
         type: 'multiple'
       },
       {
         name: "country",
         title: "Country",
-        options: unique_country,
+        options: unique_countries,
         type: 'multiple'
       },
       {
         name: "ocean_based_region",
         title: "Ocean Region",
-        options: unique_ocean_based_region,
+        options: unique_ocean_based_regions,
         type: 'multiple'
       },
       {
@@ -157,8 +178,8 @@ class HomeController < ApplicationController
       }
     ]
 
-    @filters = tempFilters.to_json
-    @projects = tempProjects.to_json
+    @filters = filters.to_json
+    @projects = projects.to_json
 
   end
 
