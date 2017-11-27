@@ -2,21 +2,6 @@
   <div class="relative">
     <filters :filters="filters"></filters>
 
-    <div class="selected">
-      <h3>Selected options</h3>
-      <div v-if="hasSelected">
-        <selected-filter v-for="selectedFilterOption in selectedFilterOptions"
-          :name="selectedFilterOption.name"
-          :option="selectedFilterOption.option"
-        ></selected-filter>
-      </div>
-      <p v-else>No filter options selected</p>
-    </div>
-
-    <download-csv></download-csv>
-
-    <h2>Results ({{ totalResults }})</h2>
-
     <table class="table">
       <thead>
         <tr>
@@ -43,12 +28,11 @@
   import TableHeader from './table/TableHeader.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
-  import DownloadCsv from './forms/DownloadCsv.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, TableHeader, Row, Pagination, DownloadCsv },
+    components: { SelectedFilter, Filters, TableHeader, Row, Pagination },
 
     props: {
       filters: { type: Array },

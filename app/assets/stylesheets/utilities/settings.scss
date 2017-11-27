@@ -10,15 +10,16 @@
 //**************************************************
 // colours
 //**************************************************
+$black: #000000;
+
 $blue-light: #EDEEF1;
 $blue: #33548F;
 $blue-dark: #172A4D;
 
 $grey-light: #FAFAFB;
 $grey: #D5D8E1;
-$grey-dark: #333333;
 
-$red: #bc2f2f;
+$green: #398439;
 
 //**************************************************
 // dimensions
@@ -28,8 +29,11 @@ $site-width: rem-calc(1200);
 //**************************************************
 // fonts
 //**************************************************
-$fontAwesome: normal normal normal 14px/1 FontAwesome;
+$body-font: $black;
+
 $bold: 600;
+
+$fontAwesome: normal normal normal 14px/1 FontAwesome;
 
 //**************************************************
 // buttons

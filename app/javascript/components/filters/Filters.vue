@@ -1,22 +1,27 @@
 <template>
   <div>
+    <span>Filters:</span>
+
     <data-filter v-for="filter in filters"
       :name="filter.name"
       :title="filter.title" 
       :options="filter.options"
       :type="filter.type">
     </data-filter>
+
+    <download-csv></download-csv>
   </div>
 </template>
 
 <script>
-  import { eventHub } from "../../home.js";
+  import { eventHub } from "../../home.js"
   import DataFilter from './DataFilter.vue'
+  import DownloadCsv from '../forms/DownloadCsv.vue'
 
   export default {
     name: "filters",
 
-    components: { DataFilter },
+    components: { DataFilter, DownloadCsv },
 
     props: {
       filters: {

@@ -21,7 +21,7 @@
   text-decoration: none;
   
   &--blue { @include button-background($blue); }
-  &--red { @include button-background($red); }
+  &--green { @include button-background($green); }
 
   &--download {
     &:after {
