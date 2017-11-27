@@ -16,19 +16,18 @@
   color: white;
   cursor: pointer;
   font-size: rem-calc(18);
-  padding: rem-calc(11 18);
+  font-weight: $bold;
+  padding: rem-calc(11 17);
   text-decoration: none;
+  -webkit-font-smoothing: antialiased;
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
 
   &--download {
-    &:after {
-      color: white;
-      content: '\f019';
-      font: $fontAwesome;
-      margin-left: rem-calc(8);
-    }
+    background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
+    color: white;
+    padding: rem-calc(11 22 11 53);
   }
 
   &--next {
