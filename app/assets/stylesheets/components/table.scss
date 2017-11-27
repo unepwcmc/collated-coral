@@ -3,10 +3,28 @@
 // column headers
 //**************************************************
   &__header {
+    margin-right: rem-calc(2);
     vertical-align: middle;
-    width: 77%;
 
     display: inline-block;
+  }
+
+//**************************************************
+// columns
+//**************************************************
+  
+  // fix the columns widths so that they don't change
+  // size when you use the pagination 
+  th,td {
+    &:first-child { width: 5%; }
+    &:nth-child(2) { width: 12%; }
+    &:nth-child(3) { width: 10%; }
+    &:nth-child(4) { width: 9%; }
+    &:nth-child(5) { width: 12%; }
+    &:nth-child(6) { width: 12%; }
+    &:nth-child(7) { width: 10%; }
+    &:nth-child(8) { width: 13%; }
+    &:nth-child(9) { width: 15%; }
   }
 
 //**************************************************
@@ -14,22 +32,23 @@
 //**************************************************
   &__sorting {
     vertical-align: middle;
-    width: 19%;
 
     display: inline-block;
   }
 
     &__sort {
-      background-color: $grey;
+      background-color: transparent;
       border: none;
+      color: white;
       cursor: pointer;
+      padding: 0;
       margin: 0;
-      padding: rem-calc(3 7 4 7);
+      opacity: .7;
 
       display: block;
 
       &:hover {
-        background-color: lighten($grey, 7%);
+        opacity: .9;
       }
 
       &:before {
@@ -37,17 +56,10 @@
       }
 
       &--ascending {
-        border-bottom: solid rem-calc(1) grey;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-
         &:before { content: '\f106'; }
       }
 
       &--descending {
-        border-top-right-radius: 0;
-        border-top-left-radius: 0;
-
         &:before { content: '\f107'; }
       }
     }

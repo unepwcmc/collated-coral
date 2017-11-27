@@ -11,39 +11,38 @@ body {
 }
 
 table {
-  border: solid $blue-dark rem-calc(2); 
   border-collapse: collapse;
   margin: rem-calc(20 0 40 0);
   table-layout: fixed;
   width: 100%;
 
   thead {
-    border-bottom: solid $blue-dark rem-calc(2);
-    border-left: solid $grey rem-calc(1);
+    background-color: $blue-dark;
+    border-bottom: solid $grey-light rem-calc(1);
+    color: white;
 
     &:first-child { border-left: none; }
   }
 
   tbody {
     tr { 
-      border-bottom: solid $grey-light rem-calc(1);
+      background-color: $grey-light;
       cursor: pointer;
 
-      &:nth-child(even){ background-color: lighten($grey-light, 3%); }
+      &:nth-child(even){ background-color: $blue-light; }
 
-      &:hover { background-color: darken($grey-light, 3%); }
+      &:hover { background-color: $grey; }
     }
   }
 
   td, th {
-    border-left: solid $grey rem-calc(1);
-    padding: rem-calc(8);
+    border-left: solid white rem-calc(1);
+    padding: rem-calc(16 14);
     text-align: left;
-    width: 10%;
 
     &:first-child { 
-      border-left: none;
-      width: 4%; 
+      font-weight: $bold;
+      text-align: center;
     }
   }
 }
