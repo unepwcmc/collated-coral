@@ -8,6 +8,16 @@
 }
 
 //**************************************************
+// reusable styles
+//**************************************************
+%button--pagination {
+  @extend .button--blue;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: rem-calc(45); height: rem-calc(45);
+}
+
+//**************************************************
 // buttons
 //**************************************************
 .button {
@@ -30,26 +40,14 @@
   }
 
   &--next {
-    @extend .button--blue;
-    font-size: rem-calc(14);
-
-    &:after {
-      content: '\f105';
-      font: $fontAwesome;
-      font-size: rem-calc(15);
-    }
+    @extend %button--pagination;
+    background-image: image-url('icons/chevron-right.svg');
   }
 
   &--previous {
-    @extend .button--blue;
-    font-size: rem-calc(14);
+    @extend %button--pagination;
+    background-image: image-url('icons/chevron-left.svg');
     margin-left: rem-calc(6);
-
-    &:before {
-      content: '\f104';
-      font: $fontAwesome;
-      font-size: rem-calc(15);
-    }
   }
 
   &--disabled {

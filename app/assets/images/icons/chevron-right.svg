@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="20px" viewBox="0 0 12 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Chevron_Right</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Coral_Reff_Funding_Landscape_2" transform="translate(-1253.000000, -1479.000000)" stroke="#FFFFFF" stroke-width="1.5" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Pagination" transform="translate(1098.000000, 1468.000000)">
+                <g id="Right-Arrow" transform="translate(138.000000, 0.000000)">
+                    <g id="arrows" transform="translate(23.000000, 21.000000) scale(-1, -1) translate(-23.000000, -21.000000) translate(18.000000, 12.000000)">
+                        <path d="M0.26544979,9.6424247 L8.43290605,17.7342851 C8.79128857,18.0885716 9.37192558,18.0885716 9.73121311,17.7342851 C10.0895956,17.3799985 10.0895956,16.8045444 9.73121311,16.4502579 L2.21159058,9.00044846 L9.7303081,1.55063906 C10.0886906,1.19635249 10.0886906,0.620898423 9.7303081,0.265714926 C9.37192558,-0.0885716421 8.79038357,-0.0885716421 8.43200104,0.265714926 L0.264544784,8.35750056 C-0.0883322841,8.70812467 -0.0883322841,9.29262277 0.26544979,9.6424247 Z" id="Chevron_Right"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

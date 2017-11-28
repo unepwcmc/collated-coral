@@ -42,7 +42,7 @@
     data () {
       return {
         config: {
-          itemsPerPage: 10
+          itemsPerPage: 2
         },
         items: [],
         itemsOnCurrentPage: []
