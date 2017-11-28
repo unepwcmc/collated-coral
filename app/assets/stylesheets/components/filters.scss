@@ -21,7 +21,7 @@
     cursor: pointer;
     font-weight: $bold;
     margin: 0;
-    padding-right: rem-calc(34);
+    padding:rem-calc(9 39 10 13);
 
     position: relative;
 
@@ -39,6 +39,8 @@
       content: '';
       margin: rem-calc(2 0 0 7);
       width: rem-calc(8); height: rem-calc(6);
+
+      right: rem-calc(24);
     }
     
     &--active {
@@ -49,6 +51,26 @@
       &:after,
       &:hover:after { background-image: image-url('icons/arrow-up-white.svg'); }
     }
+
+    &--has-selected:after,
+    &--has-selected:hover:after {
+      content: none;
+    }
+
+      &-total {
+        @extend .vertical-center;
+        background-color: white;
+        border-radius: 100%;
+        color: $blue;
+        font-size: rem-calc(18);
+        text-align: center;
+        width: rem-calc(24); height: rem-calc(24);
+
+        display: block;
+
+        position: absolute;
+        right: rem-calc(9);
+      }
   }
 
 //**************************************************

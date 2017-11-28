@@ -1,15 +1,17 @@
 <template>
   <div v-if="hasOptions" class="filter">
-    {{ selectedOptions }}
-    <p @click="openSelect()" class="filter__button button" :class="{ 'filter__button--active' : isOpen }">{{ title }}</p>
+    <p
+      @click="openSelect()" 
+      class="filter__button button" 
+      :class="{ 'filter__button--active' : isOpen , 'filter__button--has-selected' : hasSelected }">
+
+      {{ title }} <span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
+    </p>
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
       <ul class="ul-unstyled">
         <data-filter-option v-for="option in options" 
-          :name="name"
-          :filter="title" 
-          :option="option"
-          :type="type">
+          :option="option">
         </data-filter-option>
       </ul>
 
@@ -50,13 +52,8 @@
     data () {
       return {
         children: this.$children,
-        isOpen: false,
+        isOpen: false
       }
-    },
-
-    mounted () {
-      // eventHub.$on('deselectOption', this.updateFilterOptions)
-      // eventHub.$on('selectOption', this.updateSelectedOptions)
     },
 
     computed: {
@@ -80,20 +77,18 @@
         })
 
         return selectedArray
+      },
+
+      hasSelected () {
+        return this.totalSelectedOptions > 0
+      },
+
+      totalSelectedOptions () {
+        return this.selectedOptions.length
       }
     },
 
     methods: {
-      // updateFilterOptions (filterOption) {
-      //   // if the filter matches the one that has been deselected 
-      //   // search for the matching option and set isSelected to false
-      //   if(this.name == filterOption.name){
-      //     this.children.forEach(child => {
-      //       if(child.option == filterOption.option) child.isSelected = false
-      //     })
-      //   }
-      // },
-
       openSelect () {
         // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
@@ -120,11 +115,9 @@
       },
 
       apply () {
-        console.log('apply')
         this.closeSelect()
 
         this.selectedOptions.forEach(option => {
-          console.log('option', option)
           this.$store.commit('addFilterOption', option)
         })
 
