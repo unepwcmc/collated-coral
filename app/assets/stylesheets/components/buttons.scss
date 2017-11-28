@@ -19,7 +19,6 @@
   font-weight: $bold;
   padding: rem-calc(11 17);
   text-decoration: none;
-  -webkit-font-smoothing: antialiased;
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }

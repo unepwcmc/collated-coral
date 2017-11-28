@@ -1,11 +1,14 @@
 //*************************************************
 // html elements
 //*************************************************
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
   color: $body-font;
-  font-family: sans-serif;
+  font-family: $openSans;
   font-weight: lighter;
   margin: 0;
 }
@@ -51,6 +54,8 @@ h1 {
   color: white;
   font-family: $playfair;
   font-size: rem-calc(72);
+  line-height: 1;
+  margin: rem-calc(0 0 27 0);
 }
 
 p {

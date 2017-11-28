@@ -1,15 +1,21 @@
 .header {
   background: image-url('hero.jpg') no-repeat center;
   background-size: cover;
-  padding: rem-calc(70);
-  height: rem-calc(507);
-
-  &__logo {
-    margin-top: rem-calc(18);
-  }
+  padding-top: rem-calc(94);
+  height: rem-calc(517);
 
   &__title-box {
     color: white;
-    width: 60%;
+    font-size: rem-calc(20);
+    padding: rem-calc(0 20);
+    width: 80%;
   }
+
+    &__divider {
+      border-top: solid rem-calc(2) white;
+      margin-bottom: rem-calc(20);
+      width: rem-calc(66);
+
+      display: block;
+    }
 }
