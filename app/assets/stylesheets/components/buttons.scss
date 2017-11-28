@@ -57,4 +57,17 @@
 
     &:hover { background-color: $grey-light; }
   }
+
+  &--link {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: $body-font;
+    cursor: pointer;
+    font-size: rem-calc(18);
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &--link--green { color: $green; }
 }

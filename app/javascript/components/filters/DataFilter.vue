@@ -16,9 +16,9 @@
       </ul>
 
       <div>
-        <button @click="clear()">Clear</button>
-        <button @click="cancel()">Cancel</button>
-        <button @click="apply()">Apply</button>
+        <button @click="clear()" class="button--link bold">Clear</button>
+        <button @click="cancel()" class="button--link">Cancel</button>
+        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
       </div>
     </div>
   </div>
