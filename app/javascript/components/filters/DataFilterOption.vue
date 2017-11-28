@@ -13,16 +13,16 @@
     name: 'data-filter-option',
 
     props: {
-      name: {
-        required: true,
-        type: String
-      },
+      // name: {
+      //   required: true,
+      //   type: String
+      // },
       option: {
         required: true
-      },
-      type: {
-        type: String
       }
+      // type: {
+      //   type: String
+      // }
     },
 
     data () {
@@ -39,12 +39,12 @@
 
     methods: {
       selectOption (option) {
-        this.$store.commit('addFilterOption', option)
+        //this.$store.commit('addFilterOption', option)
 
         this.isSelected = true
 
         eventHub.$emit('selectOption')
-        eventHub.$emit('filtersChanged')
+        // eventHub.$emit('filtersChanged')
       }
     }
   }
