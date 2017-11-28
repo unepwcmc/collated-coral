@@ -47,7 +47,7 @@
   &--previous {
     @extend %button--pagination;
     background-image: image-url('icons/chevron-left.svg');
-    margin-left: rem-calc(6);
+    margin-right: rem-calc(6);
   }
 
   &--disabled {
