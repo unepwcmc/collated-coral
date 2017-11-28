@@ -1,4 +1,10 @@
 //**************************************************
+// variables
+//**************************************************
+$activeBackgroundColour: $blue;
+$activeTextColour: white;
+
+//**************************************************
 // filters
 //**************************************************
 .filter {
@@ -26,9 +32,9 @@
     position: relative;
 
     &:hover { 
-      background-color: $blue;
-      border-color: $blue;
-      color: white;
+      background-color: $activeBackgroundColour;
+      border-color: $activeBackgroundColour;
+      color: $activeTextColour;
 
       &:after { background-image: image-url('icons/arrow-down-white.svg'); }
     }
@@ -44,24 +50,27 @@
     }
     
     &--active {
-      background-color: $blue;
-      border-color: $blue;
-      color: white;     
+      background-color: $activeBackgroundColour;
+      border-color: $activeBackgroundColour;
+      color: $activeTextColour;     
 
       &:after,
       &:hover:after { background-image: image-url('icons/arrow-up-white.svg'); }
     }
 
-    &--has-selected:after,
-    &--has-selected:hover:after {
-      content: none;
+    &--has-selected {
+      background-color: $activeBackgroundColour;
+      color: $activeTextColour;
+      
+      &:after,
+      &:hover:after { content: none; }
     }
 
       &-total {
         @extend .vertical-center;
-        background-color: white;
+        background-color: $activeTextColour;
         border-radius: 100%;
-        color: $blue;
+        color: $activeBackgroundColour;
         font-size: rem-calc(18);
         text-align: center;
         width: rem-calc(24); height: rem-calc(24);
