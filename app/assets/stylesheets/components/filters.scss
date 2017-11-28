@@ -46,7 +46,8 @@
       border-color: $blue;
       color: white;     
 
-      &:after { background-image: image-url('icons/arrow-down-white.svg'); }
+      &:after,
+      &:hover:after { background-image: image-url('icons/arrow-up.svg'); }
     }
   }
 
