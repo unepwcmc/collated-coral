@@ -37,13 +37,9 @@
   }
 
     &__sort {
-      background-color: transparent;
-      border: none;
-      color: white;
       cursor: pointer;
-      padding: 0;
-      margin: 0;
       opacity: .7;
+      width: rem-calc(8); height: rem-calc(6);
 
       display: block;
 
@@ -51,16 +47,13 @@
         opacity: .9;
       }
 
-      &:before {
-        font: $fontAwesome;
-      }
-
       &--ascending {
-        &:before { content: '\f106'; }
+        background-image: image-url('icons/arrow-up-white.svg');
+        margin-bottom: rem-calc(1);
       }
 
       &--descending {
-        &:before { content: '\f107'; }
+        background-image: image-url('icons/arrow-down-white.svg');
       }
     }
 }
