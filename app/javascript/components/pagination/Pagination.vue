@@ -1,22 +1,20 @@
 <template>
-  <div class="center">
+  <div class="right">
     <div v-if="haveResults">
+      <span class="bold">{{ firstItem }} - {{ lastItem }} of {{ totalItems }}</span>
+
       <button 
         v-bind="{ 'disabled' : !previousIsActive }"
         @click="changePage(previousIsActive, 'previous')"
         class="button button--previous"
         :class="{ 'button--disabled' : !previousIsActive }">
-        Previous
       </button>
-
-      Page {{ currentPage }} of {{ totalPages }}
 
       <button 
         v-bind="{ 'disabled' : !nextIsActive }"
         @click="changePage(nextIsActive, 'next')"
         class="button button--next"
         :class="{ 'button--disabled' : !nextIsActive }">
-        Next
       </button>
     </div>
 
@@ -51,6 +49,20 @@
     },
 
     computed: {
+      firstItem () {
+        return this.lastItem - this.itemsPerPage + 1
+      },
+
+      lastItem () {
+        let lastItem = this.itemsPerPage * this.currentPage
+        
+        if (lastItem > this.totalItems) {
+          lastItem = this.totalItems
+        }
+
+        return lastItem
+      },
+
       currentPage () {
         return this.$store.state.currentPage
       },

@@ -1,15 +1,15 @@
 <template>
   <div v-if="hasOptions" class="filter">
-    <p @click="openSelect()" class="filter__title" :class="{ 'filter__title--active' : isOpen }">{{ title }}</p>
+    <p @click="openSelect()" class="filter__button button" :class="{ 'filter__button--active' : isOpen }">{{ title }}</p>
 
-    <div class="filter__select" :class="{ 'filter__select--active' : isOpen }">
+    <ul class="filter__options ul-unstyled" :class="{ 'filter__options--active' : isOpen }">
       <data-filter-option v-for="option in options" 
         :name="name"
         :filter="title" 
         :option="option"
         :type="type">
       </data-filter-option>
-    </div>
+    </ul>
  </div>
   
 </template>

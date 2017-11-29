@@ -1,10 +1,9 @@
 <template>
-  <span 
-    v-show="!isSelected" 
-    @click="selectOption({ name: name, option: option, type: type })"
-    class="filter__select-option">
-    {{ option }}
-  </span>
+  <li class="filter__option">
+    <!-- @click="selectOption({ name: name, option: option, type: type })" -->
+    <input type="checkbox" :id="optionId" v-model="isSelected" class="filter__checkbox">
+    <label :for="optionId" class="filter__checkbox-label">{{ option }}</label>
+  </li>
 </template>
 
 <script>
@@ -29,6 +28,12 @@
     data () {
       return {
         isSelected: false
+      }
+    },
+
+    computed : {
+      optionId () {
+        return this.option.replace(' |(|)|_', '-').toLowerCase()
       }
     },
 

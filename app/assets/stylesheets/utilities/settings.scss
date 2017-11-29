@@ -10,15 +10,17 @@
 //**************************************************
 // colours
 //**************************************************
-$blue-light: #96a5ba;
-$blue: #2a69b7;
-$blue-dark: #0C2448;
+$black: #000000;
 
-$grey-light: #efefef;
-$grey: darken($grey-light, 10%);
-$grey-dark: #333333;
+$blue-faint: #33548F;
+$blue-light: #EDEEF1;
+$blue: #33548F;
+$blue-dark: #172A4D;
 
-$red: #bc2f2f;
+$grey-light: #FAFAFB;
+$grey: #D5D8E1;
+
+$green: #398439;
 
 //**************************************************
 // dimensions
@@ -28,9 +30,15 @@ $site-width: rem-calc(1200);
 //**************************************************
 // fonts
 //**************************************************
+$body-font: $black;
+
+$bold: 700;
+
 $fontAwesome: normal normal normal 14px/1 FontAwesome;
+$openSans: 'Open Sans', sans-serif;
+$playfair: 'Playfair Display', serif;
 
 //**************************************************
 // buttons
 //**************************************************
-$global-radius: rem-calc(3);
+$global-radius: rem-calc(7);
