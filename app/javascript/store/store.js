@@ -44,6 +44,12 @@ export default new Vuex.Store({
       })
     },
 
+    clearFilterOptions () {
+      this.state.selectedFilterOptions.forEach(filter => {
+        filter.options = []
+      })
+    },
+
     removeFilterOption (state, removeOption) {
 
       this.state.selectedFilterOptions.forEach(filter => {

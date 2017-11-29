@@ -11,7 +11,8 @@
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
       <ul class="ul-unstyled filter__options-list" :class="filterClass">
         <data-filter-option v-for="option in options" 
-          :option="option">
+          :option="option"
+          :selected="false">
         </data-filter-option>
       </ul>
 
@@ -52,7 +53,8 @@
     data () {
       return {
         children: this.$children,
-        isOpen: false
+        isOpen: false,
+        activeOptions: []
       }
     },
 
@@ -63,20 +65,35 @@
       },
 
       selectedOptions () {
-        let selectedArray = []
+        // get () {
+          let selectedArray = []
 
-        this.children.forEach(child => {
-          if(child.isSelected){ 
-            let obj = {}
-            obj.name = this.name
-            obj.option = child.option
-            obj.type = this.type
+          this.children.forEach(child => {
+            if(child.isSelected){ 
+              let obj = {}
+              obj.name = this.name
+              obj.option = child.option
+              obj.type = this.type
 
-            selectedArray.push(obj) 
-          }
-        })
+              selectedArray.push(obj) 
+            }
+          })
 
-        return selectedArray
+          return selectedArray
+        // },
+        // set (array) {
+        //   array.forEach(activeOption => {
+        //     this.children.forEach(child => {
+        //       if (child.option === activeOption.option) {
+        //         console.log(child.selected)
+        //         child.selected = true
+        //         console.log(child.selected)
+        //       } else {
+        //         child.selected = false
+        //       }
+        //     })
+        //   })
+        // }
       },
 
       hasSelected () {
@@ -108,7 +125,23 @@
 
       cancel() {
         this.closeSelect()
-        this.clear()
+        
+        //reset selected options to the active ones
+        // this.selectedOptions = this.activeOptions
+        this.activeOptions.forEach(activeOption => {
+          console.log('activeOption', activeOption)
+          this.children.forEach(child => {
+            if (child.option === activeOption.option) {
+              console.log(child.isSelected)
+              child.isSelected = true
+              console.log('should be true', child.isSelected)
+            } else {
+              console.log(child.isSelected)
+              child.isSelected = false
+              console.log('should be false', child.isSelected)
+            }
+          })
+        })
       },
 
       clear () {
@@ -121,7 +154,12 @@
       apply () {
         this.closeSelect()
 
-        this.selectedOptions.forEach(option => {
+        this.$store.commit('clearFilterOptions')
+
+        //update the active filters array
+        this.activeOptions = this.selectedOptions
+
+        this.activeOptions.forEach(option => {
           this.$store.commit('addFilterOption', option)
         })
 

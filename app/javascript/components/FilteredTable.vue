@@ -103,8 +103,6 @@
       filterItems () {
         this.$store.commit('clearActiveItems')
 
-        console.log('filter data', this.$store.state.selectedFilterOptions)
-
         // an item must match one option from each filter (if any have been selected)
         this.items.forEach(item => {
           let filterMatch = true
