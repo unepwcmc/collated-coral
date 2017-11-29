@@ -14,6 +14,7 @@ class Project < ApplicationRecord
     unique_ocean_based_regions = OceanRegion.pluck(:name).compact.sort
     unique_categories = projects.pluck(:category).compact.uniq.sort
     unique_ecosystems = Ecosystem.pluck(:name).compact.sort
+    unique_status = projects.pluck(:status).compact.uniq.sort
 
     filters = [
       {
@@ -31,7 +32,7 @@ class Project < ApplicationRecord
       {
         name: "status",
         title: "Status",
-        options: [ "Active", "Closed" ]
+        options: unique_status
       },
       {
         name: "category",
