@@ -50,11 +50,11 @@
 
     computed: {
       firstItem () {
-        return 1 * this.currentPage
+        return this.lastItem - this.itemsPerPage + 1
       },
 
       lastItem () {
-        let lastItem = 10 * this.currentPage
+        let lastItem = this.itemsPerPage * this.currentPage
         
         if (lastItem > this.totalItems) {
           lastItem = this.totalItems
