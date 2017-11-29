@@ -91,9 +91,8 @@ $activeTextColour: white;
     border-radius: $global-radius;
     font-size: rem-calc(16);
     margin-top: rem-calc(18);
-    overflow-y: scroll;
     padding: rem-calc(30 25);
-    min-width: rem-calc(300); max-height: rem-calc(316);
+    min-width: rem-calc(300);
 
     display: none;
     position: absolute;
@@ -104,6 +103,9 @@ $activeTextColour: white;
     }
 
     &-list {
+      margin-bottom: rem-calc(20);
+      max-height: rem-calc(316);
+      overflow-y: scroll;
       white-space: nowrap; 
     }
 
@@ -149,7 +151,7 @@ $activeTextColour: white;
       }
 
   &__buttons {
-    margin-top: rem-calc(38);
+    margin-top: rem-calc(18);
     text-align: right;
   }
 }
