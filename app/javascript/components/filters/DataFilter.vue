@@ -1,17 +1,28 @@
 <template>
   <div v-if="hasOptions" class="filter">
-    <p @click="openSelect()" class="filter__button button" :class="{ 'filter__button--active' : isOpen }">{{ title }}</p>
+    <p
+      @click="openSelect()" 
+      class="filter__button button" 
+      :class="{ 'filter__button--active' : isOpen , 'filter__button--has-selected' : hasSelected }">
 
-    <ul class="filter__options ul-unstyled" :class="{ 'filter__options--active' : isOpen }">
-      <data-filter-option v-for="option in options" 
-        :name="name"
-        :filter="title" 
-        :option="option"
-        :type="type">
-      </data-filter-option>
-    </ul>
- </div>
-  
+      {{ title }} <span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
+    </p>
+    
+    <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
+      <ul class="ul-unstyled filter__options-list" :class="filterClass">
+        <data-filter-option v-for="option in options" 
+          :option="option"
+          :selected="false">
+        </data-filter-option>
+      </ul>
+
+      <div class="filter__buttons">
+        <button @click="clear()" class="button--link bold float-left">Clear</button>
+        <!-- <button @click="cancel()" class="button--link">Cancel</button> -->
+        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -42,33 +53,43 @@
     data () {
       return {
         children: this.$children,
-        isOpen: false
+        isOpen: false,
+        activeOptions: []
       }
-    },
-
-    mounted () {
-      eventHub.$on('deselectOption', this.updateFilterOptions)
-      eventHub.$on('selectOption', this.closeSelect)
     },
 
     computed: {
       // only show the select if the filter is a real filter and not just a table title
       hasOptions () {
         return this.options != undefined || this.name != undefined
+      },
+
+      selectedOptions () {
+        let selectedArray = []
+
+        this.children.forEach(child => {
+          if(child.isSelected){ 
+            selectedArray.push(child.option) 
+          }
+        })
+
+        return selectedArray
+      },
+
+      hasSelected () {
+        return this.totalSelectedOptions > 0
+      },
+
+      totalSelectedOptions () {
+        return this.selectedOptions.length
+      },
+
+      filterClass () {
+        return 'filter__options--' + this.name.replace('_| |(|)', '-').toLowerCase()
       }
     },
 
     methods: {
-      updateFilterOptions (filterOption) {
-        // if the filter matches the one that has been deselected 
-        // search for the matching option and set isSelected to false
-        if(this.name == filterOption.name){
-          this.children.forEach(child => {
-            if(child.option == filterOption.option) child.isSelected = false
-          })
-        }
-      },
-
       openSelect () {
         // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
@@ -80,6 +101,50 @@
 
       closeSelect () {
         this.isOpen = false
+      },
+
+      // cancel() {
+      //   this.closeSelect()
+        
+      //   //reset selected options to the active ones
+      //   // this.selectedOptions = this.activeOptions
+      //   this.activeOptions.forEach(activeOption => {
+      //     // console.log('activeOption', activeOption)
+      //     this.children.forEach(child => {
+      //       if (child.option === activeOption.option) {
+      //         // console.log(child.isSelected)
+      //         child.isSelected = true
+      //         // console.log('should be true', child.isSelected)
+      //       } else {
+      //         // console.log(child.isSelected)
+      //         child.isSelected = false
+      //         // console.log('should be false', child.isSelected)
+      //       }
+      //     })
+      //   })
+      // },
+
+      clear () {
+        // set the isSelected property on all options to false
+        this.children.forEach(child => {
+          child.isSelected = false
+        })
+      },
+
+      apply () {
+        this.closeSelect()
+
+        //update the active filters array
+        this.activeOptions = this.selectedOptions
+
+        const newFilterOptions = {
+          filter: this.name,
+          options: this.activeOptions
+        }
+
+        this.$store.commit('updateFilterOptions', newFilterOptions)
+
+        eventHub.$emit('filtersChanged')
       }
     }
   }

@@ -1,4 +1,10 @@
 //**************************************************
+// variables
+//**************************************************
+$activeBackgroundColour: $blue;
+$activeTextColour: white;
+
+//**************************************************
 // filters
 //**************************************************
 .filter {
@@ -21,14 +27,14 @@
     cursor: pointer;
     font-weight: $bold;
     margin: 0;
-    padding-right: rem-calc(37);
+    padding:rem-calc(9 39 10 13);
 
     position: relative;
 
     &:hover { 
-      background-color: $blue;
-      border-color: $blue;
-      color: white;
+      background-color: $activeBackgroundColour;
+      border-color: $activeBackgroundColour;
+      color: $activeTextColour;
 
       &:after { background-image: image-url('icons/arrow-down-white.svg'); }
     }
@@ -39,16 +45,41 @@
       content: '';
       margin: rem-calc(2 0 0 7);
       width: rem-calc(8); height: rem-calc(6);
+
+      right: rem-calc(24);
     }
     
     &--active {
-      background-color: $blue;
-      border-color: $blue;
-      color: white;     
+      background-color: $activeBackgroundColour;
+      border-color: $activeBackgroundColour;
+      color: $activeTextColour;     
 
       &:after,
       &:hover:after { background-image: image-url('icons/arrow-up-white.svg'); }
     }
+
+    &--has-selected {
+      background-color: $activeBackgroundColour;
+      color: $activeTextColour;
+      
+      &:after,
+      &:hover:after { content: none; }
+    }
+
+      &-total {
+        @extend .vertical-center;
+        background-color: $activeTextColour;
+        border-radius: 100%;
+        color: $activeBackgroundColour;
+        font-size: rem-calc(18);
+        text-align: center;
+        width: rem-calc(24); height: rem-calc(24);
+
+        display: block;
+
+        position: absolute;
+        right: rem-calc(9);
+      }
   }
 
 //**************************************************
@@ -62,7 +93,7 @@
     margin-top: rem-calc(18);
     overflow-y: scroll;
     padding: rem-calc(30 25);
-    max-height: rem-calc(316);
+    min-width: rem-calc(300); max-height: rem-calc(316);
 
     display: none;
     position: absolute;
@@ -71,26 +102,54 @@
     &--active {
       display: block;
     }
-  }
 
-  &__option {
-    cursor: pointer;
-    font-size: rem-calc(16);
-    margin: rem-calc(0 20 10 0);
-    width: 100%;
-
-    display: block;
-
-    &:hover {
-      background-color: $grey-light;
+    &-list {
+      white-space: nowrap; 
     }
-  }
+
+    &--donors {
+      column-count: 2;
+      width: 928px;
+      white-space: normal;
+
+      li {
+        margin-left: rem-calc(26);
+        padding-right: rem-calc(36);
+
+        position: relative;
+      }
+
+      input {
+        position: absolute;
+        top: rem-calc(4);
+        left: rem-calc(-26);
+      }
+    }
     
-    &__checkbox {
-      display: inline-block;
-    }
+    &--category { max-width: rem-calc(803); }
+    &--country { max-width: rem-calc(480); }
+    &--ocean-region { max-width: rem-calc(300); }
+  }
 
-    &_checkbox-label {
-      display: inline-block;
+    &__option {
+      cursor: pointer;
+      font-size: rem-calc(16);
+      margin: rem-calc(0 20 10 0);
+      width: 100%;
+
+      display: block;
     }
+    
+      &__checkbox {
+        display: inline-block;
+      }
+
+      &_checkbox-label {
+        display: inline-block;
+      }
+
+  &__buttons {
+    margin-top: rem-calc(38);
+    text-align: right;
+  }
 }

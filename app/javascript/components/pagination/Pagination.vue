@@ -50,7 +50,19 @@
 
     computed: {
       firstItem () {
-        return this.lastItem - this.itemsPerPage + 1
+        let first
+
+        if(this.totalItems == 0) { 
+          first = 0
+
+        } else if (this.totalItems < this.itemsPerPage) {
+          first = 1
+
+        } else {
+          first = this.lastItem - this.itemsPerPage + 1
+        }
+        
+        return first
       },
 
       lastItem () {

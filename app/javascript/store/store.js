@@ -13,7 +13,6 @@ export default new Vuex.Store({
     activeItems: [], // contains indices of articles which match the filters
     currentPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
-    filters: [],
     modalContent: {},
     sortDirection: ''
   },
@@ -35,13 +34,24 @@ export default new Vuex.Store({
       this.state.currentPage = currentPage
     },
 
-    updateFilterOptions (state, options) {
+    setFilterOptions (state, options) {
       this.state.selectedFilterOptions = options
     },
 
-    addFilterOption (state, option) {
+    updateFilterOptions (state, newOptions) {
+      // find the correct filter to update
       this.state.selectedFilterOptions.forEach(filter => {
-        if(filter.name == option.name){ filter.options.push(option.option)}
+        if(filter.name == newOptions.filter){
+
+          // replace filter options array with newOptions array
+          filter.options = newOptions.options
+        }
+      })
+    },
+
+    clearFilterOptions () {
+      this.state.selectedFilterOptions.forEach(filter => {
+        filter.options = []
       })
     },
 
@@ -58,10 +68,6 @@ export default new Vuex.Store({
           })
         }
       })
-    },
-
-    updateFilters (state, filters) {
-      this.state.filters = filters
     },
 
     updateModalContent (state, content) {

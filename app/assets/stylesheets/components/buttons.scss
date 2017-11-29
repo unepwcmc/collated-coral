@@ -27,7 +27,7 @@
   cursor: pointer;
   font-size: rem-calc(18);
   font-weight: $bold;
-  padding: rem-calc(11 17);
+  padding: rem-calc(12 17);
   text-decoration: none;
   
   &--blue { @include button-background($blue); }
@@ -36,7 +36,8 @@
   &--download {
     background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
     color: white;
-    padding: rem-calc(11 22 11 53);
+    padding-right: rem-calc(22);
+    padding-left: rem-calc(53);
   }
 
   &--next {
@@ -56,4 +57,17 @@
 
     &:hover { background-color: $grey-light; }
   }
+
+  &--link {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: $body-font;
+    cursor: pointer;
+    font-size: rem-calc(18);
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &--link--green { color: $green; }
 }

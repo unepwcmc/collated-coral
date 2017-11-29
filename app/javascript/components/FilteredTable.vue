@@ -53,7 +53,6 @@
       this.createSelectedFilterOptions()
       this.items = this.projects
       this.$store.commit('updateTotalItems', this.items.length)
-      this.$store.commit('updateFilters', this.filters)
     },
 
     mounted () {
@@ -180,7 +179,7 @@
           }
         })
 
-        this.$store.commit('updateFilterOptions', array)
+        this.$store.commit('setFilterOptions', array)
       },
 
       sortActiveItems (sort) {
