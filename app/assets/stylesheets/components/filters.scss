@@ -102,6 +102,24 @@ $activeTextColour: white;
     &--active {
       display: block;
     }
+
+    &--donors {
+      column-count: 2;
+      width: 928px;
+
+      li {
+        margin-left: rem-calc(26);
+        padding-right: rem-calc(36);
+
+        position: relative;
+      }
+
+      input {
+        position: absolute;
+        top: rem-calc(4);
+        left: rem-calc(-26);
+      }
+    }
   }
 
   &__option {

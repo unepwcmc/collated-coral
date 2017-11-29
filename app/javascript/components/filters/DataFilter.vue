@@ -9,7 +9,7 @@
     </p>
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
-      <ul class="ul-unstyled">
+      <ul class="ul-unstyled" :class="filterClass">
         <data-filter-option v-for="option in options" 
           :option="option">
         </data-filter-option>
@@ -85,6 +85,10 @@
 
       totalSelectedOptions () {
         return this.selectedOptions.length
+      },
+
+      filterClass () {
+        return 'filter__options--' + this.name.replace('_| |(|)', '-').toLowerCase()
       }
     },
 
