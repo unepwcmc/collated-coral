@@ -9,14 +9,14 @@
     </p>
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
-      <ul class="ul-unstyled" :class="filterClass">
+      <ul class="ul-unstyled filter__options-list" :class="filterClass">
         <data-filter-option v-for="option in options" 
           :option="option">
         </data-filter-option>
       </ul>
 
-      <div>
-        <button @click="clear()" class="button--link bold">Clear</button>
+      <div class="filter__buttons">
+        <button @click="clear()" class="button--link bold float-left">Clear</button>
         <button @click="cancel()" class="button--link">Cancel</button>
         <button @click="apply()" class="button--link button--link--green bold">Apply</button>
       </div>

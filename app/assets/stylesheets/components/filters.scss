@@ -93,7 +93,7 @@ $activeTextColour: white;
     margin-top: rem-calc(18);
     overflow-y: scroll;
     padding: rem-calc(30 25);
-    max-height: rem-calc(316);
+    min-width: rem-calc(300); max-height: rem-calc(316);
 
     display: none;
     position: absolute;
@@ -103,9 +103,14 @@ $activeTextColour: white;
       display: block;
     }
 
+    &-list {
+      white-space: nowrap; 
+    }
+
     &--donors {
       column-count: 2;
       width: 928px;
+      white-space: normal;
 
       li {
         margin-left: rem-calc(26);
@@ -120,22 +125,31 @@ $activeTextColour: white;
         left: rem-calc(-26);
       }
     }
-  }
-
-  &__option {
-    cursor: pointer;
-    font-size: rem-calc(16);
-    margin: rem-calc(0 20 10 0);
-    width: 100%;
-
-    display: block;
-  }
     
-    &__checkbox {
-      display: inline-block;
-    }
+    &--category { max-width: rem-calc(803); }
+    &--country { max-width: rem-calc(480); }
+    &--ocean-region { max-width: rem-calc(300); }
+  }
 
-    &_checkbox-label {
-      display: inline-block;
+    &__option {
+      cursor: pointer;
+      font-size: rem-calc(16);
+      margin: rem-calc(0 20 10 0);
+      width: 100%;
+
+      display: block;
     }
+    
+      &__checkbox {
+        display: inline-block;
+      }
+
+      &_checkbox-label {
+        display: inline-block;
+      }
+
+  &__buttons {
+    margin-top: rem-calc(38);
+    text-align: right;
+  }
 }
