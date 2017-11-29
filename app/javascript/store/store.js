@@ -34,13 +34,18 @@ export default new Vuex.Store({
       this.state.currentPage = currentPage
     },
 
-    updateFilterOptions (state, options) {
+    setFilterOptions (state, options) {
       this.state.selectedFilterOptions = options
     },
 
-    addFilterOption (state, option) {
+    updateFilterOptions (state, newOptions) {
+      // find the correct filter to update
       this.state.selectedFilterOptions.forEach(filter => {
-        if(filter.name == option.name){ filter.options.push(option.option)}
+        if(filter.name == newOptions.filter){
+
+          // replace filter options array with newOptions array
+          filter.options = newOptions.options
+        }
       })
     },
 

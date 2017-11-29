@@ -18,7 +18,7 @@
 
       <div class="filter__buttons">
         <button @click="clear()" class="button--link bold float-left">Clear</button>
-        <button @click="cancel()" class="button--link">Cancel</button>
+        <!-- <button @click="cancel()" class="button--link">Cancel</button> -->
         <button @click="apply()" class="button--link button--link--green bold">Apply</button>
       </div>
     </div>
@@ -65,35 +65,15 @@
       },
 
       selectedOptions () {
-        // get () {
-          let selectedArray = []
+        let selectedArray = []
 
-          this.children.forEach(child => {
-            if(child.isSelected){ 
-              let obj = {}
-              obj.name = this.name
-              obj.option = child.option
-              obj.type = this.type
+        this.children.forEach(child => {
+          if(child.isSelected){ 
+            selectedArray.push(child.option) 
+          }
+        })
 
-              selectedArray.push(obj) 
-            }
-          })
-
-          return selectedArray
-        // },
-        // set (array) {
-        //   array.forEach(activeOption => {
-        //     this.children.forEach(child => {
-        //       if (child.option === activeOption.option) {
-        //         console.log(child.selected)
-        //         child.selected = true
-        //         console.log(child.selected)
-        //       } else {
-        //         child.selected = false
-        //       }
-        //     })
-        //   })
-        // }
+        return selectedArray
       },
 
       hasSelected () {
@@ -123,26 +103,26 @@
         this.isOpen = false
       },
 
-      cancel() {
-        this.closeSelect()
+      // cancel() {
+      //   this.closeSelect()
         
-        //reset selected options to the active ones
-        // this.selectedOptions = this.activeOptions
-        this.activeOptions.forEach(activeOption => {
-          console.log('activeOption', activeOption)
-          this.children.forEach(child => {
-            if (child.option === activeOption.option) {
-              console.log(child.isSelected)
-              child.isSelected = true
-              console.log('should be true', child.isSelected)
-            } else {
-              console.log(child.isSelected)
-              child.isSelected = false
-              console.log('should be false', child.isSelected)
-            }
-          })
-        })
-      },
+      //   //reset selected options to the active ones
+      //   // this.selectedOptions = this.activeOptions
+      //   this.activeOptions.forEach(activeOption => {
+      //     // console.log('activeOption', activeOption)
+      //     this.children.forEach(child => {
+      //       if (child.option === activeOption.option) {
+      //         // console.log(child.isSelected)
+      //         child.isSelected = true
+      //         // console.log('should be true', child.isSelected)
+      //       } else {
+      //         // console.log(child.isSelected)
+      //         child.isSelected = false
+      //         // console.log('should be false', child.isSelected)
+      //       }
+      //     })
+      //   })
+      // },
 
       clear () {
         // set the isSelected property on all options to false
@@ -154,14 +134,15 @@
       apply () {
         this.closeSelect()
 
-        this.$store.commit('clearFilterOptions')
-
         //update the active filters array
         this.activeOptions = this.selectedOptions
 
-        this.activeOptions.forEach(option => {
-          this.$store.commit('addFilterOption', option)
-        })
+        const newFilterOptions = {
+          filter: this.name,
+          options: this.activeOptions
+        }
+
+        this.$store.commit('updateFilterOptions', newFilterOptions)
 
         eventHub.$emit('filtersChanged')
       }

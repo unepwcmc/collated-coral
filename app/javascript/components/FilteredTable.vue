@@ -179,7 +179,7 @@
           }
         })
 
-        this.$store.commit('updateFilterOptions', array)
+        this.$store.commit('setFilterOptions', array)
       },
 
       sortActiveItems (sort) {
