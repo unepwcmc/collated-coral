@@ -58,7 +58,7 @@ namespace :import do
         end
       end
 
-      project.project_title = project_row[project_hash[:project_title]]&.strip
+      project.project_title = project_row[project_hash[:project_title]]&.strip.gsub("\u00A0", " ")
       project.status = project_row[project_hash[:status]]&.strip || "Empty"
       project.start_date = project_row[project_hash[:start_date]]&.strip || DateTime.now.year.to_i
       project.end_date = project_row[project_hash[:end_date]]&.strip || DateTime.now.year.to_i
