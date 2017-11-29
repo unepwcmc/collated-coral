@@ -26,16 +26,7 @@
 
     computed: {
       projectTitle () {
-        let title = ''
-        const length = this.item.project_title.length
-
-        if (length <= 30) {
-          title = this.item.project_title
-        } else {
-          title = this.item.project_title.substring(0,27) + '...'
-        }
-
-        return title
+        return this.trim(this.item.project_title)
       }
     },
 
@@ -53,6 +44,21 @@
 
         if(this.item[field].length > 1) {
           output = 'Multiple'
+        } else {
+          output = this.trim(output)
+        }
+
+        return output
+      },
+
+      trim (phrase) {
+        const length = phrase.length
+        let output
+
+        if (length <= 30) {
+          output = phrase
+        } else {
+          output = phrase.substring(0,27) + '...'
         }
 
         return output
