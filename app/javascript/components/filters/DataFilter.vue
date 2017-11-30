@@ -18,7 +18,7 @@
 
       <div class="filter__buttons">
         <button @click="clear()" class="button--link bold float-left">Clear</button>
-        <!-- <button @click="cancel()" class="button--link">Cancel</button> -->
+        <button @click="cancel()" class="button--link">Cancel</button>
         <button @click="apply()" class="button--link button--link--green bold">Apply</button>
       </div>
     </div>
@@ -103,26 +103,14 @@
         this.isOpen = false
       },
 
-      // cancel() {
-      //   this.closeSelect()
+      cancel() {
+        this.closeSelect()
         
-      //   //reset selected options to the active ones
-      //   // this.selectedOptions = this.activeOptions
-      //   this.activeOptions.forEach(activeOption => {
-      //     // console.log('activeOption', activeOption)
-      //     this.children.forEach(child => {
-      //       if (child.option === activeOption.option) {
-      //         // console.log(child.isSelected)
-      //         child.isSelected = true
-      //         // console.log('should be true', child.isSelected)
-      //       } else {
-      //         // console.log(child.isSelected)
-      //         child.isSelected = false
-      //         // console.log('should be false', child.isSelected)
-      //       }
-      //     })
-      //   })
-      // },
+        // reset each option to the correct state
+        this.children.forEach(child => {
+          child.isSelected = this.activeOptions.includes(child.option) ? true : false
+        })
+      },
 
       clear () {
         // set the isSelected property on all options to false
