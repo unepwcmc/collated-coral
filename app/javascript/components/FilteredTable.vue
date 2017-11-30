@@ -199,7 +199,7 @@
         // order the items using the correct property
         return (a, b) => {
           let result = (a[filter] < b[filter]) ? -1 : (a[filter] > b[filter]) ? 1 : 0;
-          console.log(this.sortDirection)
+          
           return result * this.sortDirection;
         }
       }
