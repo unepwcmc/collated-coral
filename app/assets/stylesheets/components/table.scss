@@ -31,21 +31,19 @@
 // sort column buttons
 //**************************************************
   &__sorting {
+    opacity: .7;
     vertical-align: middle;
 
     display: inline-block;
+
+    &:hover { opacity: .9; }
   }
 
     &__sort {
       cursor: pointer;
-      opacity: .7;
       width: rem-calc(8); height: rem-calc(6);
 
       display: block;
-
-      &:hover {
-        opacity: .9;
-      }
 
       &--ascending {
         background-image: image-url('icons/arrow-up-white.svg');

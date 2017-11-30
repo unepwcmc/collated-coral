@@ -45,7 +45,8 @@
           itemsPerPage: 10
         },
         items: [],
-        itemsOnCurrentPage: []
+        itemsOnCurrentPage: [],
+        sortDirection: 1
       }
     },
 
@@ -182,25 +183,24 @@
         this.$store.commit('setFilterOptions', array)
       },
 
-      sortActiveItems (sort) {
+      sortActiveItems (filter) {
         // sort the items using the main array the contains all data
-        this.items.sort(this.compare())
+        this.items.sort(this.compare(filter))
 
         // trigger filtering function so that the active items array is updated with
         // the new order and the results are paginated correctly
         this.filterItems()
       },
 
-      compare () {
-        // use a negative to flip the order if the button is descending
-        let order = (this.$store.state.sortDirection.substr(0, 1) === '+') ? 1 : -1
-
-        let filter = this.$store.state.sortDirection.substr(1)
+      compare (filter) {
+        // use a negative to alternate the direction of the order
+        this.sortDirection = this.sortDirection * -1
 
         // order the items using the correct property
-        return function (a, b) {
+        return (a, b) => {
           let result = (a[filter] < b[filter]) ? -1 : (a[filter] > b[filter]) ? 1 : 0;
-          return result * order;
+          console.log(this.sortDirection)
+          return result * this.sortDirection;
         }
       }
     }
