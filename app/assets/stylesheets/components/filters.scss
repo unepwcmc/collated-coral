@@ -111,20 +111,16 @@ $activeTextColour: white;
 
     &--donors {
       column-count: 2;
+      flex-wrap: wrap;
       width: 928px;
       white-space: normal;
 
+      display: flex;
+
       li {
-        margin-left: rem-calc(26);
-        padding-right: rem-calc(36);
+        flex: 1 0 50%;
 
-        position: relative;
-      }
-
-      input {
-        position: absolute;
-        top: rem-calc(4);
-        left: rem-calc(-26);
+        float: left;
       }
     }
     
@@ -134,16 +130,41 @@ $activeTextColour: white;
   }
 
     &__option {
-      cursor: pointer;
       font-size: rem-calc(16);
-      margin: rem-calc(0 20 10 0);
+      margin-bottom: rem-calc(16);
+      padding: rem-calc(0 20 0 38);
       width: 100%;
 
       display: block;
+      position: relative;
+
+      label { cursor: pointer; }
     }
-    
+
+//**************************************************
+// checkbox
+//**************************************************
       &__checkbox {
-        display: inline-block;
+        border: solid rem-calc(1) $grey;
+        cursor: pointer;
+        width: rem-calc(22); height: rem-calc(22);
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+
+        display: block;
+        position: absolute;
+        top: rem-calc(-2);
+        left: 0;
+
+        &--active:after {
+          background: $blue image-url('icons/tick.svg') center no-repeat;
+          content: '';
+          width: rem-calc(22); height: rem-calc(22);
+
+          display: block;
+        }
       }
 
       &_checkbox-label {
