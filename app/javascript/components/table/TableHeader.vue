@@ -11,7 +11,7 @@
 
 <script>
   import { eventHub } from '../../home.js'
-
+  
   export default {
     name: 'table-header',
 

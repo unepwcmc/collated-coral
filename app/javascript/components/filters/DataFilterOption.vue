@@ -1,6 +1,6 @@
 <template>
   <li class="filter__option">
-    <input type="checkbox" :id="optionId" v-model="isSelected" class="filter__checkbox">
+    <input type="checkbox" :id="optionId" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isSelected }">
     <label :for="optionId" class="filter__checkbox-label">{{ option }}</label>
   </li>
 </template>
