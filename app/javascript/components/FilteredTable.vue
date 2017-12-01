@@ -2,13 +2,11 @@
   <div class="relative">
     <filters :filters="filters"></filters>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <table-header v-for="filter in filters" :filter="filter"></table-header>
-        </tr>
-      </thead>
+    <table class="table table--head">
+      <table-head :filters="filters"></table-head>
+    </table>
 
+    <table class="table table--body">
       <tbody>
         <row v-for="item, key in items"
           :key="key"
@@ -25,14 +23,14 @@
   import { eventHub } from '../home.js'
   import Filters from './filters/Filters.vue'
   import SelectedFilter from './filters/SelectedFilter.vue'
-  import TableHeader from './table/TableHeader.vue'
+  import TableHead from './table/TableHead.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, TableHeader, Row, Pagination },
+    components: { SelectedFilter, Filters, TableHead, Row, Pagination },
 
     props: {
       filters: { type: Array },
