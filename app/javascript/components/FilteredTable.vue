@@ -2,13 +2,11 @@
   <div class="relative">
     <filters :filters="filters"></filters>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <table-header v-for="filter in filters" :filter="filter"></table-header>
-        </tr>
-      </thead>
+    <table class="table table--head">
+      <table-head :filters="filters"></table-head>
+    </table>
 
+    <table class="table table--body">
       <tbody>
         <row v-for="item, key in items"
           :key="key"
@@ -25,14 +23,14 @@
   import { eventHub } from '../home.js'
   import Filters from './filters/Filters.vue'
   import SelectedFilter from './filters/SelectedFilter.vue'
-  import TableHeader from './table/TableHeader.vue'
+  import TableHead from './table/TableHead.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, TableHeader, Row, Pagination },
+    components: { SelectedFilter, Filters, TableHead, Row, Pagination },
 
     props: {
       filters: { type: Array },
@@ -45,7 +43,8 @@
           itemsPerPage: 10
         },
         items: [],
-        itemsOnCurrentPage: []
+        itemsOnCurrentPage: [],
+        sortDirection: 1
       }
     },
 
@@ -182,25 +181,24 @@
         this.$store.commit('setFilterOptions', array)
       },
 
-      sortActiveItems (sort) {
+      sortActiveItems (filter) {
         // sort the items using the main array the contains all data
-        this.items.sort(this.compare())
+        this.items.sort(this.compare(filter))
 
         // trigger filtering function so that the active items array is updated with
         // the new order and the results are paginated correctly
         this.filterItems()
       },
 
-      compare () {
-        // use a negative to flip the order if the button is descending
-        let order = (this.$store.state.sortDirection.substr(0, 1) === '+') ? 1 : -1
-
-        let filter = this.$store.state.sortDirection.substr(1)
+      compare (filter) {
+        // use a negative to alternate the direction of the order
+        this.sortDirection = this.sortDirection * -1
 
         // order the items using the correct property
-        return function (a, b) {
+        return (a, b) => {
           let result = (a[filter] < b[filter]) ? -1 : (a[filter] > b[filter]) ? 1 : 0;
-          return result * order;
+          
+          return result * this.sortDirection;
         }
       }
     }

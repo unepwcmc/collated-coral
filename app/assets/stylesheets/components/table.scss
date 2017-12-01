@@ -1,6 +1,44 @@
-.table {
+//----------------------------------------
+// animations
+//----------------------------------------
+@keyframes showHeader {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 //**************************************************
-// column headers
+// table styles
+//**************************************************
+.table {
+
+  &--head {
+    // height: rem-calc(57);
+    margin-top: rem-calc(30);
+  }
+
+  &--body {
+    margin-bottom: rem-calc(40);
+  }
+//**************************************************
+// table head <thead>
+//**************************************************
+  &__head {
+    &--stuck {
+      position: fixed;
+      top: 0;
+
+      width: rem-calc(1160);
+
+      animation: showHeader .25s forwards linear;
+    }
+  }
+
+//**************************************************
+// column headers <th>
 //**************************************************
   &__header {
     margin-right: rem-calc(2);
@@ -16,36 +54,34 @@
   // fix the columns widths so that they don't change
   // size when you use the pagination 
   th,td {
-    &:first-child { width: 5%; }
-    &:nth-child(2) { width: 12%; }
-    &:nth-child(3) { width: 10%; }
-    &:nth-child(4) { width: 9%; }
-    &:nth-child(5) { width: 12%; }
-    &:nth-child(6) { width: 12%; }
-    &:nth-child(7) { width: 10%; }
-    &:nth-child(8) { width: 13%; }
-    &:nth-child(9) { width: 15%; }
+    &:first-child { width: 60px; }
+    &:nth-child(2) { width: 144px; }
+    &:nth-child(3) { width: 130px; }
+    &:nth-child(4) { width: 104px; }
+    &:nth-child(5) { width: 142px; }
+    &:nth-child(6) { width: 132px; }
+    &:nth-child(7) { width: 118px; }
+    &:nth-child(8) { width: 154px; }
+    &:nth-child(9) { width: 176px; }
   }
 
 //**************************************************
 // sort column buttons
 //**************************************************
   &__sorting {
+    opacity: .7;
     vertical-align: middle;
 
     display: inline-block;
+
+    &:hover { opacity: .9; }
   }
 
     &__sort {
       cursor: pointer;
-      opacity: .7;
       width: rem-calc(8); height: rem-calc(6);
 
       display: block;
-
-      &:hover {
-        opacity: .9;
-      }
 
       &--ascending {
         background-image: image-url('icons/arrow-up-white.svg');
