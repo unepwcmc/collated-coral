@@ -18,7 +18,7 @@
       </button>
     </div>
 
-    <div v-else>
+    <div v-else class="left">
       <p>There are no projects matching the selected filters options.</p>
     </div>
   </div>
