@@ -15,6 +15,21 @@
     width: rem-calc(104); height: rem-calc(31);
   }
 
+  &-ministere-1 {
+    background-image: image-url('logos/logo-ministere-1.svg');
+    width: rem-calc(41); height: rem-calc(31); 
+  }
+
+  &-ministere-2 {
+    background-image: image-url('logos/logo-ministere-2.svg');
+    width: rem-calc(41); height: rem-calc(31); 
+  }
+
+  &-ministere-3 {
+    background-image: image-url('logos/logo-ministere-3.svg');
+    width: rem-calc(41); height: rem-calc(31); 
+  }
+
   &-unep {
     background-image: url('https://s3.amazonaws.com/wcmc.logo/UN-Environment-+logo+2017+white.svg');
     width: rem-calc(59); height: rem-calc(31);
