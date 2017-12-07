@@ -8,6 +8,7 @@
     <td>{{ checkForMultiples('country') }}</td>
     <td>{{ checkForMultiples('ocean_based_region') }}</td>
     <td>{{ item.total_project_cost }}</td>
+    <td>{{ item.co_funding_entities }}</td>
   </tr>
 </template>
 

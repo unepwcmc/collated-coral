@@ -54,7 +54,11 @@ class Project < ApplicationRecord
       },
       {
         title: "Total Project Cost"
+      },
+      {
+        title: "Co-funding"
       }
+
     ].to_json
   end
 
