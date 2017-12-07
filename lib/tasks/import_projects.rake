@@ -30,7 +30,7 @@ namespace :import do
       co_funding_entities: csv_headers[12],
       category: csv_headers[13],
       ecosystems: csv_headers[14],
-      further_information: csv_headers[15]
+      further_information: csv_headers[16].chomp
     }
 
     CSV.parse(csv, :headers => true) do |row|
