@@ -3,7 +3,6 @@
     <td>{{ item.id }}</td>
     <td :title="item.project_title">{{ projectTitle }}</td>
     <td>{{ checkForMultiples('donors') }}</td>
-    <td>{{ item.status }}</td>
     <td>{{ item.category }}</td>
     <td>{{ checkForMultiples('ecosystem') }}</td>
     <td>{{ checkForMultiples('country') }}</td>
