@@ -1,6 +1,6 @@
 module ApplicationHelper
   def page_title 
-    'Share Coral Reef Funding Landscape on Twitter'
+    'Coral Reef Funding Landscape'
   end
 
   def url_encode (text)

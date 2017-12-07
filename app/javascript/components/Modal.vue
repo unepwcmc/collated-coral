@@ -18,9 +18,9 @@
         <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
         <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
         <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
-        <p><strong>Co-funding Entities:</strong> {{ modalContent.co_funding_entities }}</p>
+        <p><strong>Primary Funding:</strong> {{ modalContent.primay_funding }}</p>
+        <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
         <p><strong>Category:</strong> {{ modalContent.category }}</p>
-        <p><strong>Team Leader:</strong> {{ modalContent.team_leader }}</p>
         <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
       </div>
     </div>

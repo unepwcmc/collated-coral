@@ -30,11 +30,6 @@ class Project < ApplicationRecord
         type: 'multiple'
       },
       {
-        name: "status",
-        title: "Status",
-        options: unique_status
-      },
-      {
         name: "category",
         title: "Category",
         options: unique_categories
@@ -59,7 +54,11 @@ class Project < ApplicationRecord
       },
       {
         title: "Total Project Cost"
+      },
+      {
+        title: "Co-funding"
       }
+
     ].to_json
   end
 

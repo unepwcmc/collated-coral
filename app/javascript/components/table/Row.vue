@@ -3,12 +3,12 @@
     <td>{{ item.id }}</td>
     <td :title="item.project_title">{{ projectTitle }}</td>
     <td>{{ checkForMultiples('donors') }}</td>
-    <td>{{ item.status }}</td>
     <td>{{ item.category }}</td>
     <td>{{ checkForMultiples('ecosystem') }}</td>
     <td>{{ checkForMultiples('country') }}</td>
     <td>{{ checkForMultiples('ocean_based_region') }}</td>
     <td>{{ item.total_project_cost }}</td>
+    <td>{{ item.co_funding_entities }}</td>
   </tr>
 </template>
 
