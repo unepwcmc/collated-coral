@@ -15,6 +15,11 @@
     width: rem-calc(104); height: rem-calc(31);
   }
 
+  &-ministere {
+    background-image: image-url('logos/logo-ministere.svg');
+    width: rem-calc(104); height: rem-calc(31); 
+  }
+
   &-unep {
     background-image: url('https://s3.amazonaws.com/wcmc.logo/UN-Environment-+logo+2017+white.svg');
     width: rem-calc(59); height: rem-calc(31);
