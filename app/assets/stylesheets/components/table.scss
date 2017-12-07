@@ -16,8 +16,8 @@
 .table {
 
   &--head {
-    // height: rem-calc(57);
     margin-top: rem-calc(30);
+    height: rem-calc(56);
   }
 
   &--body {
@@ -27,6 +27,8 @@
 // table head <thead>
 //**************************************************
   &__head {
+    position: absolute;
+
     &--stuck {
       position: fixed;
       top: 0;
