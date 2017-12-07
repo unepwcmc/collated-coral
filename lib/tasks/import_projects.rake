@@ -65,8 +65,8 @@ namespace :import do
       project.beneficiaries = project_row[project_hash[:beneficiaries]]&.strip
       project.implementing_agency = project_row[project_hash[:implementing_agency]]&.strip
       project.total_project_cost = project_row[project_hash[:total_project_cost]]&.strip
-      project.primary_funding = project_row[project_hash[:primary_funding]]&.strip
-      project.co_funding_entities = project_row[project_hash[:co_funding_entities]]&.strip
+      project.primary_funding = project_row[project_hash[:primary_funding]]&.strip || "Data not available"
+      project.co_funding_entities = project_row[project_hash[:co_funding_entities]]&.strip || "Data not available"
       project.category = project_row[project_hash[:category]]&.strip
       project.further_information = project_row[project_hash[:further_information]]&.strip
 
