@@ -77,9 +77,9 @@ class Project < ApplicationRecord
         beneficiaries: project.beneficiaries,
         implementing_agency: project.implementing_agency,
         total_project_cost: project.total_project_cost,
+        primary_funding: project.primary_funding,
         co_funding_entities: project.co_funding_entities,
         category: project.category,
-        team_leader: project.team_leader,
         further_information: project.further_information
       }
     end.to_json
