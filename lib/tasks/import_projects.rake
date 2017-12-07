@@ -26,9 +26,9 @@ namespace :import do
       beneficiaries: csv_headers[8],
       implementing_agency: csv_headers[9],
       total_project_cost: csv_headers[10],
-      co_funding_entities: csv_headers[11],
-      category: csv_headers[12],
-      team_leader: csv_headers[13],
+      primary_funding: csv_headers[11],
+      co_funding_entities: csv_headers[12],
+      category: csv_headers[13],
       ecosystems: csv_headers[14],
       further_information: csv_headers[15]
     }
@@ -65,9 +65,9 @@ namespace :import do
       project.beneficiaries = project_row[project_hash[:beneficiaries]]&.strip
       project.implementing_agency = project_row[project_hash[:implementing_agency]]&.strip
       project.total_project_cost = project_row[project_hash[:total_project_cost]]&.strip
+      project.primary_funding = project_row[project_hash[:primary_funding]]&.strip
       project.co_funding_entities = project_row[project_hash[:co_funding_entities]]&.strip
       project.category = project_row[project_hash[:category]]&.strip
-      project.team_leader = project_row[project_hash[:team_leader]]&.strip
       project.further_information = project_row[project_hash[:further_information]]&.strip
 
       unless project.save!
