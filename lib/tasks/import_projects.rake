@@ -49,7 +49,7 @@ namespace :import do
       fields.each do |field|
         list_of_children = project_row[project_hash[field.to_sym]]&.strip
         next if list_of_children.nil?
-        list_of_children = list_of_children.split(",")
+        list_of_children = list_of_children.split(";")
         list_of_children.each do |child_name|
           new_child = field.camelize.singularize.constantize.find_or_create_by(name: child_name)
           unless project.send(field.downcase.to_sym).exists?(new_child.id)
