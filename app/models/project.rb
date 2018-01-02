@@ -91,8 +91,7 @@ class Project < ApplicationRecord
 
     project_columns = Project.new.attributes.keys
 
-    project_columns.delete("created_at")
-    project_columns.delete("updated_at")
+    project_columns.delete_if { |k, v| ["created_at", "updated_at"].include? k }
     project_columns << "Donors"
     project_columns << "Country"
     project_columns << "Ecosystem"
@@ -110,8 +109,7 @@ class Project < ApplicationRecord
 
     projects.to_a.each do |project|
       project_attributes = project.attributes
-      project_attributes.delete("created_at")
-      project_attributes.delete("updated_at")
+      project_attributes.delete_if { |k, v| ["created_at", "updated_at"].include? k }
       project_attributes[:donors] = project.donors.pluck(:name).sort.join(",")
       project_attributes[:countries] = project.countries.pluck(:name).sort.join(",")
       project_attributes[:ecosystems] = project.ecosystems.pluck(:name).sort.join(",")
