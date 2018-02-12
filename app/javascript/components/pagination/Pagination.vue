@@ -1,26 +1,24 @@
 <template>
-  <div class="center">
+  <div class="right">
     <div v-if="haveResults">
+      <span class="bold">{{ firstItem }} - {{ lastItem }} of {{ totalItems }}</span>
+
       <button 
         v-bind="{ 'disabled' : !previousIsActive }"
         @click="changePage(previousIsActive, 'previous')"
         class="button button--previous"
         :class="{ 'button--disabled' : !previousIsActive }">
-        Previous
       </button>
-
-      Page {{ currentPage }} of {{ totalPages }}
 
       <button 
         v-bind="{ 'disabled' : !nextIsActive }"
         @click="changePage(nextIsActive, 'next')"
         class="button button--next"
         :class="{ 'button--disabled' : !nextIsActive }">
-        Next
       </button>
     </div>
 
-    <div v-else>
+    <div v-else class="left">
       <p>There are no projects matching the selected filters options.</p>
     </div>
   </div>
@@ -51,6 +49,32 @@
     },
 
     computed: {
+      firstItem () {
+        let first
+
+        if(this.totalItems == 0) { 
+          first = 0
+
+        } else if (this.totalItems < this.itemsPerPage) {
+          first = 1
+
+        } else {
+          first = this.lastItem - this.itemsPerPage + 1
+        }
+        
+        return first
+      },
+
+      lastItem () {
+        let lastItem = this.itemsPerPage * this.currentPage
+        
+        if (lastItem > this.totalItems) {
+          lastItem = this.totalItems
+        }
+
+        return lastItem
+      },
+
       currentPage () {
         return this.$store.state.currentPage
       },

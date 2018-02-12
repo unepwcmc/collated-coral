@@ -1,54 +1,97 @@
-.table {
+//----------------------------------------
+// animations
+//----------------------------------------
+@keyframes showHeader {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 //**************************************************
-// column headers
+// table styles
+//**************************************************
+.table {
+
+  &--head {
+    margin-top: rem-calc(30);
+    height: rem-calc(56);
+  }
+
+  &--body {
+    margin-bottom: rem-calc(40);
+  }
+//**************************************************
+// table head <thead>
+//**************************************************
+  &__head {
+    position: absolute;
+
+    &--stuck {
+      position: fixed;
+      top: 0;
+
+      width: rem-calc(1160);
+
+      animation: showHeader .25s forwards linear;
+    }
+  }
+
+//**************************************************
+// column headers <th>
 //**************************************************
   &__header {
+    margin-right: rem-calc(2);
     vertical-align: middle;
-    width: 77%;
 
     display: inline-block;
+  }
+
+//**************************************************
+// columns
+//**************************************************
+  
+  // fix the columns widths so that they don't change
+  // size when you use the pagination 
+  th,td {
+    &:first-child { width: 58px; }
+    &:nth-child(2) { width: 130px; }
+    &:nth-child(3) { width: 130px; }
+    &:nth-child(4) { width: 116px; }
+    &:nth-child(5) { width: 128px; }
+    &:nth-child(6) { width: 120px; }
+    &:nth-child(7) { width: 158px; }
+    &:nth-child(8) { width: 172px; }
+    &:nth-child(9) { width: 148px; }
   }
 
 //**************************************************
 // sort column buttons
 //**************************************************
   &__sorting {
+    opacity: .7;
     vertical-align: middle;
-    width: 19%;
 
     display: inline-block;
+
+    &:hover { opacity: .9; }
   }
 
     &__sort {
-      background-color: $grey;
-      border: none;
       cursor: pointer;
-      margin: 0;
-      padding: rem-calc(3 7 4 7);
+      width: rem-calc(8); height: rem-calc(6);
 
       display: block;
 
-      &:hover {
-        background-color: lighten($grey, 7%);
-      }
-
-      &:before {
-        font: $fontAwesome;
-      }
-
       &--ascending {
-        border-bottom: solid rem-calc(1) grey;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-
-        &:before { content: '\f106'; }
+        background-image: image-url('icons/arrow-up-white.svg');
+        margin-bottom: rem-calc(1);
       }
 
       &--descending {
-        border-top-right-radius: 0;
-        border-top-left-radius: 0;
-
-        &:before { content: '\f107'; }
+        background-image: image-url('icons/arrow-down-white.svg');
       }
     }
 }

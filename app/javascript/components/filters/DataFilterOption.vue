@@ -1,10 +1,8 @@
 <template>
-  <span 
-    v-show="!isSelected" 
-    @click="selectOption({ name: name, option: option })"
-    class="filter__select-option">
-    {{ option }}
-  </span>
+  <li class="filter__option">
+    <input type="checkbox" :id="optionId" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isSelected }">
+    <label :for="optionId" class="filter__checkbox-label">{{ option }}</label>
+  </li>
 </template>
 
 <script>
@@ -14,10 +12,6 @@
     name: 'data-filter-option',
 
     props: {
-      name: {
-        required: true,
-        type: String
-      },
       option: {
         required: true
       }
@@ -29,14 +23,15 @@
       }
     },
 
+    computed : {
+      optionId () {
+        return this.option.replace(' |(|)|_', '-').toLowerCase()
+      }
+    },
+
     methods: {
       selectOption (option) {
-        this.$store.commit('addFilterOption', option)
-
         this.isSelected = true
-
-        eventHub.$emit('selectOption')
-        eventHub.$emit('filtersChanged')
       }
     }
   }

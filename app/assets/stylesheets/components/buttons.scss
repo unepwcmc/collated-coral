@@ -8,54 +8,47 @@
 }
 
 //**************************************************
+// reusable styles
+//**************************************************
+%button--pagination {
+  @extend .button--blue;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: rem-calc(45); height: rem-calc(45);
+}
+
+//**************************************************
 // buttons
 //**************************************************
-
 .button {
   border-radius: $global-radius;
   border: none;
   color: white;
   cursor: pointer;
-  font-size: rem-calc(16);
-  padding: rem-calc(8 12);
+  font-size: rem-calc(18);
+  font-weight: $bold;
+  padding: rem-calc(12 17);
   text-decoration: none;
   
   &--blue { @include button-background($blue); }
-  &--red { @include button-background($red); }
+  &--green { @include button-background($green); }
 
   &--download {
-    &:after {
-      color: white;
-      content: '\f019';
-      font: $fontAwesome;
-      margin-left: rem-calc(8);
-    }
+    background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
+    color: white;
+    padding-right: rem-calc(21);
+    padding-left: rem-calc(52);
   }
 
   &--next {
-    @extend .button--blue;
-    font-size: rem-calc(14);
-    margin-left: rem-calc(8);
-
-    &:after {
-      content: '\f105';
-      font: $fontAwesome;
-      font-size: rem-calc(15);
-      margin-left: rem-calc(6);
-    }
+    @extend %button--pagination;
+    background-image: image-url('icons/chevron-right.svg');
   }
 
   &--previous {
-    @extend .button--blue;
-    font-size: rem-calc(14);
-    margin-right: rem-calc(8);
-
-    &:before {
-      content: '\f104';
-      font: $fontAwesome;
-      font-size: rem-calc(15);
-      margin-right: rem-calc(6);     
-    }
+    @extend %button--pagination;
+    background-image: image-url('icons/chevron-left.svg');
+    margin: rem-calc(0 6 0 8);
   }
 
   &--disabled {
@@ -64,4 +57,17 @@
 
     &:hover { background-color: $grey-light; }
   }
+
+  &--link {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: $body-font;
+    cursor: pointer;
+    font-size: rem-calc(18);
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &--link--green { color: $green; }
 }

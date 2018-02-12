@@ -1,5 +1,16 @@
 .footer {
   background-color: $blue-dark;
   color: white;
-  padding: rem-calc(20 0);
+  padding: rem-calc(29);
+  text-align: right;
+
+  &__copyright {
+    float: left;
+    position: relative;
+    top: rem-calc(8);
+  }
+
+  &__logo {
+    
+  }
 }

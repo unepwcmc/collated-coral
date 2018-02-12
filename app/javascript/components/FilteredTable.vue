@@ -2,28 +2,11 @@
   <div class="relative">
     <filters :filters="filters"></filters>
 
-    <div class="selected">
-      <h3>Selected options</h3>
-      <div v-if="hasSelected">
-        <selected-filter v-for="selectedFilterOption in selectedFilterOptions"
-          :name="selectedFilterOption.name"
-          :option="selectedFilterOption.option"
-        ></selected-filter>
-      </div>
-      <p v-else>No filter options selected</p>
-    </div>
+    <table class="table table--head">
+      <table-head :filters="filters"></table-head>
+    </table>
 
-    <download-csv></download-csv>
-
-    <h2>Results ({{ totalResults }})</h2>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <table-header v-for="filter in filters" :filter="filter"></table-header>
-        </tr>
-      </thead>
-
+    <table class="table table--body">
       <tbody>
         <row v-for="item, key in items"
           :key="key"
@@ -31,8 +14,6 @@
         </row>
       </tbody>
     </table>
-
-    <download-csv></download-csv>
 
     <pagination :items-per-page="config.itemsPerPage"></pagination>
   </div>
@@ -42,15 +23,14 @@
   import { eventHub } from '../home.js'
   import Filters from './filters/Filters.vue'
   import SelectedFilter from './filters/SelectedFilter.vue'
-  import TableHeader from './table/TableHeader.vue'
+  import TableHead from './table/TableHead.vue'
   import Row from './table/Row.vue'
   import Pagination from './pagination/Pagination.vue'
-  import DownloadCsv from './forms/DownloadCsv.vue'
 
   export default {
     name: 'filtered-table',
 
-    components: { SelectedFilter, Filters, TableHeader, Row, Pagination, DownloadCsv },
+    components: { SelectedFilter, Filters, TableHead, Row, Pagination },
 
     props: {
       filters: { type: Array },
@@ -60,10 +40,11 @@
     data () {
       return {
         config: {
-          itemsPerPage: 30
+          itemsPerPage: 10
         },
         items: [],
-        itemsOnCurrentPage: []
+        itemsOnCurrentPage: [],
+        sortDirection: 1
       }
     },
 
@@ -71,7 +52,6 @@
       this.createSelectedFilterOptions()
       this.items = this.projects
       this.$store.commit('updateTotalItems', this.items.length)
-      this.$store.commit('updateFilters', this.filters)
     },
 
     mounted () {
@@ -127,14 +107,26 @@
           let filterMatch = true
 
           this.$store.state.selectedFilterOptions.forEach(filter => {
-
+            
             // if there are some selected options check to see if one matches
             if (filter.options.length !== 0) {
               let optionMatch = false
 
-              filter.options.forEach(option => {
-                if (item[filter.name] == option) optionMatch = true
-              })
+              // if the filter is of type multiple you need to loop through an array
+              // otherwise you are matching to a string
+              if(filter.type === 'multiple') {
+                const arrayOfValues = item[filter.name]
+
+                arrayOfValues.forEach(value => {
+                  filter.options.forEach(option => {
+                    if (value == option) optionMatch = true
+                  })
+                })
+              } else {
+                filter.options.forEach(option => {
+                  if (item[filter.name] == option) optionMatch = true
+                })
+              }
 
               // once filterMatch is set to false it will always be false and the item
               // will not be shown because it did match an option in one of the filters
@@ -178,35 +170,35 @@
           if (filter.name !== undefined && filter.options.length > 0) {
             let obj = {}
 
-            obj.name = filter.name,
+            obj.name = filter.name
             obj.options = []
+            obj.type = filter.type
 
             array.push(obj)
           }
         })
 
-        this.$store.commit('updateFilterOptions', array)
+        this.$store.commit('setFilterOptions', array)
       },
 
-      sortActiveItems (sort) {
+      sortActiveItems (filter) {
         // sort the items using the main array the contains all data
-        this.items.sort(this.compare())
+        this.items.sort(this.compare(filter))
 
         // trigger filtering function so that the active items array is updated with
         // the new order and the results are paginated correctly
         this.filterItems()
       },
 
-      compare () {
-        // use a negative to flip the order if the button is descending
-        let order = (this.$store.state.sortDirection.substr(0, 1) === '+') ? 1 : -1
-
-        let filter = this.$store.state.sortDirection.substr(1)
+      compare (filter) {
+        // use a negative to alternate the direction of the order
+        this.sortDirection = this.sortDirection * -1
 
         // order the items using the correct property
-        return function (a, b) {
+        return (a, b) => {
           let result = (a[filter] < b[filter]) ? -1 : (a[filter] > b[filter]) ? 1 : 0;
-          return result * order;
+          
+          return result * this.sortDirection;
         }
       }
     }

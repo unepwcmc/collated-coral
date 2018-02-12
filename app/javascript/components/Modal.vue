@@ -8,18 +8,19 @@
 
         <p><strong>ID:</strong> {{ modalContent.id }}</p>
         <p><strong>Project Title:</strong> {{ modalContent.project_title }}</p>
-        <p><strong>Donor name:</strong> {{ modalContent.donors }}</p>
+        <p><strong>Donor name:</strong> {{ printMultiple('donors') }}</p>
         <p><strong>Status:</strong> {{ modalContent.status }}</p>
         <p><strong>Start Date:</strong> {{ modalContent.start_date }}</p>
         <p><strong>End Date:</strong> {{ modalContent.end_date }}</p>
-        <p><strong>Country:</strong> {{ modalContent.country }}</p>
-        <p><strong>Ocean Based Region:</strong> {{ modalContent.ocean_based_region }}</p>
+        <p><strong>Country:</strong> {{ printMultiple('country') }}</p>
+        <p><strong>Ocean Based Region:</strong> {{ printMultiple('ocean_based_region') }}</p>
+        <p><strong>Ecosystem:</strong> {{ printMultiple('ecosystem') }}</p>
         <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
         <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
         <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
-        <p><strong>Co-funding Entities:</strong> {{ modalContent.co_funding_entities }}</p>
+        <p><strong>Primary Funding:</strong> {{ modalContent.primary_funding }}</p>
+        <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
         <p><strong>Category:</strong> {{ modalContent.category }}</p>
-        <p><strong>Team Leader:</strong> {{ modalContent.team_leader }}</p>
         <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
       </div>
     </div>
@@ -74,8 +75,16 @@
       },
 
       closeModal () {
-        console.log('close')
         this.isActive = !this.isActive
+      },
+
+      printMultiple (field) {
+        // print out the array of values comma separated as a string
+        let array = this.modalContent[field]
+
+        if (array !== undefined) {
+          return array.join(', ')
+        }
       }
     }
   }
