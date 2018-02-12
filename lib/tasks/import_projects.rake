@@ -3,9 +3,7 @@ require 'csv'
 namespace :import do
   desc "import CSV data into database"
   task :projects, [:csv_file] => [:environment] do |t, args|
-
     import_csv_file(args.csv_file)
-
   end
 
   def import_csv_file file
@@ -30,7 +28,8 @@ namespace :import do
       co_funding_entities: csv_headers[12],
       category: csv_headers[13],
       ecosystems: csv_headers[14],
-      further_information: csv_headers[16].chomp
+      weblink: csv_headers[15],
+      further_information: csv_headers[16]
     }
 
     CSV.parse(csv, :headers => true) do |row|
@@ -59,17 +58,14 @@ namespace :import do
         end
       end
 
-      project.project_title = project_row[project_hash[:project_title]]&.strip.gsub("\u00A0", " ")
-      project.status = project_row[project_hash[:status]]&.strip || "Empty"
+
+      dates_columns = ['start_date', 'end_date', 'created_at', 'updated_at']
+      (Project.column_names - dates_columns).each do |attribute|
+        project.send("#{attribute}=", project_row[project_hash[attribute.to_sym]]&.strip || "Data not available")
+      end
+      project.project_title&.gsub!("\u00A0", " ")
       project.start_date = project_row[project_hash[:start_date]]&.strip || DateTime.now.year.to_i
       project.end_date = project_row[project_hash[:end_date]]&.strip || DateTime.now.year.to_i
-      project.beneficiaries = project_row[project_hash[:beneficiaries]]&.strip
-      project.implementing_agency = project_row[project_hash[:implementing_agency]]&.strip
-      project.total_project_cost = project_row[project_hash[:total_project_cost]]&.strip
-      project.primary_funding = project_row[project_hash[:primary_funding]]&.strip || "Data not available"
-      project.co_funding_entities = project_row[project_hash[:co_funding_entities]]&.strip || "Data not available"
-      project.category = project_row[project_hash[:category]]&.strip
-      project.further_information = project_row[project_hash[:further_information]]&.strip
 
       unless project.save!
         Rails.logger.info "Cannot import! #{project.project_title}"
