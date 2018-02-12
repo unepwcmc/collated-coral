@@ -79,8 +79,14 @@ strong {
   margin: 0 auto;
 }
 
+.page-padding-side {
+  padding-right: rem-calc(20);
+  padding-left: rem-calc(20);
+}
 .page-padding {
-  padding: rem-calc(30 20 120 20);
+  @extend .page-padding-side;
+  padding-top: rem-calc(30);
+  padding-bottom: rem-calc(120);
 }
 
 .page-content {

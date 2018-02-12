@@ -1,16 +1,26 @@
 .footer {
-  background-color: $blue-dark;
-  color: white;
-  padding: rem-calc(29);
-  text-align: right;
+  
+  &--blue { background-color: $blue-dark; }
+  &--grey { background-color: $grey-light; }
 
-  &__copyright {
-    float: left;
-    position: relative;
-    top: rem-calc(8);
+  .footer__caveat {
+    color: $grey-dark;
+    font-size: rem-calc(14);
+    padding-top: rem-calc(18);
+    padding-bottom: rem-calc(18);
+
+    p { @extend .page-padding-side; }
   }
 
-  &__logo {
-    
+  .footer__bottom {
+    color: white;
+    padding: rem-calc(29);
+    text-align: right;
   }
+
+    &__copyright {
+      float: left;
+      position: relative;
+      top: rem-calc(8);
+    }
 }
