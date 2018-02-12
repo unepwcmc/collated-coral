@@ -15,13 +15,34 @@
         <p><strong>Country:</strong> {{ printMultiple('country') }}</p>
         <p><strong>Ocean Based Region:</strong> {{ printMultiple('ocean_based_region') }}</p>
         <p><strong>Ecosystem:</strong> {{ printMultiple('ecosystem') }}</p>
-        <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
-        <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
-        <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
-        <p><strong>Primary Funding:</strong> {{ modalContent.primary_funding }}</p>
-        <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
-        <p><strong>Category:</strong> {{ modalContent.category }}</p>
-        <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
+        
+        <template v-if="hasContent(modalContent.beneficiaries)">
+          <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
+        </template>        
+
+        <template v-if="hasContent(modalContent.implementing_agency)">
+          <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
+        </template>
+      
+        <template v-if="hasContent(modalContent.total_project_cost)">
+          <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.primary_funding)">
+          <p><strong>Primary Funding:</strong> {{ modalContent.primary_funding }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.co_funding_entities)">
+          <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.category)">
+          <p><strong>Category:</strong> {{ modalContent.category }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.further_informationnisers)">
+          <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
+        </template>
       </div>
     </div>
   </div>
@@ -85,6 +106,10 @@
         if (array !== undefined) {
           return array.join(', ')
         }
+      },
+
+      hasContent (property) {
+        return !!property
       }
     }
   }
