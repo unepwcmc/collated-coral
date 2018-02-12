@@ -2,7 +2,11 @@
   background: image-url('hero.jpg') no-repeat bottom center;
   background-size: cover;
   padding-top: rem-calc(94);
-  height: rem-calc(517);
+  height: rem-calc(680);
+
+  a { color: white;
+    &:hover { text-decoration: none; } 
+  }
 
   &__title-box {
     color: white;
