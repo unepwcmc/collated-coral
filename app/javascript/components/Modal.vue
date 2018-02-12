@@ -15,15 +15,15 @@
         <p><strong>Country:</strong> {{ printMultiple('country') }}</p>
         <p><strong>Ocean Based Region:</strong> {{ printMultiple('ocean_based_region') }}</p>
         <p><strong>Ecosystem:</strong> {{ printMultiple('ecosystem') }}</p>
-        
+
         <template v-if="hasContent(modalContent.beneficiaries)">
           <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
-        </template>        
+        </template>
 
         <template v-if="hasContent(modalContent.implementing_agency)">
           <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
         </template>
-      
+
         <template v-if="hasContent(modalContent.total_project_cost)">
           <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
         </template>
@@ -40,7 +40,7 @@
           <p><strong>Category:</strong> {{ modalContent.category }}</p>
         </template>
 
-        <template v-if="hasContent(modalContent.further_informationnisers)">
+        <template v-if="hasContent(modalContent.further_information)">
           <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
         </template>
 
