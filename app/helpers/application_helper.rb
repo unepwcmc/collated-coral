@@ -3,12 +3,24 @@ module ApplicationHelper
     'Coral Reef Funding Landscape'
   end
 
+  def page_description
+    'Coral Reef Funding Landscape is a filterable database of international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems'
+  end
+
   def url_encode (text)
     ERB::Util.url_encode(text)
   end
 
   def encoded_page_url
     url_encode(request.original_url)
+  end
+
+  def social_image
+    image_url('coral-reef-funding-landscape-social.jpg')
+  end
+
+  def social_image_alt
+    'Coral reef'
   end
 
   def create_social_facebook_link
