@@ -80,7 +80,8 @@ class Project < ApplicationRecord
         primary_funding: project.primary_funding,
         co_funding_entities: project.co_funding_entities,
         category: project.category,
-        further_information: project.further_information
+        further_information: project.further_information,
+        weblink: project.weblink
       }
     end.to_json
   end
