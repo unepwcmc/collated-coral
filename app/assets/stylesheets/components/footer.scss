@@ -6,8 +6,10 @@
   .footer__caveat {
     color: $grey-dark;
     font-size: rem-calc(14);
-    padding: rem-calc(18 29);
-    text-align: center;
+    padding-top: rem-calc(18);
+    padding-bottom: rem-calc(18);
+
+    p { @extend .page-padding-side; }
   }
 
   .footer__bottom {
