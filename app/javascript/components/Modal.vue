@@ -43,6 +43,10 @@
         <template v-if="hasContent(modalContent.further_informationnisers)">
           <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
         </template>
+
+        <template v-if="hasContent(modalContent.weblink)">
+          <p><strong>Weblink:</strong> <a :href="modalContent.weblink" target="_blank" :title="'Visit ' + modalContent.weblink">{{ modalContent.weblink }}</a></p>
+        </template>
       </div>
     </div>
   </div>
