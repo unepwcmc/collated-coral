@@ -45,7 +45,7 @@
         </template>
 
         <template v-if="hasContent(modalContent.weblink)">
-          <p><strong>Weblink:</strong> <a :href="modalContent.weblink" target="_blank" :title="'Visit ' + modalContent.weblink">{{ modalContent.weblink }}</a></p>
+          <p><strong>Web link:</strong> <a :href="modalContent.weblink" target="_blank" :title="'Visit ' + modalContent.weblink">Link</a></p>
         </template>
       </div>
     </div>
