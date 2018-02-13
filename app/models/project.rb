@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :donors, class_name: 'Donor', join_table: 'project_donors'
   has_and_belongs_to_many :ecosystems, class_name: 'Ecosystem', join_table: 'project_ecosystems'
   has_and_belongs_to_many :ocean_regions, class_name: 'OceanRegion', join_table: 'project_ocean_regions'
+  has_and_belongs_to_many :categories, class_name: "Category", join_table: 'project_categories'
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
