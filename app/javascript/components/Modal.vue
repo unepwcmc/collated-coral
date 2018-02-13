@@ -7,21 +7,46 @@
         <h2>Project Details</h2>
 
         <p><strong>ID:</strong> {{ modalContent.id }}</p>
-        <p><strong>Project Title:</strong> {{ modalContent.project_title }}</p>
-        <p><strong>Donor name:</strong> {{ printMultiple('donors') }}</p>
+        <p><strong>Project Title:</strong> {{ modalContent.title }}</p>
+        <p><strong>Donor:</strong> {{ printMultiple('donors') }}</p>
         <p><strong>Status:</strong> {{ modalContent.status }}</p>
         <p><strong>Start Date:</strong> {{ modalContent.start_date }}</p>
         <p><strong>End Date:</strong> {{ modalContent.end_date }}</p>
         <p><strong>Country:</strong> {{ printMultiple('country') }}</p>
         <p><strong>Ocean Based Region:</strong> {{ printMultiple('ocean_based_region') }}</p>
         <p><strong>Ecosystem:</strong> {{ printMultiple('ecosystem') }}</p>
-        <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
-        <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
-        <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
-        <p><strong>Primary Funding:</strong> {{ modalContent.primary_funding }}</p>
-        <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
-        <p><strong>Category:</strong> {{ modalContent.category }}</p>
-        <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
+
+        <template v-if="hasContent(modalContent.beneficiaries)">
+          <p><strong>Beneficiaries:</strong> {{ modalContent.beneficiaries }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.implementing_agency)">
+          <p><strong>Implementing Agency:</strong> {{ modalContent.implementing_agency }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.total_project_cost)">
+          <p><strong>Total Project Cost:</strong> USD {{ modalContent.total_project_cost }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.primary_funding)">
+          <p><strong>Primary Funding:</strong> USD {{ modalContent.primary_funding }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.co_funding_entities)">
+          <p><strong>Co-funding:</strong> USD {{ modalContent.co_funding_entities }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.categories)">
+          <p><strong>Category:</strong> {{ printMultiple('categories') }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.further_information)">
+          <p><strong>Further Information:</strong> {{ modalContent.further_information }}</p>
+        </template>
+
+        <template v-if="hasContent(modalContent.weblink)">
+          <p><strong>Web link:</strong> <a :href="modalContent.weblink" target="_blank" :title="'Visit ' + modalContent.weblink">Link</a></p>
+        </template>
       </div>
     </div>
   </div>
@@ -85,6 +110,10 @@
         if (array !== undefined) {
           return array.join(', ')
         }
+      },
+
+      hasContent (property) {
+        return !!property
       }
     }
   }
