@@ -13,11 +13,7 @@ class Project < ApplicationRecord
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
-    unique_donors = Donor.pluck(:name).compact.sort
-    unique_countries = Country.pluck(:name).compact.sort
-    unique_ocean_based_regions = OceanRegion.pluck(:name).compact.sort
-    unique_categories = Category.pluck(:name).compact.sort
-    unique_ecosystems = Ecosystem.pluck(:name).compact.sort
+    sanitise_filters
     unique_status = projects.pluck(:status).compact.uniq.sort
 
     filters = [
@@ -29,39 +25,38 @@ class Project < ApplicationRecord
       },
       {
         name: "donors",
-        title: "Donor",
-        options: unique_donors,
+        title: "Donor(s)",
+        options: @donors,
         type: 'multiple'
       },
       {
-        name: "categories",
+        name: "category",
         title: "Category",
-        options: unique_categories,
-        type: 'multiple'
+        options: @categories
       },
       {
         name: "ecosystem",
         title: "Ecosystem",
-        options: unique_ecosystems,
+        options: @ecosystems,
         type: 'multiple'
       },
       {
         name: "country",
         title: "Country",
-        options: unique_countries,
+        options: @countries,
         type: 'multiple'
       },
       {
         name: "ocean_based_region",
-        title: "Region",
-        options: unique_ocean_based_regions,
+        title: "Ocean Region",
+        options: @ocean_regions,
         type: 'multiple'
       },
       {
-        title: "Total Cost*"
+        title: "Total Cost"
       },
       {
-        title: "Co-funding*"
+        title: "Co-funding"
       }
 
     ].to_json
@@ -142,6 +137,13 @@ class Project < ApplicationRecord
       number = array[1]
 
       number_to_currency(number.to_i, { precision: 0 })
+    end
+  end
+
+  def self.sanitise_filters
+    [Donor, Category, Country, OceanRegion, Ecosystem].each do |model|
+      var_name = "@#{model.to_s.underscore.pluralize}"
+      instance_variable_set(var_name, model.pluck(:name).compact.sort - ["Data not available"])
     end
   end
 
