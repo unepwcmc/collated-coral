@@ -3,7 +3,7 @@
     <td>{{ item.id }}</td>
     <td :title="item.title">{{ projectTitle }}</td>
     <td>{{ checkForMultiples('donors') }}</td>
-    <td>{{ item.category }}</td>
+    <td>{{ checkForMultiples('categories') }}</td>
     <td>{{ checkForMultiples('ecosystem') }}</td>
     <td>{{ checkForMultiples('country') }}</td>
     <td>{{ checkForMultiples('ocean_based_region') }}</td>

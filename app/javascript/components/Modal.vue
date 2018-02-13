@@ -36,8 +36,8 @@
           <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
         </template>
 
-        <template v-if="hasContent(modalContent.category)">
-          <p><strong>Category:</strong> {{ modalContent.category }}</p>
+        <template v-if="hasContent(modalContent.categories)">
+          <p><strong>Category:</strong> {{ printMultiple('categories') }}</p>
         </template>
 
         <template v-if="hasContent(modalContent.further_information)">

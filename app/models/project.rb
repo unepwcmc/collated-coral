@@ -36,7 +36,8 @@ class Project < ApplicationRecord
       {
         name: "category",
         title: "Category",
-        options: unique_categories
+        options: unique_categories,
+        type: 'multiple'
       },
       {
         name: "ecosystem",
