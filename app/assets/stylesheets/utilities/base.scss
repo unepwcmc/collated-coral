@@ -87,7 +87,7 @@ a { color: $blue; }
 }
 .page-padding {
   @extend .page-padding-side;
-  padding-top: rem-calc(30);
+  padding-top: rem-calc(40);
   padding-bottom: rem-calc(120);
 }
 

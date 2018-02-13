@@ -2,24 +2,81 @@
   background: image-url('hero.jpg') no-repeat bottom center;
   background-size: cover;
   padding-top: rem-calc(94);
-  height: rem-calc(680);
+
+  position: relative;
+
+  &:after { 
+    content: '';
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 
   a { color: white;
     &:hover { text-decoration: none; } 
   }
 
-  &__title-box {
-    color: white;
-    font-size: rem-calc(20);
-    padding: rem-calc(0 20);
-    width: 80%;
+  &__bar {
+    overflow: hidden;
+    width: 100%; height: rem-calc(60);
+    
+    display: block;
+    position: relative;
+
+    &:before {
+      background-color: white;
+      content:'';
+      width: 50%; height: rem-calc(60);
+      
+      position: absolute;
+      left: rem-calc(-50);
+      top: 0;
+      z-index: 1;
+      
+      -webkit-transform: skew(60deg);
+      -moz-transform: skew(60deg);
+      -o-transform: skew(60deg);
+      -ms-transform: skew(60deg);
+      transform: skew(60deg);
+    }
+
+    &:after {
+      background-color: white;
+      content:'';
+      width: 50%;  height: rem-calc(60);
+
+      position: absolute;
+      right: rem-calc(-50px);
+      top: 0;
+      z-index: 1;
+      
+      -webkit-transform: skew(-60deg);
+      -moz-transform: skew(-60deg);
+      -o-transform: skew(-60deg);
+      -ms-transform: skew(-60deg);
+      transform: skew(-60deg);
+    }
   }
 
-    &__divider {
-      border-top: solid rem-calc(2) white;
-      margin-bottom: rem-calc(20);
-      width: rem-calc(66);
+  &__title-box-wrapper {
+    margin-bottom: rem-calc(80);
+  }
 
-      display: block;
+    &__title-box {
+      color: white;
+      font-size: rem-calc(20);
+      padding: rem-calc(0 20);
+      width: 80%;
     }
+
+      &__divider {
+        border-top: solid rem-calc(2) white;
+        margin-bottom: rem-calc(20);
+        width: rem-calc(66);
+
+        display: block;
+      }
 }
