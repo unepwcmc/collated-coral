@@ -50,7 +50,7 @@ namespace :import do
         next if list_of_children.nil?
         list_of_children = list_of_children.split(";")
         list_of_children.each do |child_name|
-          child_name = child_name&.strip
+          child_name = child_name&.strip&.gsub(/\"/,'')
           new_child = field.camelize.singularize.constantize.find_or_create_by(name: child_name)
           unless project.send(field.downcase.to_sym).exists?(new_child.id)
             project.send(field.downcase.to_sym) << new_child
