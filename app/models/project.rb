@@ -53,7 +53,7 @@ class Project < ApplicationRecord
       },
       {
         name: "ocean_based_region",
-        title: "Ocean Region",
+        title: "Region",
         options: unique_ocean_based_regions,
         type: 'multiple'
       },
