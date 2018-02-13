@@ -8,7 +8,7 @@
 
         <p><strong>ID:</strong> {{ modalContent.id }}</p>
         <p><strong>Project Title:</strong> {{ modalContent.title }}</p>
-        <p><strong>Donor name:</strong> {{ printMultiple('donors') }}</p>
+        <p><strong>Donor:</strong> {{ printMultiple('donors') }}</p>
         <p><strong>Status:</strong> {{ modalContent.status }}</p>
         <p><strong>Start Date:</strong> {{ modalContent.start_date }}</p>
         <p><strong>End Date:</strong> {{ modalContent.end_date }}</p>

@@ -29,12 +29,12 @@ class Project < ApplicationRecord
       },
       {
         name: "donors",
-        title: "Donor(s)",
+        title: "Donor",
         options: unique_donors,
         type: 'multiple'
       },
       {
-        name: "category",
+        name: "categories",
         title: "Category",
         options: unique_categories,
         type: 'multiple'
