@@ -25,15 +25,15 @@
         </template>
 
         <template v-if="hasContent(modalContent.total_project_cost)">
-          <p><strong>Total Project Cost:</strong> {{ modalContent.total_project_cost }}</p>
+          <p><strong>Total Project Cost:</strong> USD {{ modalContent.total_project_cost }}</p>
         </template>
 
         <template v-if="hasContent(modalContent.primary_funding)">
-          <p><strong>Primary Funding:</strong> {{ modalContent.primary_funding }}</p>
+          <p><strong>Primary Funding:</strong> USD {{ modalContent.primary_funding }}</p>
         </template>
 
         <template v-if="hasContent(modalContent.co_funding_entities)">
-          <p><strong>Co-funding:</strong> {{ modalContent.co_funding_entities }}</p>
+          <p><strong>Co-funding:</strong> USD {{ modalContent.co_funding_entities }}</p>
         </template>
 
         <template v-if="hasContent(modalContent.categories)">

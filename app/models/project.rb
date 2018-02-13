@@ -58,10 +58,10 @@ class Project < ApplicationRecord
         type: 'multiple'
       },
       {
-        title: "Total Cost"
+        title: "Total Cost*"
       },
       {
-        title: "Co-funding"
+        title: "Co-funding*"
       }
 
     ].to_json
@@ -141,7 +141,7 @@ class Project < ApplicationRecord
       array = string.split
       number = array[1]
 
-      array[0] + ' ' + number_with_delimiter(number.to_i, { precision: 0 })
+      number_to_currency(number.to_i, { precision: 0 })
     end
   end
 

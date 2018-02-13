@@ -21,7 +21,7 @@
   }
 
   &--body {
-    margin-bottom: rem-calc(40);
+    margin-bottom: rem-calc(24);
   }
 //**************************************************
 // table head <thead>
@@ -94,4 +94,9 @@
         background-image: image-url('icons/arrow-down-white.svg');
       }
     }
+
+//**************************************************
+// note
+//**************************************************
+  &__note { font-size: rem-calc(14); }
 }
