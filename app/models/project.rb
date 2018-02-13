@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :ocean_regions, class_name: 'OceanRegion', join_table: 'project_ocean_regions'
   has_and_belongs_to_many :categories, class_name: "Category", join_table: 'project_categories'
 
-  validates :title, uniqueness: true
+  validates :title, presence: true
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
