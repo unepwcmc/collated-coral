@@ -56,15 +56,15 @@
   // fix the columns widths so that they don't change
   // size when you use the pagination 
   th,td {
-    &:first-child { width: 58px; }
-    &:nth-child(2) { width: 130px; }
+    &:first-child { width: 56px; }
+    &:nth-child(2) { width: 134px; }
     &:nth-child(3) { width: 130px; }
-    &:nth-child(4) { width: 116px; }
+    &:nth-child(4) { width: 122px; }
     &:nth-child(5) { width: 128px; }
     &:nth-child(6) { width: 120px; }
     &:nth-child(7) { width: 158px; }
-    &:nth-child(8) { width: 172px; }
-    &:nth-child(9) { width: 148px; }
+    &:nth-child(8) { width: 154px; }
+    &:nth-child(9) { width: 154px; }
   }
 
 //**************************************************
