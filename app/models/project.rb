@@ -1,6 +1,7 @@
 require 'csv'
 
 class Project < ApplicationRecord
+  extend ActionView::Helpers::NumberHelper
 
   has_and_belongs_to_many :countries, class_name: 'Country', join_table: 'project_countries'
   has_and_belongs_to_many :donors, class_name: 'Donor', join_table: 'project_donors'
@@ -76,9 +77,9 @@ class Project < ApplicationRecord
         ocean_based_region: project.ocean_regions.pluck(:name).sort,
         beneficiaries: project.beneficiaries,
         implementing_agency: project.implementing_agency,
-        total_project_cost: project.total_project_cost,
-        primary_funding: project.primary_funding,
-        co_funding_entities: project.co_funding_entities,
+        total_project_cost: self.withDelimiter(project.total_project_cost),
+        primary_funding: self.withDelimiter(project.primary_funding),
+        co_funding_entities: self.withDelimiter(project.co_funding_entities),
         category: project.category,
         further_information: project.further_information,
         weblink: project.weblink
@@ -123,6 +124,19 @@ class Project < ApplicationRecord
 
     csv
 
+  end
+
+  private
+
+  def self.withDelimiter string
+    if string == 'Data not available'
+      string
+    else
+      array = string.split
+      number = array[1]
+
+      array[0] + ' ' + number_with_delimiter(number.to_i, { precision: 0 })
+    end
   end
 
 end
