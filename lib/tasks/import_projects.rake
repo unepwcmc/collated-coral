@@ -14,9 +14,9 @@ namespace :import do
 
     project_hash = {
       id: csv_headers[0],
-      project_title: csv_headers[1],
+      title: csv_headers[1],
       donors: csv_headers[2],
-      category: csv_headers[3],
+      categories: csv_headers[3],
       status: csv_headers[4],
       start_date: csv_headers[5],
       end_date: csv_headers[6],
@@ -43,7 +43,7 @@ namespace :import do
         project.id = current_project_id
       end
 
-      fields = ["donors", "countries", "ecosystems", "ocean_regions"]
+      fields = ["donors", "countries", "ecosystems", "ocean_regions", "categories"]
 
       fields.each do |field|
         list_of_children = project_row[project_hash[field.to_sym]]&.strip
@@ -63,12 +63,12 @@ namespace :import do
       (Project.column_names - dates_columns).each do |attribute|
         project.send("#{attribute}=", project_row[project_hash[attribute.to_sym]]&.strip || "Data not available")
       end
-      project.project_title&.gsub!("\u00A0", " ")
+      project.title&.gsub!("\u00A0", " ")
       project.start_date = project_row[project_hash[:start_date]]&.strip || DateTime.now.year.to_i
       project.end_date = project_row[project_hash[:end_date]]&.strip || DateTime.now.year.to_i
 
       unless project.save!
-        Rails.logger.info "Cannot import! #{project.project_title}"
+        Rails.logger.info "Cannot import! #{project.title}"
       end
 
     end

@@ -7,13 +7,16 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :donors, class_name: 'Donor', join_table: 'project_donors'
   has_and_belongs_to_many :ecosystems, class_name: 'Ecosystem', join_table: 'project_ecosystems'
   has_and_belongs_to_many :ocean_regions, class_name: 'OceanRegion', join_table: 'project_ocean_regions'
+  has_and_belongs_to_many :categories, class_name: "Category", join_table: 'project_categories'
+
+  validates :title, presence: true
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
     unique_donors = Donor.pluck(:name).compact.sort
     unique_countries = Country.pluck(:name).compact.sort
     unique_ocean_based_regions = OceanRegion.pluck(:name).compact.sort
-    unique_categories = projects.pluck(:category).compact.uniq.sort
+    unique_categories = Category.pluck(:name).compact.sort
     unique_ecosystems = Ecosystem.pluck(:name).compact.sort
     unique_status = projects.pluck(:status).compact.uniq.sort
 
@@ -67,7 +70,7 @@ class Project < ApplicationRecord
     projects = Project.all.order(id: :asc).to_a.map! do |project|
       {
         id: project.id,
-        project_title: project.project_title,
+        title: project.title,
         donors: project.donors.pluck(:name).sort,
         status: project.status,
         start_date: project.start_date,
@@ -77,10 +80,10 @@ class Project < ApplicationRecord
         ocean_based_region: project.ocean_regions.pluck(:name).sort,
         beneficiaries: project.beneficiaries,
         implementing_agency: project.implementing_agency,
-        total_project_cost: self.withDelimiter(project.total_project_cost),
-        primary_funding: self.withDelimiter(project.primary_funding),
-        co_funding_entities: self.withDelimiter(project.co_funding_entities),
-        category: project.category,
+        total_project_cost: withDelimiter(project.total_project_cost),
+        primary_funding: withDelimiter(project.primary_funding),
+        co_funding_entities: withDelimiter(project.co_funding_entities),
+        categories: project.categories.pluck(:name).sort,
         further_information: project.further_information,
         weblink: project.weblink
       }
@@ -98,6 +101,7 @@ class Project < ApplicationRecord
     project_columns << "Country"
     project_columns << "Ecosystem"
     project_columns << "Ocean Based Region"
+    project_columns << "Category"
 
 
     project_columns.map! { |e|
@@ -116,6 +120,7 @@ class Project < ApplicationRecord
       project_attributes[:countries] = project.countries.pluck(:name).sort.join(",")
       project_attributes[:ecosystems] = project.ecosystems.pluck(:name).sort.join(",")
       project_attributes[:ocean_based_regions] = project.ocean_regions.pluck(:name).sort.join(",")
+      project_attributes[:categories] = project.categories.pluck(:name).sort.join(",")
 
       project_attributes = project_attributes.values.map{ |e| "\"#{e}\"" }
       csv << project_attributes.join(',').to_s

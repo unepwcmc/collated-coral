@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212165400) do
+ActiveRecord::Schema.define(version: 20180213103331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -37,6 +43,15 @@ ActiveRecord::Schema.define(version: 20180212165400) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "project_categories", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_project_categories_on_category_id"
+    t.index ["project_id"], name: "index_project_categories_on_project_id"
   end
 
   create_table "project_countries", force: :cascade do |t|
@@ -76,7 +91,7 @@ ActiveRecord::Schema.define(version: 20180212165400) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.text "project_title"
+    t.text "title"
     t.string "status", null: false
     t.integer "start_date", null: false
     t.integer "end_date", null: false
@@ -84,7 +99,6 @@ ActiveRecord::Schema.define(version: 20180212165400) do
     t.string "implementing_agency"
     t.string "total_project_cost"
     t.string "co_funding_entities"
-    t.string "category"
     t.text "further_information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
