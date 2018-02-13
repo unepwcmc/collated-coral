@@ -53,7 +53,7 @@ class Project < ApplicationRecord
         type: 'multiple'
       },
       {
-        title: "Total Project Cost"
+        title: "Total Cost"
       },
       {
         title: "Co-funding"
