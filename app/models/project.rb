@@ -25,7 +25,7 @@ class Project < ApplicationRecord
       },
       {
         name: "donors",
-        title: "Donor(s)",
+        title: "Donor",
         options: @donors,
         type: 'multiple'
       },
@@ -48,7 +48,7 @@ class Project < ApplicationRecord
       },
       {
         name: "ocean_based_region",
-        title: "Ocean Region",
+        title: "Region",
         options: @ocean_regions,
         type: 'multiple'
       },
