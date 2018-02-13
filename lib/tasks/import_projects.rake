@@ -16,7 +16,7 @@ namespace :import do
       id: csv_headers[0],
       project_title: csv_headers[1],
       donors: csv_headers[2],
-      category: csv_headers[3],
+      categories: csv_headers[3],
       status: csv_headers[4],
       start_date: csv_headers[5],
       end_date: csv_headers[6],
@@ -43,7 +43,7 @@ namespace :import do
         project.id = current_project_id
       end
 
-      fields = ["donors", "countries", "ecosystems", "ocean_regions"]
+      fields = ["donors", "countries", "ecosystems", "ocean_regions", "categories"]
 
       fields.each do |field|
         list_of_children = project_row[project_hash[field.to_sym]]&.strip
