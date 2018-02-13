@@ -61,7 +61,7 @@ namespace :import do
 
       dates_columns = ['start_date', 'end_date', 'created_at', 'updated_at']
       (Project.column_names - dates_columns).each do |attribute|
-        project.send("#{attribute}=", project_row[project_hash[attribute.to_sym]]&.strip || "Data not available")
+        project.send("#{attribute}=", project_row[project_hash[attribute.to_sym]]&.strip&.gsub(';',',') || "Data not available")
       end
       project.title&.gsub!("\u00A0", " ")
       project.start_date = project_row[project_hash[:start_date]]&.strip || DateTime.now.year.to_i
