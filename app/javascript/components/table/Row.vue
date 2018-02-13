@@ -1,7 +1,7 @@
 <template>
   <tr @click="openModal()" v-show="item.isActive">
     <td>{{ item.id }}</td>
-    <td :title="item.project_title">{{ projectTitle }}</td>
+    <td :title="item.title">{{ projectTitle }}</td>
     <td>{{ checkForMultiples('donors') }}</td>
     <td>{{ item.category }}</td>
     <td>{{ checkForMultiples('ecosystem') }}</td>
@@ -26,7 +26,7 @@
 
     computed: {
       projectTitle () {
-        return this.trim(this.item.project_title)
+        return this.trim(this.item.title)
       }
     },
 

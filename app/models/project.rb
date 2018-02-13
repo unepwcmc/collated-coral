@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   has_and_belongs_to_many :ocean_regions, class_name: 'OceanRegion', join_table: 'project_ocean_regions'
   has_and_belongs_to_many :categories, class_name: "Category", join_table: 'project_categories'
 
+  validates :title, uniqueness: true
 
   def self.filters_to_json
     projects = Project.all.order(id: :asc)
@@ -68,7 +69,7 @@ class Project < ApplicationRecord
     projects = Project.all.order(id: :asc).to_a.map! do |project|
       {
         id: project.id,
-        project_title: project.project_title,
+        title: project.title,
         donors: project.donors.pluck(:name).sort,
         status: project.status,
         start_date: project.start_date,
