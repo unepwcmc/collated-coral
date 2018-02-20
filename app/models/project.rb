@@ -30,7 +30,7 @@ class Project < ApplicationRecord
         type: 'multiple'
       },
       {
-        name: "category",
+        name: "categories",
         title: "Category",
         options: @categories
       },
