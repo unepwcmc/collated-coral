@@ -36,7 +36,9 @@
   }
 
   &-unepwcmc {
-    background-image: url('https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg');
-    width: rem-calc(94); height: rem-calc(31);
+    background-image: url('https://s3.amazonaws.com/wcmc.logo/UNEP_WCMC_logo_white.svg');
+    margin-top: rem-calc(3);
+    margin-bottom: rem-calc(3);
+    width: rem-calc(109); height: rem-calc(25);
   }
 }
