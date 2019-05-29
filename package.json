@@ -2,15 +2,15 @@
   "name": "collated-coral",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.0.2",
+    "@rails/webpacker": "~> 4.0.2",
     "coffeescript": "1.12.7",
     "es6-promise": "^4.1.1",
-    "vue": "^2.5.11",
-    "vue-loader": "^13.6.0",
-    "vue-template-compiler": "^2.5.11",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
     "vuex": "^3.0.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^3.3.1"
   }
 }

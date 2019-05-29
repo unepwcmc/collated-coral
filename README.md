@@ -15,6 +15,7 @@ See Wiki for more detailed information.
 - `bundle install`
 - `yarn install`
 - `rails s`
+- `./bin/webpack-dev-server` in another tab
 
 ## Importing data
 
