@@ -1,25 +1,13 @@
 <footer class="footer">
-	<div class="footer--grey footer__caveat">
-		<div class="container">
-		    <%= I18n.t('footer.container').html_safe %>
-		</div>
+  <div class="footer--grey footer__caveat">
+    <div class="container">
+	  <%= I18n.t('footer.container').html_safe %>
 	</div>
 
 	<div class="footer--blue footer__bottom">
-	  <span class="footer__copyright">&copy; Copyright <%= Date.today.year %></span>
-
-	  <%= link_to '', 'https://www.diplomatie.gouv.fr/', class: 'footer__logo logo logo-ministere-1', title: 'Visit Ministere des Affaires etrangeres et du Developpement International' %>
-
-	  <%= link_to '', 'http://www2.developpement-durable.gouv.fr/', class: 'footer__logo logo logo-ministere-2', title: "Visit Ministere de L'Environment de L'Energie et de la Mer" %>
-
-	  <%= link_to '', 'http://www.outre-mer.gouv.fr/', class: 'footer__logo logo logo-ministere-3', title: 'Visit Ministere des Outre-Mer' %>
-	  
-	  <%= link_to '', 'https://www.unenvironment.org/', class: 'footer__logo logo logo-unep', title: 'Visit the UN Environment' %>
-
-	  <%= link_to '', 'https://www.icriforum.org/', class: 'footer__logo logo logo-icri', title: 'Visit the International Coral Reef Initiative' %>
-	  
-	  <%= link_to '', 'https://www.icriforum.org/about-icri/iyor', class: 'footer__logo logo logo-iyor', title: 'Visit the International Year of the Reef' %>
-	  
- 	 	<%= link_to '', 'https://www.unep-wcmc.org/', class: 'footer__logo logo logo-unepwcmc', title: 'Visit the UN Environment World Conservation Monitoring Centre' %>
+		<span class="footer__copyright">&copy; Copyright <%= Date.today.year %></span>
+		<% t('footer.logos').each do |block| %>
+		<%= link_to '', block[:url], class: block[:class], title: block[:title] %>
+		<% end %>
 	</div>
 </footer>
