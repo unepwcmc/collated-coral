@@ -1,0 +1,39 @@
+dummy:
+  footer:
+    container: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class='no-margin-bottom'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+    logos:
+      -
+        url: 'https://www.diplomatie.gouv.fr/'
+        class: 'footer__logo logo logo-ministere-1'
+        title: 'Visit Ministere des Affaires etrangeres et du Developpement International'
+      -
+        url: 'http://www2.developpement-durable.gouv.fr/'
+        class: 'footer__logo logo logo-ministere-2'
+        title: "Visit Ministere de L'Environment de L'Energie et de la Mer"
+      -
+        url: 'http://www.outre-mer.gouv.fr/'
+        class: 'footer__logo logo logo-ministere-3'
+        title: 'Visit Ministere des Outre-Mer'
+      -
+        url: 'https://www.unenvironment.org/'
+        class: 'footer__logo logo logo-unep'
+        title: 'Visit the UN Environment'
+      -
+        url: 'https://www.icriforum.org/'
+        class: 'footer__logo logo logo-icri'
+        title: 'Visit the International Coral Reef Initiative'
+      -
+        url: 'https://www.icriforum.org/about-icri/iyor'
+        class: 'footer__logo logo logo-iyor'
+        title: 'Visit the International Year of the Reef'
+      -
+        url: 'https://www.unep-wcmc.org/'
+        class: 'footer__logo logo logo-unepwcmc'
+        title: 'Visit the UN Environment World Conservation Monitoring Centre'
+
+  header:
+    container:
+      title: "<h1>Coral Reef<br/>Funding Landscape</h1>"
+      content: "<p><strong>Coral Reef Funding Landscape</strong> explores international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems. Use the filter options below to discover current and historic global funding efforts, including details of total project cost, spatial and temporal scale, donors, beneficiaries and thematic area.</p>
+      <p>Data from this database informed the <i>Analysis of International Funding for the Sustainable Management of Coral Reefs and Associated Coastal Ecosystems (2018)</i>. This analysis was conducted by UN Environment World Conservation Monitoring Centre, UN Environment and the International Coral Reef Initiative and is available to download as a <a href='http://wcmc.io/coralbrochure' title='Download a summary brochure of the Analysis of International Funding for the Sustainable Management of Coral Reefs and Associated Coastal Ecosystems (2018)' target= '_blank'>summary brochure</a>.</p>"
