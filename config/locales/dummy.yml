@@ -5,31 +5,31 @@ dummy:
     logos:
       -
         url: 'https://www.diplomatie.gouv.fr/'
-        class: 'footer__logo logo logo-ministere-1'
+        class: 'footer__logo logo logo-dummy'
         title: 'Link 1'
       -
         url: 'http://www2.developpement-durable.gouv.fr/'
-        class: 'footer__logo logo logo-ministere-2'
+        class: 'footer__logo logo logo-dummy'
         title: "Link 2"
       -
         url: 'http://www.outre-mer.gouv.fr/'
-        class: 'footer__logo logo logo-ministere-3'
+        class: 'footer__logo logo logo-dummy'
         title: 'Link 3'
       -
         url: 'https://www.unenvironment.org/'
-        class: 'footer__logo logo logo-unep'
+        class: 'footer__logo logo logo-dummy'
         title: 'Link 4'
       -
         url: 'https://www.icriforum.org/'
-        class: 'footer__logo logo logo-icri'
+        class: 'footer__logo logo logo-dummy'
         title: 'Link 5'
       -
         url: 'https://www.icriforum.org/about-icri/iyor'
-        class: 'footer__logo logo logo-iyor'
+        class: 'footer__logo logo logo-dummy'
         title: 'Link 6'
       -
         url: 'https://www.unep-wcmc.org/'
-        class: 'footer__logo logo logo-unepwcmc'
+        class: 'footer__logo logo logo-dummy'
         title: 'Link 7'
 
   header:
