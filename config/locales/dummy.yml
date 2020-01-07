@@ -31,6 +31,7 @@ dummy:
         url: 'https://www.unep-wcmc.org/'
         class: 'footer__logo logo logo-dummy'
         title: 'Link 7'
+    copyright: "&copy; Lorem ipsum %{year}"
 
   header:
     container:

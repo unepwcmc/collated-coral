@@ -6,7 +6,7 @@
   </div>
 
   <div class="footer--blue footer__bottom">
-    <span class="footer__copyright">&copy; Copyright <%= Date.today.year %></span>
+    <span class="footer__copyright"><%= I18n.t('footer.copyright', year: Date.today.year).html_safe %></span>
     <% t('footer.logos').each do |block| %>
       <%= link_to '', block[:url], class: block[:class], title: block[:title] %>
     <% end %>

@@ -62,6 +62,7 @@ en:
         url: 'https://www.unep-wcmc.org/'
         class: 'footer__logo logo logo-unepwcmc'
         title: 'Visit the UN Environment World Conservation Monitoring Centre'
+    copyright: "&copy; Copyright %{year}"
 
   header:
     container:
