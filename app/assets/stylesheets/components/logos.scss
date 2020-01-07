@@ -5,6 +5,11 @@
 
   display: inline-block;
 
+  &-dummy {
+    background-image: image-url('logos/logo-dummy.svg');
+    width: rem-calc(31); height: rem-calc(31);
+  }
+
   &-icri {
     background-image: image-url('logos/logo-icri.png');
     width: rem-calc(58); height: rem-calc(31);

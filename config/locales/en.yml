@@ -30,4 +30,42 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  footer:
+    container: "<p>If you would like to contribute to this initiative, or to submit additional information, please contact Francis Staub <a href='mailto:fstaub@icriforum.org?subject=Coral%20Reef%20Funding%20Landscape' title='Contact Francis Staub'>(fstaub@icriforum.org)</a>.</p>
+      <p class='no-margin-bottom'>Data caveat: While effort has been made to capture as many projects as possible in this database, data on funding allocations is not always in the public domain or easily accessible. It is therefore recognized that the underlying dataset is not exhaustive. Efforts will be made to update the data and revisit the analysis in the future, as possible.</p>"
+    logos:
+      -
+        url: 'https://www.diplomatie.gouv.fr/'
+        class: 'footer__logo logo logo-ministere-1'
+        title: 'Visit Ministere des Affaires etrangeres et du Developpement International'
+      -
+        url: 'http://www2.developpement-durable.gouv.fr/'
+        class: 'footer__logo logo logo-ministere-2'
+        title: "Visit Ministere de L'Environment de L'Energie et de la Mer"
+      -
+        url: 'http://www.outre-mer.gouv.fr/'
+        class: 'footer__logo logo logo-ministere-3'
+        title: 'Visit Ministere des Outre-Mer'
+      -
+        url: 'https://www.unenvironment.org/'
+        class: 'footer__logo logo logo-unep'
+        title: 'Visit the UN Environment'
+      -
+        url: 'https://www.icriforum.org/'
+        class: 'footer__logo logo logo-icri'
+        title: 'Visit the International Coral Reef Initiative'
+      -
+        url: 'https://www.icriforum.org/about-icri/iyor'
+        class: 'footer__logo logo logo-iyor'
+        title: 'Visit the International Year of the Reef'
+      -
+        url: 'https://www.unep-wcmc.org/'
+        class: 'footer__logo logo logo-unepwcmc'
+        title: 'Visit the UN Environment World Conservation Monitoring Centre'
+    copyright: "&copy; Copyright %{year}"
+
+  header:
+    container:
+      title: "<h1>Coral Reef<br/>Funding Landscape</h1>"
+      content: "<p><strong>Coral Reef Funding Landscape</strong> explores international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems. Use the filter options below to discover current and historic global funding efforts, including details of total project cost, spatial and temporal scale, donors, beneficiaries and thematic area.</p>
+      <p>Data from this database informed the <i>Analysis of International Funding for the Sustainable Management of Coral Reefs and Associated Coastal Ecosystems (2018)</i>. This analysis was conducted by UN Environment World Conservation Monitoring Centre, UN Environment and the International Coral Reef Initiative and is available to download as a <a href='http://wcmc.io/coralbrochure' title='Download a summary brochure of the Analysis of International Funding for the Sustainable Management of Coral Reefs and Associated Coastal Ecosystems (2018)' target= '_blank'>summary brochure</a>.</p>"

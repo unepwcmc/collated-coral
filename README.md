@@ -14,7 +14,8 @@ See Wiki for more detailed information.
 - Clone repo
 - `bundle install`
 - `yarn install`
-- `rails s`
+- `LOCALE="en" rails s`
+- `LOCALE="dummy" rails s`
 - `./bin/webpack-dev-server` in another tab
 
 ## Importing data
