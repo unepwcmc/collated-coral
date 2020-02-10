@@ -134,8 +134,8 @@ class Project < ApplicationRecord
       string
     else
       array = string.split
-      number = array[1]
-
+      # original coral funders had array[1] - presumably data difference, and I had to strip commas etc.
+      number = array[0].gsub(/[^0-9.]/i, '')
       number_to_currency(number.to_i, { precision: 0 })
     end
   end
