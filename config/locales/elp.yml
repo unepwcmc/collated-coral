@@ -1,0 +1,15 @@
+elp:
+  footer:
+    container: "<p>If you would like to contribute to this initiative, or to submit additional information, please contact Hazel Thornton <a href='mailto:hazel.thornton@unep-wcmc.org?subject=ELP Funders' title='Contact Hazel Thornton'>(hazel.thornton@unep-wcmc.org)</a>.</p>
+      <p class='no-margin-bottom'>Data caveat: While effort has been made to capture as many projects as possible in this database, data on funding allocations is not always in the public domain or easily accessible. It is therefore recognized that the underlying dataset is not exhaustive. Efforts will be made to update the data and revisit the analysis in the future, as possible.</p>"
+    logos:
+      -
+        url: 'https://www.unep-wcmc.org/'
+        class: 'footer__logo logo logo-unepwcmc'
+        title: 'Visit the UN Environment World Conservation Monitoring Centre'
+    copyright: "&copy; Copyright %{year}"
+
+  header:
+    container:
+      title: "<h1>Endangered Landscape Programme<br/>Funding</h1>"
+      content: "<p><strong>Endangered Landscape Programme Funding</strong> explores international funding allocations for the identification of funding opportunities for priority landscapes for restoration. Use the filter options below to discover current and historic global funding efforts, including details of total project cost, spatial and temporal scale, donors, beneficiaries and thematic area.</p>"
