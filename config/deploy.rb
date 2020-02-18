@@ -1,6 +1,6 @@
 lock '3.8.2'
 
-set :application, 'collatedcoral'
+set :application, 'elp'
 set :repo_url, 'git@github.com:unepwcmc/collated-coral.git'
 
 

@@ -1,11 +1,11 @@
 set :stage, :staging
-set :branch, "supported-staging"
+set :branch, "elp_staging_deploy"
 
 
 server "web-supported-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 
-set :application, "collatedcoral"
-set :server_name, "collatedcoral"
+set :application, "elp"
+set :server_name, "elp"
 set :sudo_user, "wcmc"
 set :app_port, "80"
 
