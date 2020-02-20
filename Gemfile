@@ -21,6 +21,8 @@ gem 'webpacker', '~> 4.0.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'rails-i18n'
+
 gem "font-awesome-rails"
 
 # Use CoffeeScript for .coffee assets and views
