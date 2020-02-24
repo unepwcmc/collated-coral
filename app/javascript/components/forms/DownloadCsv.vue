@@ -5,7 +5,7 @@
         type="submit" 
         value="CSV" 
         title="Download CSV file of filtered Coral projects" 
-        class="button button--download button--green filter__download"
+        class="button button--download button--accent-2 filter__download"
         :class="{ 'button--disabled' : !hasResults }"
         v-bind="{ 'disabled' : !hasResults }">
       </input>

@@ -1,5 +1,7 @@
 .header {
-  background: image-url('hero.jpg') no-repeat bottom center;
+  @include bg-image-overlay;
+  
+  background: image-url('hero.jpg') no-repeat center;
   background-size: cover;
   padding-top: rem-calc(94);
   height: rem-calc(680);

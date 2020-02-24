@@ -1,10 +1,10 @@
 module ApplicationHelper
   def page_title 
-    'Coral Reef Funding Landscape'
+    'Endangered Landscape Programme – Restoration Funding'
   end
 
   def page_description
-    'Coral Reef Funding Landscape is a filterable database of international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems'
+    'Endangered Landscape Programme – Restoration Funding'
   end
 
   def url_encode (text)
@@ -16,11 +16,11 @@ module ApplicationHelper
   end
 
   def social_image
-    image_url('coral-reef-funding-landscape-social.jpg')
+    image_url('hero.jpg')
   end
 
   def social_image_alt
-    'Coral reef'
+    'Endangered Landscape Programme – Restoration Funding'
   end
 
   def create_social_facebook_link
@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def create_social_twitter_link
     title = url_encode('Share ' + page_title + ' on Twitter')
-    text = url_encode('Coral Reef Funding Landscape - Explore international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems.')
+    text = url_encode('Endangered Landscape Programme – Restoration Funding')
     url = encoded_page_url
     href = 'https://twitter.com/intent/tweet/?text=' + text + '&url=' + url
     
@@ -51,8 +51,8 @@ module ApplicationHelper
   def create_social_email_link
     title = url_encode('Share ' + page_title + ' via Email')
     url = encoded_page_url
-    subject = url_encode('Coral Reef Funding Landscape')
-    body = url_encode("Coral Reef Funding Landscape\n\nSearch the database to explore international funding allocations for the sustainable management of coral reefs and related mangroves and seagrass ecosystems.\n\n") + url
+    subject = url_encode('Endangered Landscape Programme – Restoration Funding')
+    body = url_encode("Endangered Landscape Programme – Restoration Funding.\n\n") + url
     href = 'mailto:?subject=' + subject + '&body=' + body
 
     link_to '', href, title: title, class: 'social--share social--email', target: '_self'

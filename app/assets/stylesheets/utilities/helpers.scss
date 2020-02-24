@@ -5,6 +5,7 @@
 // - font
 // - lists
 // - positioning
+// - backgrounds
 //
 //*************************************************
 // display
@@ -39,4 +40,24 @@
   top: 50%;
 
   transform: translateY(-50%);
+}
+
+//*************************************************
+// backgrounds
+//*************************************************
+
+@mixin bg-image-overlay {
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    background-color: rgba(black, 0.2);
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
 }

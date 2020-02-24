@@ -12,16 +12,16 @@
 //**************************************************
 $black: #000000;
 
-$blue-faint: #33548F;
+$base-color: #525657;
+
 $blue-light: #EDEEF1;
-$blue: #33548F;
-$blue-dark: #172A4D;
+$accent: #3294A9;
 
 $grey-light: #FAFAFB;
 $grey: #D5D8E1;
 $grey-dark: #333333;
 
-$green: #398439;
+$accent-2: #DC9D2D;
 
 //**************************************************
 // dimensions
@@ -33,11 +33,11 @@ $site-width: rem-calc(1200);
 //**************************************************
 $body-font: $black;
 
+$regular: 500;
 $bold: 700;
 
 $fontAwesome: normal normal normal 14px/1 FontAwesome;
-$openSans: 'Open Sans', sans-serif;
-$playfair: 'Playfair Display', serif;
+$roboto: 'Roboto', sans-serif;
 
 //**************************************************
 // buttons

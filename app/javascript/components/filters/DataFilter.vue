@@ -19,7 +19,7 @@
       <div class="filter__buttons">
         <button @click="clear()" class="button--link bold float-left">Clear</button>
         <button @click="cancel()" class="button--link">Cancel</button>
-        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
+        <button @click="apply()" class="button--link button--link--accent-2 bold">Apply</button>
       </div>
     </div>
   </div>

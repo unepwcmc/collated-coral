@@ -6,7 +6,7 @@
   padding: rem-calc(20 0);
 
   &__option {
-    border: solid $blue rem-calc(1);
+    border: solid $accent rem-calc(1);
     border-radius: rem-calc(3);
     margin: rem-calc(0 14 10 0);
     
@@ -20,7 +20,7 @@
     }
 
     &__close {
-      background-color: $blue;
+      background-color: $accent;
       border: none;
       border-radius: 0;
       color: $grey-light;
@@ -29,7 +29,7 @@
       padding: rem-calc(8 11);
 
       &:hover { 
-        background-color: lighten($blue, 5%); 
+        background-color: lighten($accent, 5%); 
         color: white;
       }
     }

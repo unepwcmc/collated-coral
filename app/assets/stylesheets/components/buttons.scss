@@ -11,7 +11,7 @@
 // reusable styles
 //**************************************************
 %button--pagination {
-  @extend .button--blue;
+  @extend .button--accent;
   background-position: center;
   background-repeat: no-repeat;
   width: rem-calc(45); height: rem-calc(45);
@@ -30,11 +30,11 @@
   padding: rem-calc(12 17);
   text-decoration: none;
   
-  &--blue { @include button-background($blue); }
-  &--green { @include button-background($green); }
+  &--accent { @include button-background($accent); }
+  &--accent-2 { @include button-background($accent-2); }
 
   &--download {
-    background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
+    background: $accent-2 image-url('icons/download.svg') no-repeat rem-calc(21) center;
     color: white;
     padding-right: rem-calc(21);
     padding-left: rem-calc(52);
@@ -69,5 +69,5 @@
     &:hover { text-decoration: underline; }
   }
 
-  &--link--green { color: $green; }
+  &--link--accent-2 { color: $accent-2; }
 }

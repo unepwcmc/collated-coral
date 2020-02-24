@@ -1,7 +1,7 @@
 //**************************************************
 // variables
 //**************************************************
-$activeBackgroundColour: $blue;
+$activeBackgroundColour: $accent;
 $activeTextColour: white;
 
 //**************************************************
@@ -160,7 +160,7 @@ $activeTextColour: white;
         left: 0;
 
         &--active:after {
-          background: $blue image-url('icons/tick.svg') center no-repeat;
+          background: $accent image-url('icons/tick.svg') center no-repeat;
           content: '';
           width: rem-calc(22); height: rem-calc(22);
 
